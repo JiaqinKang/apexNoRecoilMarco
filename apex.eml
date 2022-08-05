@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="opencv-460.jar" scope="COMPILE">
+		<srcroot url="jar://C:/java/opencv/build/java/opencv-460.jar!/"/>
+	</lib>
+	<levels>
+		<level name="x64" value="project"/>
+	</levels>
+</component>
