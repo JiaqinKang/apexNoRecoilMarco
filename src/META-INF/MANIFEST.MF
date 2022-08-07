@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
-Main-Class: manualMarco
+Main-Class: autoMarco
+Class-Path: opencv-460.jar opencv-460.jar
 

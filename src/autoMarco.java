@@ -11,13 +11,32 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.*;
 
-
 public class autoMarco {
     int machMethod = Imgproc.TM_CCOEFF_NORMED;
     int gunMode;
     int tempGunMode;
     boolean on_or_off = false;
     boolean isMute = true;
+    boolean r99 = false;
+    boolean r301 = false;
+    boolean 转换者 = false;
+    boolean 电能冲锋枪 = false;
+    boolean 喷火 = false;
+    boolean vk = false;
+    boolean re_45 = false;
+    boolean 暴走 = false;
+    boolean 哈沃克 = false;
+    boolean p2020 = false;
+    boolean 专注 = false;
+    boolean car = false;
+    boolean car2 = false;
+    boolean G7 = false;
+    boolean 赫姆洛克 = false;
+    boolean 猎兽 = false;
+    boolean L_Star = false;
+
+    String gun = "无";
+
     public autoMarco() {
         //scanner config file for gun mode
 
@@ -41,18 +60,42 @@ public class autoMarco {
         mute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         JButton unMute = new JButton("开启提示音");
         unMute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
-        //JLabel gun = new JLabel("枪模式");
+        //current gun
+        JLabel gun = new JLabel("当前枪模式：" + this.gun);
+        gun.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        gun.setHorizontalAlignment(JLabel.CENTER);
+        //change gun colour
+        gun.setForeground(Color.blue);
 
+        panel1.add(gun);
         panel1.add(button1);
         panel1.add(button2);
         panel1.add(mute);
         panel1.add(unMute);
 
+        // add invisible button to change gun mode
+        JButton gunMode = new JButton("");
+        gunMode.setVisible(false);
+
+        frame.setVisible(true); //show frame
+
+        //auto trigger gun mode button every 0.1s
+        Timer timer = new Timer(100, e -> {
+            gunMode.doClick();
+        });
+
+        //add button listener to update lable
+        gunMode.addActionListener(e -> {
+            //update gun label
+            gun.setText("当前枪模式：" + this.gun);
+            gun.validate();//update label
+        });
+
+
         button1.setBackground(Color.white);
         button2.setBackground(Color.red);
         mute.setBackground(Color.red);
         unMute.setBackground(Color.white);
-        //panel1.add(gun);
 
         //if mute button is pressed then mute the sound
         mute.addActionListener(e -> {
@@ -76,7 +119,7 @@ public class autoMarco {
                 """
         );
 
-        frame.setVisible(true);
+
 
 
         button1.addActionListener(e -> {
@@ -91,6 +134,7 @@ public class autoMarco {
             button1.setBackground(Color.WHITE);
             System.out.println("close");
         });
+        timer.start();
 
         while (true) {
             if (on_or_off){
@@ -100,7 +144,7 @@ public class autoMarco {
 
     }
 
-    public void write_to_file(int i) {
+    private void write_to_file(int i) {
         //write lua file to C:\Users\Public\Downloads
         String path = "C:\\Users\\Public\\Downloads\\";
         String file_name = "123.lua";
@@ -117,88 +161,174 @@ public class autoMarco {
         }
     }
 
-    public void scan() {
+    private void scan() {
 
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
         while (true) {
-//            try {
-//                Thread.sleep(100);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
 
-            BufferedImage image;
+            // Capture a particular area on the screen for 1440p screen
+            int x = 2020;
+            //540
+
+            int y = 1376;
+            //64
+
+            int width = 540;
+
+            int height = 40;
+
+            //capture the weapon selection area
             try {
                 Robot robot = new Robot();
-                image = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-                ImageIO.write(image, "jpg", new File("weapon/screenshot.jpg"));
+                BufferedImage image = robot.createScreenCapture(new Rectangle(x, y, width, height)); //capture the area
+                ImageIO.write(image, "jpg", new File("weapon/screenshot.jpg")); //save the screenshot to the file
             } catch (IOException | AWTException e) {
                 throw new RuntimeException(e);
             }
 
-            if (r99() > 0.9) {
+            double confidence = 0.94; //confidence level
+
+            if (!r99 && r99() > confidence) {
                 System.out.println("r99");
                 gunMode = 1;
-            } else if (r301() > 0.9) {
+                restGuns();//reset all guns
+                r99 = true; //set r99 to true to avoid multiple detection
+                this.gun = "r99";
+            } else if ( !r301 &&  r301() > confidence) {
                 System.out.println("r301");
                 gunMode = 2;
-            } else if (转换者() > 0.9) {
+                restGuns();
+                r301 = true;
+                this.gun = "r301";
+            } else if (转换者() > confidence && !转换者) {
                 System.out.println("zhuanHuanZhe");
                 gunMode = 3;
-            }else if (电能冲锋枪() > 0.9) {
+                restGuns();
+                转换者 = true;
+                this.gun = "转换者";
+            }else if (电能冲锋枪() > confidence && !电能冲锋枪) {
                 System.out.println("dianNeng");
                 gunMode = 4;
-            } else if (喷火() > 0.9) {
+                restGuns();
+                电能冲锋枪 = true;
+                this.gun = "电能冲锋枪";
+            } else if (喷火() > confidence && !喷火) {
                 System.out.println("penhuo");
                 gunMode = 10;
-            } else if (vk() > 0.9) {
+                restGuns();
+                喷火 = true;
+                this.gun = "喷火";
+            } else if (vk() > confidence && !vk) {
                 System.out.println("vk");
                 gunMode = 6;
-            } else if (re_45() > 0.9) {
+                restGuns();
+                vk = true;
+                this.gun = "vk";
+            } else if (re_45() > confidence && !re_45) {
                 System.out.println("re_45");
                 gunMode = 13;
-            } else if (p2020() > 0.9) {
-                System.out.println("p2020");
-                gunMode = 9;
-            } else if (暴走() > 0.9) {
+                restGuns();
+                re_45 = true;
+                this.gun = "re_45";
+            }  else if (暴走() > confidence && !暴走) {
                 System.out.println("baozou");
                 gunMode = 19;
-            } else if (哈沃克() > 0.9) {
+                restGuns();
+                暴走 = true;
+                this.gun = "暴走";
+            } else if (p2020() > confidence && !p2020) {
+                System.out.println("p2020");
+                gunMode = 9;
+                restGuns();
+                p2020 = true;
+                this.gun = "p2020";
+            } else if (哈沃克() > confidence && !哈沃克) {
                 System.out.println("hawoke");
                 gunMode = 16;
-            } else if (专注() > 0.9) {
+                restGuns();
+                哈沃克 = true;
+                this.gun = "哈沃克";
+            } else if (专注() > confidence && !专注) {
                 System.out.println("zhuanzhu");
                 gunMode = 5;
-            } else if (car() > 0.9) {
+                restGuns();
+                专注 = true;
+                this.gun = "专注";
+            } else if (car() > confidence && !car) {
                 System.out.println("car");
                 gunMode = 20;
-            } else if (G7() > 0.9) {
+                restGuns();
+                //same recoil now both set to true for debug
+                car = true;
+                car2 = true;
+                this.gun = "car";
+            } else if (car2() > confidence && !car2) {
+                System.out.println("car2");
+                gunMode = 20;
+                restGuns();
+                //same recoil now both set to true for debug
+                car = true;
+                car2 = true;
+                this.gun = "car2";
+            } else if (G7() > confidence && !G7) {
                 System.out.println("G7");
                 gunMode = 17;
-            } else if (赫姆洛克() > 0.9){
+                restGuns();
+                G7 = true;
+                this.gun = "G7";
+            } else if (赫姆洛克() > confidence && !赫姆洛克) {
                 System.out.println("hemuloke");
                 gunMode = 8;
-            } else if (猎兽() > 0.9){
+                restGuns();
+                赫姆洛克 = true;
+                this.gun = "赫姆洛克";
+            } else if (猎兽() > confidence && !猎兽) {
                 System.out.println("lieshou");
                 gunMode = 7;
-            } else if (L_Star() > 0.9) {
+                restGuns();
+                猎兽 = true;
+                this.gun = "猎兽";
+            } else if (L_Star() > confidence && !L_Star) {
                 System.out.println("L_Star");
                 gunMode = 11;
-            } else {
-                System.out.println("No weapon");
+                restGuns();
+                L_Star = true;
+                this.gun = "L_Star";
             }
 
+            //write to file only when the gun is changed
             if (tempGunMode != gunMode) {
-                tempGunMode = gunMode;
-                write_to_file(tempGunMode);
-                playBeep();
+                tempGunMode = gunMode; //update the gunMode
+                write_to_file(tempGunMode); //write to file
+                playBeep(); //play beep sound
                 System.out.println("write to file");
             }
-            if (!on_or_off){
-                break;
+            if (!on_or_off){ //if the program is closed, break the loop
+                break; //break the loop
             }
         }
+    }
+
+    //rest all weapons to false
+    public void restGuns() {
+        r99 = false;
+        r301 = false;
+        转换者 = false;
+        电能冲锋枪 = false;
+        喷火 = false;
+        vk = false;
+        re_45 = false;
+        暴走 = false;
+        p2020 = false;
+        哈沃克 = false;
+        专注 = false;
+        car = false;
+        car2 = false;
+        G7 = false;
+        赫姆洛克 = false;
+        猎兽 = false;
+        L_Star = false;
     }
     public double vk() {
         Mat outputImage = new Mat();
@@ -328,12 +458,19 @@ public class autoMarco {
         Core.MinMaxLocResult 电能冲锋枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return 电能冲锋枪.maxVal;
     }
+    public double car2(){
+        Mat outputImage = new Mat();
+        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
+        Mat car2 = Imgcodecs.imread("weapon/car2.jpg");
+        Imgproc.matchTemplate(game, car2, outputImage, machMethod);//
+        Core.MinMaxLocResult Car2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
+        return Car2.maxVal;
+    }
     public void playBeep(){
         if (!isMute) {
             Toolkit.getDefaultToolkit().beep();
         }
     }
-
     //run the program
     public static void main(String[] args) {
         new autoMarco();

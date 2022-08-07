@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module classpath="eclipse" classpath-dir="$MODULE_DIR$" type="JAVA_MODULE" version="4" />
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library name="opencv-460.jar">
+        <CLASSES>
+          <root url="jar://C:/java/opencv/build/java/opencv-460.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <NATIVE>
+          <root url="file://C:/java/opencv/build/java/x64" />
+        </NATIVE>
+        <SOURCES>
+          <root url="jar://C:/java/opencv/build/java/opencv-460.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="x64" level="project" />
+    <orderEntry type="library" exported="" name="opencv-460" level="application" />
+  </component>
+</module>
