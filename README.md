@@ -1,6 +1,6 @@
-                                          Fully working no recoil with Logitech mouse with Logitech game software
+Fully working no recoil with Logitech mouse with Logitech game software
 
-                                                                      Apex 无后座力力脚本
+Apex 无后座力力脚本
                                                                       
 Crrent issues:
 当前遇到的问题:
