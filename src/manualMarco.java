@@ -6,45 +6,47 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 
 
 public class manualMarco {
     Boolean isMute = false;
 
+    File from = new File("Script.lua");
+    File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
+
     public manualMarco() {
+
         JFrame frame = new JFrame("Apex腰射手动宏");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setIconImage(new ImageIcon("icon.jpg").getImage());
-        frame.setSize(250, 290);
+        frame.setIconImage(new ImageIcon("icon.jpg").getImage());
+        frame.setSize(275, 700);
         frame.setResizable(false);
         //frame in the center of screen
         frame.setLocationRelativeTo(null);
-
+        frame.setAlwaysOnTop(true);
 
         JPanel panel1 = new JPanel();
-        //set flow layout to panel1
 
-        panel1.setLayout(new GridLayout(9, 1));
-
+        panel1.setLayout(new GridLayout(19, 0));
 
         //        -- R-301步枪 = 2
         //        -- VK平行步枪 = 6
-
-//        -- R-99冲锋枪 = 1
-//        -- 转换者冲锋枪 = 3
-//        -- 电能冲锋枪 = 4
-//        -- 专注轻机枪 = 5
-//        -- 猎兽冲锋枪 = 7
-//        -- 赫姆洛克（单点）=8
-//        -- P2020 = 9
-//        -- 喷火轻机枪 = 10
-//        -- L-star能量机枪 = 11
-//        -- P202 = 12
-//        -- RE-45自动手枪 = 13
-//        -- 哈沃克步枪(有涡轮) = 16
-//        -- G7步枪 = 17
-//        -- 暴走 =19
-//        -- CAR冲锋枪 = 23
+        //        -- R-99冲锋枪 = 1
+        //        -- 转换者冲锋枪 = 3
+        //        -- 电能冲锋枪 = 4
+        //        -- 专注轻机枪 = 5
+        //        -- 猎兽冲锋枪 = 7
+        //        -- 赫姆洛克（单点）=8
+        //        -- P2020 = 9
+        //        -- 喷火轻机枪 = 10
+        //        -- L-star能量机枪 = 11
+        //        -- P202 = 12
+        //        -- RE-45自动手枪 = 13
+        //        -- 哈沃克步枪(有涡轮) = 16
+        //        -- G7步枪 = 17
+        //        -- 暴走 =19
+        //        -- CAR冲锋枪 = 23
 
         //create buttons
         JButton R301 = new JButton("R-301步枪");
@@ -65,6 +67,30 @@ public class manualMarco {
         JButton CAR冲锋枪 = new JButton("CAR冲锋枪");
         JButton mute = new JButton("静音");
         JButton unMute = new JButton("取消静音");
+        JButton release = new JButton("释放脚本");
+
+        R301.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        VK.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        R99.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        转换者冲锋枪.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        电能冲锋枪.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        专注轻机枪.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        猎兽冲锋枪.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        赫姆洛克.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        喷火轻机枪.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        L_star能量机枪.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        P202.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        RE_45自动手枪.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        哈沃克步枪.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        G7步枪.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        暴走.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        CAR冲锋枪.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        mute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        unMute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        release.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+
+
+
 
         //add buttons to panel1
         panel1.add(R301);
@@ -85,6 +111,7 @@ public class manualMarco {
         panel1.add(CAR冲锋枪);
         panel1.add(mute);
         panel1.add(unMute);
+        panel1.add(release);
 
         //add panel1 to frame
         frame.add(panel1);
@@ -105,6 +132,10 @@ public class manualMarco {
         G7步枪.setBackground(Color.WHITE);
         暴走.setBackground(Color.WHITE);
         CAR冲锋枪.setBackground(Color.WHITE);
+        mute.setBackground(Color.WHITE);
+        unMute.setBackground(Color.WHITE);
+        release.setBackground(Color.WHITE);
+
 
         if (isMute){
             mute.setBackground(Color.GREEN);
@@ -114,6 +145,23 @@ public class manualMarco {
             unMute.setBackground(Color.GREEN);
             mute.setBackground(Color.WHITE);
         }
+
+        //if release button is pressed then release the script to local
+        release.addActionListener(e -> {
+            try {
+                copyFileUsingJava7Files(from, to);
+                //disable button
+                release.setEnabled(false);
+                //show message
+                JOptionPane.showMessageDialog(frame, "脚本文件已释放到本地");
+                release.setText("脚本文件OK");
+                release.setBackground(Color.green);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+                //show message
+                JOptionPane.showMessageDialog(frame, "脚本文件释放失败");
+            }
+        });
 
         //action listener for buttons
         R301.addActionListener(new ActionListener(){
@@ -558,6 +606,15 @@ public class manualMarco {
 
         frame.setVisible(true);
 
+    }
+
+    private void copyFileUsingJava7Files(File source, File dest) throws IOException {
+        //if file already exist then delete it first
+        if (dest.exists()) {
+            dest.delete();//delete file
+        }
+        //copy file
+        Files.copy(source.toPath(), dest.toPath());//copy file
     }
     public void playBeep(){
         if (isMute == false) {

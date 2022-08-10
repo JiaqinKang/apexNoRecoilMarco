@@ -11,8 +11,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 
-public class autoMarco1080 {
+
+public class autoMarco_1080p {
     int machMethod = Imgproc.TM_CCOEFF_NORMED;
     int gunMode;
     int tempGunMode;
@@ -37,11 +39,13 @@ public class autoMarco1080 {
     boolean L_Star = false;
 
     String gun = "无";
+    File from = new File("Script.lua");
+    File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
 
-    public autoMarco1080() {
+    public autoMarco_1080p() {
         //scanner config file for gun mode
 
-        JFrame frame = new JFrame("Apex腰射全自动宏");
+        JFrame frame = new JFrame("Apex腰射全自动宏1080p");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("icon.jpg").getImage());
         frame.setSize(350, 350);
@@ -61,18 +65,27 @@ public class autoMarco1080 {
         mute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         JButton unMute = new JButton("开启提示音");
         unMute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        JButton release = new JButton("释放脚本文件到本地");
+        release.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+
         //current gun
         JLabel gun = new JLabel("当前枪模式：" + this.gun);
         gun.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         gun.setHorizontalAlignment(JLabel.CENTER);
         //change gun colour
         gun.setForeground(Color.blue);
+        //always on top
+        frame.setAlwaysOnTop(true);
+
 
         panel1.add(gun);
         panel1.add(button1);
         panel1.add(button2);
         panel1.add(mute);
         panel1.add(unMute);
+        panel1.add(release);
+
+
 
         // add invisible button to change gun mode
         JButton gunMode = new JButton("");
@@ -85,18 +98,18 @@ public class autoMarco1080 {
             gunMode.doClick();
         });
 
+        button1.setBackground(Color.white);
+        button2.setBackground(Color.red);
+        mute.setBackground(Color.red);
+        unMute.setBackground(Color.white);
+        release.setBackground(Color.white);
+
         //add button listener to update lable
         gunMode.addActionListener(e -> {
             //update gun label
             gun.setText("当前枪模式：" + this.gun);
             gun.validate();//update label
         });
-
-
-        button1.setBackground(Color.white);
-        button2.setBackground(Color.red);
-        mute.setBackground(Color.red);
-        unMute.setBackground(Color.white);
 
         //if mute button is pressed then mute the sound
         mute.addActionListener(e -> {
@@ -110,6 +123,23 @@ public class autoMarco1080 {
             //change button color
             unMute.setBackground(Color.GREEN);
             mute.setBackground(Color.WHITE);
+        });
+
+        //if release button is pressed then release the script to local
+        release.addActionListener(e -> {
+            try {
+                copyFileUsingJava7Files(from, to);
+                //disable button
+                release.setEnabled(false);
+                //show message
+                JOptionPane.showMessageDialog(frame, "脚本文件已释放到本地");
+                release.setText("脚本文件OK");
+                release.setBackground(Color.green);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+                //show message
+                JOptionPane.showMessageDialog(frame, "脚本文件释放失败");
+            }
         });
 
         //pop up message when start the program
@@ -160,6 +190,15 @@ public class autoMarco1080 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void copyFileUsingJava7Files(File source, File dest) throws IOException {
+        //if file already exist then delete it first
+        if (dest.exists()) {
+            dest.delete();//delete file
+        }
+        //copy file
+        Files.copy(source.toPath(), dest.toPath());//copy file
     }
 
     private void scan() {
@@ -478,7 +517,7 @@ public class autoMarco1080 {
     }
     //run the program
     public static void main(String[] args) {
-        new autoMarco1080();
+        new autoMarco_1080p();
     }
 
 }

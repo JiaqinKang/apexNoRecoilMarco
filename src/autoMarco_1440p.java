@@ -2,16 +2,18 @@ import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
+
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import javax.swing.*;
+import java.nio.file.Files;
 
-public class autoMarco {
+public class autoMarco_1440p {
     int machMethod = Imgproc.TM_CCOEFF_NORMED;
     int gunMode;
     int tempGunMode;
@@ -34,16 +36,23 @@ public class autoMarco {
     boolean 赫姆洛克 = false;
     boolean 猎兽 = false;
     boolean L_Star = false;
-
     String gun = "无";
+    File from = new File("Script.lua");
+    File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
 
-    public autoMarco() {
+    public autoMarco_1440p() {
         //scanner config file for gun mode
 
-        JFrame frame = new JFrame("Apex腰射全自动宏");
+        JFrame frame = new JFrame("Apex腰射全自动宏2k");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("icon.jpg").getImage());
         frame.setSize(350, 350);
+
+        //close program when close window
+
+
+
+
         frame.setResizable(false);
         //frame in the center of screen
         frame.setLocationRelativeTo(null);
@@ -60,6 +69,18 @@ public class autoMarco {
         mute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         JButton unMute = new JButton("开启提示音");
         unMute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        JButton release = new JButton("释放脚本文件到本地");
+        release.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+
+        //when the program close, delete the script file
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                to.delete();
+            }
+        });
+
+
         //current gun
         JLabel gun = new JLabel("当前枪模式：" + this.gun);
         gun.setFont(new Font("微软雅黑", Font.PLAIN, 30));
@@ -69,11 +90,15 @@ public class autoMarco {
         //always on top
         frame.setAlwaysOnTop(true);
 
+
         panel1.add(gun);
         panel1.add(button1);
         panel1.add(button2);
         panel1.add(mute);
         panel1.add(unMute);
+        panel1.add(release);
+
+
 
         // add invisible button to change gun mode
         JButton gunMode = new JButton("");
@@ -86,18 +111,18 @@ public class autoMarco {
             gunMode.doClick();
         });
 
+        button1.setBackground(Color.white);
+        button2.setBackground(Color.red);
+        mute.setBackground(Color.red);
+        unMute.setBackground(Color.white);
+        release.setBackground(Color.white);
+
         //add button listener to update lable
         gunMode.addActionListener(e -> {
             //update gun label
             gun.setText("当前枪模式：" + this.gun);
             gun.validate();//update label
         });
-
-
-        button1.setBackground(Color.white);
-        button2.setBackground(Color.red);
-        mute.setBackground(Color.red);
-        unMute.setBackground(Color.white);
 
         //if mute button is pressed then mute the sound
         mute.addActionListener(e -> {
@@ -111,6 +136,23 @@ public class autoMarco {
             //change button color
             unMute.setBackground(Color.GREEN);
             mute.setBackground(Color.WHITE);
+        });
+
+        //if release button is pressed then release the script to local
+        release.addActionListener(e -> {
+            try {
+                copyFileUsingJava7Files(from, to);
+                //disable button
+                release.setEnabled(false);
+                //show message
+                JOptionPane.showMessageDialog(frame, "脚本文件已释放到本地");
+                release.setText("脚本文件OK");
+                release.setBackground(Color.green);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+                //show message
+                JOptionPane.showMessageDialog(frame, "脚本文件释放失败");
+            }
         });
 
         //pop up message when start the program
@@ -161,6 +203,15 @@ public class autoMarco {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void copyFileUsingJava7Files(File source, File dest) throws IOException {
+        //if file already exist then delete it first
+        if (dest.exists()) {
+            dest.delete();//delete file
+        }
+        //copy file
+        Files.copy(source.toPath(), dest.toPath());//copy file
     }
 
     private void scan() {
@@ -311,6 +362,7 @@ public class autoMarco {
             }
         }
     }
+
 
     //rest all weapons to false
     public void restGuns() {
@@ -475,7 +527,7 @@ public class autoMarco {
     }
     //run the program
     public static void main(String[] args) {
-        new autoMarco();
+        new autoMarco_1440p();
     }
 
 }
