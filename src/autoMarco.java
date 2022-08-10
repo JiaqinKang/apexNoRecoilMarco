@@ -66,6 +66,8 @@ public class autoMarco {
         gun.setHorizontalAlignment(JLabel.CENTER);
         //change gun colour
         gun.setForeground(Color.blue);
+        //always on top
+        frame.setAlwaysOnTop(true);
 
         panel1.add(gun);
         panel1.add(button1);
@@ -187,7 +189,7 @@ public class autoMarco {
                 throw new RuntimeException(e);
             }
 
-            double confidence = 0.94; //confidence level
+            double confidence = 0.93; //confidence level
 
             if (!r99 && r99() > confidence) {
                 System.out.println("r99");
