@@ -38,6 +38,7 @@ public class autoMarco_1080p {
     boolean 猎兽 = false;
     boolean L_Star = false;
 
+    boolean fuZhuShouQiang = false;
     String gun = "无";
     File from = new File("Script.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
@@ -339,6 +340,12 @@ public class autoMarco_1080p {
                 restGuns();
                 L_Star = true;
                 this.gun = "L_Star";
+            }else if (fuZhuShouQiang() > confidence && !fuZhuShouQiang){
+                System.out.println("fuZhuShouQiang");
+                gunMode = 9; //same as p2020
+                restGuns();
+                fuZhuShouQiang = true;
+                this.gun = "辅助手枪";
             }
 
             //write to file only when the gun is changed
@@ -373,6 +380,7 @@ public class autoMarco_1080p {
         赫姆洛克 = false;
         猎兽 = false;
         L_Star = false;
+        fuZhuShouQiang = false;
     }
     public double vk() {
         Mat outputImage = new Mat();
@@ -510,6 +518,16 @@ public class autoMarco_1080p {
         Core.MinMaxLocResult Car2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return Car2.maxVal;
     }
+
+    public double fuZhuShouQiang(){
+        Mat outputImage = new Mat();
+        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
+        Mat fuZhuShouQiang = Imgcodecs.imread("weapon/fuZhuShouQiang.jpg");
+        Imgproc.matchTemplate(game, fuZhuShouQiang, outputImage, machMethod);//
+        Core.MinMaxLocResult fuZhuShouQiang2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
+        return fuZhuShouQiang2.maxVal;
+    }
+
     public void playBeep(){
         if (!isMute) {
             Toolkit.getDefaultToolkit().beep();

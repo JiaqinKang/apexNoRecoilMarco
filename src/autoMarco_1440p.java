@@ -36,6 +36,8 @@ public class autoMarco_1440p {
     boolean 赫姆洛克 = false;
     boolean 猎兽 = false;
     boolean L_Star = false;
+
+    boolean fuZhuShouQiang = false;
     String gun = "无";
     File from = new File("Script.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
@@ -47,11 +49,6 @@ public class autoMarco_1440p {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("icon.jpg").getImage());
         frame.setSize(350, 350);
-
-        //close program when close window
-
-
-
 
         frame.setResizable(false);
         //frame in the center of screen
@@ -159,7 +156,7 @@ public class autoMarco_1440p {
         JOptionPane.showMessageDialog(frame, """
                 操作说明:
                 游戏中鼠标灵敏度为1.6，鼠标加速度关闭，罗技驱动——>指针设置——>报告率改为1000，加速关闭
-                哈沃克和轻型机枪必须有涡轮增压器,Numlock开关宏
+                哈沃克和轻型机枪必须有涡轮增压器,Numlock开关宏,开枪时按住鼠标右键启动宏
                 """
         );
 
@@ -348,6 +345,12 @@ public class autoMarco_1440p {
                 restGuns();
                 L_Star = true;
                 this.gun = "L_Star";
+            } else if (fuZhuShouQiang() > confidence && !fuZhuShouQiang){
+                System.out.println("fuZhuShouQiang");
+                gunMode = 9; //same as p2020
+                restGuns();
+                fuZhuShouQiang = true;
+                this.gun = "辅助手枪";
             }
 
             //write to file only when the gun is changed
@@ -383,6 +386,7 @@ public class autoMarco_1440p {
         赫姆洛克 = false;
         猎兽 = false;
         L_Star = false;
+        fuZhuShouQiang = false;
     }
     public double vk() {
         Mat outputImage = new Mat();
@@ -520,6 +524,18 @@ public class autoMarco_1440p {
         Core.MinMaxLocResult Car2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return Car2.maxVal;
     }
+
+    public double fuZhuShouQiang(){
+        Mat outputImage = new Mat();
+        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
+        Mat fuZhuShouQiang = Imgcodecs.imread("weapon/fuZhuShouQiang.jpg");
+        Imgproc.matchTemplate(game, fuZhuShouQiang, outputImage, machMethod);//
+        Core.MinMaxLocResult fuZhuShouQiang2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
+        return fuZhuShouQiang2.maxVal;
+    }
+
+
+
     public void playBeep(){
         if (!isMute) {
             Toolkit.getDefaultToolkit().beep();
