@@ -11,8 +11,8 @@ Crrent issues:
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 How to use it:
 使用说明：
-    important : Make sure logitech game software is installed
-    重要：一定要安装罗技的lgs驱动
+    important : Make sure logitech game software or Ghub is installed
+    重要：需要安装罗技鼠标驱动lgs或者ghub
 
     Downlaod and import the LogitechGameSoftware.xml to lgs 
     下载并且添加LogitechGameSoftware.xml到lgs的软件中
@@ -24,6 +24,12 @@ How to use it:
           
         automatic：全自动检测武器版
           2. run autoMarco 
+              ``1080p
+              ``1440p
+          
+          
+          Hold mouse right then shoot
+          按住鼠标右键再开枪进行压枪
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 Envrioment 
