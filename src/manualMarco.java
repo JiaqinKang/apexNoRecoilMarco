@@ -12,8 +12,8 @@ import java.nio.file.Files;
 public class manualMarco {
     Boolean isMute = false;
 
-    File from = new File("Script.lua");
-    File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
+    File from = new File("ScriptSeason14.lua");
+    File to = new File("C:\\Users\\Public\\Downloads\\ScriptSeason14.lua");
 
     public manualMarco() {
 

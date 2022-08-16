@@ -19,4 +19,4 @@ location = {{0,0},{0,0},{0,0},{0,0}} --�ĸ�����
 
 a4 = 6
 
-dofile("C:/Users/Public/Downloads/Script.lua")
+dofile("C:/Users/Public/Downloads/ScriptSeason14.lua")

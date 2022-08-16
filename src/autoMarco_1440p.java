@@ -39,8 +39,8 @@ public class autoMarco_1440p {
 
     boolean fuZhuShouQiang = false;
     String gun = "无";
-    File from = new File("Script.lua");
-    File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
+    File from = new File("ScriptSeason14.lua");
+    File to = new File("C:\\Users\\Public\\Downloads\\ScriptSeason14.lua");
 
     public autoMarco_1440p() {
         //scanner config file for gun mode

@@ -280,7 +280,7 @@ l080or2k = 2   --改成1或2就不用填下面坐标，只支持1080或2k，（1
 location = {{0,0},{0,0},{0,0},{0,0}}
 a4 = 6
 
-dofile("C:/Users/Public/Downloads/Script.lua")
+dofile("C:/Users/Public/Downloads/ScriptSeason14.lua")
 
 --OutputLogMessage(a)</script>
   </profile>
