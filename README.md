@@ -1,6 +1,9 @@
-Fully working no recoil with Logitech mouse with Logitech game software
+Disclaimer
+I developed it with the intension of using this tool only for learning and educational purpose. if anything damage you caused has got nothing to do with me.
 
 Apex 无后座力力脚本
+Fully working no recoil with Logitech mouse with Logitech game software or ghub
+
                                                                       
 Crrent issues:
 当前遇到的问题:
