@@ -11,9 +11,11 @@ Crrent issues:
      需要写英文翻译给英文用户
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 How to use it:
-使用说明：within the ide
+使用说明：within the ide 
     important : Make sure logitech game software or Ghub is installed
     重要：需要安装罗技鼠标驱动lgs或者ghub
+    
+    in game mouse sensitivity 1.60
 
     Downlaod and import the LogitechGameSoftware.xml to lgs 
     下载并且添加LogitechGameSoftware.xml到lgs的软件中
