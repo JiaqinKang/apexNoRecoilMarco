@@ -13,7 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 
-public class autoMarco_1440p {
+public class autoMarco1080pAnd1440p {
     int machMethod = Imgproc.TM_CCOEFF_NORMED;
     int gunMode;
     int tempGunMode;
@@ -39,10 +39,10 @@ public class autoMarco_1440p {
 
     boolean fuZhuShouQiang = false;
     String gun = "无";
-    File from = new File("ScriptSeason14.lua");
+    File from = new File("ScriptSeason14腰射.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\ScriptSeason14.lua");
 
-    public autoMarco_1440p() {
+    public autoMarco1080pAnd1440p() {
         //scanner config file for gun mode
 
         JFrame frame = new JFrame("Apex腰射全自动宏2k");
@@ -213,20 +213,30 @@ public class autoMarco_1440p {
 
     private void scan() {
 
+        //check  system resolution
+        int SystemWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int SystemHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+        System.out.println(SystemWidth + " " + SystemHeight);
+
+
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
         while (true) {
 
             // Capture a particular area on the screen for 1440p screen
-            int x = 2020;
+
+            int x= (SystemWidth*3/4);
             //540
 
-            int y = 1376;
-            //64
+            int height = (SystemHeight/4)/2;
 
-            int width = 540;
+            int y = (SystemHeight*3/4)+height;
 
-            int height = 40;
+            int width =(SystemWidth/4);
+
+
+
+
 
             //capture the weapon selection area
             try {
@@ -543,7 +553,7 @@ public class autoMarco_1440p {
     }
     //run the program
     public static void main(String[] args) {
-        new autoMarco_1440p();
+        new autoMarco1080pAnd1440p();
     }
 
 }

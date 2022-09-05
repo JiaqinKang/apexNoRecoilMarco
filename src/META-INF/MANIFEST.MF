@@ -1,4 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: autoMarco_1440p
-Class-Path: opencv-460.jar opencv-460.jar
+Main-Class: autoMarco_1080p
 
