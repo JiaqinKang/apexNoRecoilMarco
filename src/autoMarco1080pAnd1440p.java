@@ -38,17 +38,25 @@ public class autoMarco1080pAnd1440p {
     boolean L_Star = false;
 
     boolean fuZhuShouQiang = false;
-    String gun = "无";
+    String gun = "null";
     File from = new File("ScriptSeason14腰射.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\ScriptSeason14.lua");
 
+    //check  system resolution
+    int SystemWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+    int SystemHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+
+    //language
+    String language = "中文";
+
     public autoMarco1080pAnd1440p() {
+
         //scanner config file for gun mode
 
-        JFrame frame = new JFrame("Apex腰射全自动宏2k");
+        JFrame frame = new JFrame("Apex腰射全自动宏2k/1080");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("icon.jpg").getImage());
-        frame.setSize(350, 350);
+        frame.setSize(500, 350);
 
         frame.setResizable(false);
         //frame in the center of screen
@@ -66,6 +74,8 @@ public class autoMarco1080pAnd1440p {
         mute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         JButton unMute = new JButton("开启提示音");
         unMute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        JButton button3 = new JButton("Switch Language");
+        button3.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         JButton release = new JButton("释放脚本文件到本地");
         release.setFont(new Font("微软雅黑", Font.PLAIN, 30));
 
@@ -79,7 +89,7 @@ public class autoMarco1080pAnd1440p {
 
 
         //current gun
-        JLabel gun = new JLabel("当前枪模式：" + this.gun);
+        JLabel gun = new JLabel(this.gun);
         gun.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         gun.setHorizontalAlignment(JLabel.CENTER);
         //change gun colour
@@ -94,6 +104,9 @@ public class autoMarco1080pAnd1440p {
         panel1.add(mute);
         panel1.add(unMute);
         panel1.add(release);
+        panel1.add(button3);
+
+
 
 
 
@@ -117,7 +130,11 @@ public class autoMarco1080pAnd1440p {
         //add button listener to update lable
         gunMode.addActionListener(e -> {
             //update gun label
-            gun.setText("当前枪模式：" + this.gun);
+            if (language == "中文") {
+                gun.setText("当前枪模式：" + this.gun);
+            } else {
+                gun.setText("Current gun：" + this.gun);
+            }
             gun.validate();//update label
         });
 
@@ -135,32 +152,58 @@ public class autoMarco1080pAnd1440p {
             mute.setBackground(Color.WHITE);
         });
 
-        //if release button is pressed then release the script to local
-        release.addActionListener(e -> {
-            try {
-                copyFileUsingJava7Files(from, to);
-                //disable button
-                release.setEnabled(false);
-                //show message
-                JOptionPane.showMessageDialog(frame, "脚本文件已释放到本地");
+        button3.addActionListener(e -> {
+            if (language.equals("中文")) {
+                language = "English";
+                button1.setText("Start");
+                button2.setText("Stop");
+                mute.setText("Mute Sound");
+                unMute.setText("Activation Sound");
+                button3.setText("切换语言");
+                release.setText("Release Script Ok");
+                gun.setText("Current Gun Mode: " + this.gun);
+            } else {
+                language = "中文";
+                button1.setText("开启");
+                button2.setText("关闭");
+                mute.setText("静音");
+                unMute.setText("开启提示音");
+                button3.setText("Switch Language");
                 release.setText("脚本文件OK");
-                release.setBackground(Color.green);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-                //show message
-                JOptionPane.showMessageDialog(frame, "脚本文件释放失败");
+                gun.setText("当前枪模式：" + this.gun);
             }
         });
 
+        //release script file to local
+        try {
+            copyFileUsingJava7Files(from, to);
+            //disable button
+            release.setEnabled(false);
+            //show message
+            JOptionPane.showMessageDialog(frame, "脚本文件已释放到本地,Script File Released to Local path");
+            release.setText("脚本文件OK");
+            release.setBackground(Color.green);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+            //show message
+            JOptionPane.showMessageDialog(frame, "脚本文件释放失败,Script File Release Failed");
+            release.setBackground(Color.red);
+        }
+
         //pop up message when start the program
         JOptionPane.showMessageDialog(frame, """
+                Please make sure your game language is set to Chinese, or the script will not work unless you update the weapon screen shots to english snapshots.
+                请确保游戏语言设置为中文，否则脚本将无法工作，除非您更新武器屏幕截图为英文快照
+                
                 操作说明:
                 游戏中鼠标灵敏度为1.6，鼠标加速度关闭，罗技驱动——>指针设置——>报告率改为1000，加速关闭
                 哈沃克和轻型机枪必须有涡轮增压器,Numlock开关宏,开枪时按住鼠标右键启动宏
+                
+                English:
+                Mouse sensitivity in game is 1.6, mouse acceleration is off, Logitech driver->pointer settings->report rate is 1000, acceleration is off
+                Havoc and light machine gun must have turbocharger, Numlock switch for on/off macro, hold the right mouse button to start the macro when shooting);
                 """
         );
-
-
 
 
         button1.addActionListener(e -> {
@@ -176,6 +219,14 @@ public class autoMarco1080pAnd1440p {
             System.out.println("close");
         });
         timer.start();
+
+        System.out.println(SystemWidth + " " + SystemHeight);
+
+        if (SystemHeight == 1080) {
+            //scan 1080p
+        } else if (SystemHeight == 1440) {
+            //scan 1440p
+        }
 
         while (true) {
             if (on_or_off){
@@ -213,12 +264,6 @@ public class autoMarco1080pAnd1440p {
 
     private void scan() {
 
-        //check  system resolution
-        int SystemWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-        int SystemHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
-        System.out.println(SystemWidth + " " + SystemHeight);
-
-
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
         while (true) {
@@ -254,67 +299,67 @@ public class autoMarco1080pAnd1440p {
                 gunMode = 1;
                 restGuns();//reset all guns
                 r99 = true; //set r99 to true to avoid multiple detection
-                this.gun = "r99";
+                this.gun = "R-99 SMG";
             } else if ( !r301 &&  r301() > confidence) {
                 System.out.println("r301");
                 gunMode = 2;
                 restGuns();
                 r301 = true;
-                this.gun = "r301";
+                this.gun = "R-301 Carbine";
             } else if (转换者() > confidence && !转换者) {
                 System.out.println("zhuanHuanZhe");
                 gunMode = 3;
                 restGuns();
                 转换者 = true;
-                this.gun = "转换者";
+                this.gun = "Alternator SMG";
             }else if (电能冲锋枪() > confidence && !电能冲锋枪) {
                 System.out.println("dianNeng");
                 gunMode = 4;
                 restGuns();
                 电能冲锋枪 = true;
-                this.gun = "电能冲锋枪";
+                this.gun = "Volt SMG";
             } else if (喷火() > confidence && !喷火) {
                 System.out.println("penhuo");
                 gunMode = 10;
                 restGuns();
                 喷火 = true;
-                this.gun = "喷火";
+                this.gun = "M600 Spitfire";
             } else if (vk() > confidence && !vk) {
                 System.out.println("vk");
                 gunMode = 6;
                 restGuns();
                 vk = true;
-                this.gun = "vk";
+                this.gun = "VK-47 Flatline";
             } else if (re_45() > confidence && !re_45) {
                 System.out.println("re_45");
                 gunMode = 13;
                 restGuns();
                 re_45 = true;
-                this.gun = "re_45";
+                this.gun = "RE_45 Auto";
             }  else if (暴走() > confidence && !暴走) {
                 System.out.println("baozou");
                 gunMode = 19;
                 restGuns();
                 暴走 = true;
-                this.gun = "暴走";
+                this.gun = "Rampage LMG";
             } else if (p2020() > confidence && !p2020) {
                 System.out.println("p2020");
                 gunMode = 9;
                 restGuns();
                 p2020 = true;
-                this.gun = "p2020";
+                this.gun = "P2020";
             } else if (哈沃克() > confidence && !哈沃克) {
                 System.out.println("hawoke");
                 gunMode = 16;
                 restGuns();
                 哈沃克 = true;
-                this.gun = "哈沃克";
+                this.gun = "Havoc Rifle";
             } else if (专注() > confidence && !专注) {
                 System.out.println("zhuanzhu");
                 gunMode = 5;
                 restGuns();
                 专注 = true;
-                this.gun = "专注";
+                this.gun = "Devotion LMG";
             } else if (car() > confidence && !car) {
                 System.out.println("car");
                 gunMode = 20;
@@ -322,7 +367,7 @@ public class autoMarco1080pAnd1440p {
                 //same recoil now both set to true for debug
                 car = true;
                 car2 = true;
-                this.gun = "car";
+                this.gun = "C.A.R SMG";
             } else if (car2() > confidence && !car2) {
                 System.out.println("car2");
                 gunMode = 20;
@@ -330,37 +375,37 @@ public class autoMarco1080pAnd1440p {
                 //same recoil now both set to true for debug
                 car = true;
                 car2 = true;
-                this.gun = "car2";
+                this.gun = "C.A.R SMG";
             } else if (G7() > confidence && !G7) {
                 System.out.println("G7");
                 gunMode = 17;
                 restGuns();
                 G7 = true;
-                this.gun = "G7";
+                this.gun = "G7 Scout";
             } else if (赫姆洛克() > confidence && !赫姆洛克) {
                 System.out.println("hemuloke");
                 gunMode = 8;
                 restGuns();
                 赫姆洛克 = true;
-                this.gun = "赫姆洛克";
+                this.gun = "Hemlok Burst";
             } else if (猎兽() > confidence && !猎兽) {
                 System.out.println("lieshou");
                 gunMode = 7;
                 restGuns();
                 猎兽 = true;
-                this.gun = "猎兽";
+                this.gun = "Prowler Burst PDW";
             } else if (L_Star() > confidence && !L_Star) {
                 System.out.println("L_Star");
                 gunMode = 11;
                 restGuns();
                 L_Star = true;
-                this.gun = "L_Star";
+                this.gun = "L_Star EMG";
             } else if (fuZhuShouQiang() > confidence && !fuZhuShouQiang){
                 System.out.println("fuZhuShouQiang");
                 gunMode = 9; //same as p2020
                 restGuns();
                 fuZhuShouQiang = true;
-                this.gun = "辅助手枪";
+                this.gun = "Wingman";
             }
 
             //write to file only when the gun is changed
