@@ -3,7 +3,7 @@ The purpose of my development is for educational purposes. If you use this softw
 我开发的目的是为了educational目的。如果你使用本软件造成任何damage与作者无关。
 
 Apex 无后座力力脚本
-Fully working no recoil with Logitech mouse with Logitech game software & ghub
+Fully working no recoil weapon detection with Logitech mouse with Logitech game software & ghub
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 How to use it:
 使用说明：within the ide 
