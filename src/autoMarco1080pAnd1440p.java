@@ -48,6 +48,7 @@ public class autoMarco1080pAnd1440p {
 
     //language
     String language = "中文";
+    private String screenResolution;
 
     public autoMarco1080pAnd1440p() {
 
@@ -198,10 +199,12 @@ public class autoMarco1080pAnd1440p {
                 操作说明:
                 游戏中鼠标灵敏度为1.6，鼠标加速度关闭，罗技驱动——>指针设置——>报告率改为1000，加速关闭
                 哈沃克和轻型机枪必须有涡轮增压器,Numlock开关宏,开枪时按住鼠标右键启动宏
+                - p2020 和 辅助手枪 全自动开枪需要设置第二开枪键为p键
                 
                 English:
                 Mouse sensitivity in game is 1.6, mouse acceleration is off, Logitech driver->pointer settings->report rate is 1000, acceleration is off
                 Havoc and light machine gun must have turbocharger, Numlock switch for on/off macro, hold the right mouse button to start the macro when shooting);
+                - p2020 and Wingman pistol need to set the second shooting key to p key;
                 """
         );
 
@@ -220,12 +223,14 @@ public class autoMarco1080pAnd1440p {
         });
         timer.start();
 
-        System.out.println(SystemWidth + " " + SystemHeight);
+        //System.out.println(SystemWidth + " " + SystemHeight);
 
         if (SystemHeight == 1080) {
             //scan 1080p
+            screenResolution = "1080";
         } else if (SystemHeight == 1440) {
             //scan 1440p
+            screenResolution = "1440";
         }
 
         while (true) {
@@ -279,6 +284,8 @@ public class autoMarco1080pAnd1440p {
 
             int width =(SystemWidth/4);
 
+            System.out.println(x + " " + y + " " + width + " " + height);
+
 
 
 
@@ -292,7 +299,7 @@ public class autoMarco1080pAnd1440p {
                 throw new RuntimeException(e);
             }
 
-            double confidence = 0.93; //confidence level
+            double confidence = 0.90; //confidence level
 
             if (!r99 && r99() > confidence) {
                 System.out.println("r99");
@@ -446,7 +453,7 @@ public class autoMarco1080pAnd1440p {
     public double vk() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat vk = Imgcodecs.imread("weapon/vk.jpg");
+        Mat vk = Imgcodecs.imread("weapon/" + screenResolution + "/vk.jpg");
         Imgproc.matchTemplate(game, vk, outputImage, machMethod);//
         Core.MinMaxLocResult Vk = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return Vk.maxVal;
@@ -454,7 +461,7 @@ public class autoMarco1080pAnd1440p {
     public double r301() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat r301 = Imgcodecs.imread("weapon/r301.jpg");
+        Mat r301 = Imgcodecs.imread("weapon/" + screenResolution + "/r301.jpg");
         Imgproc.matchTemplate(game, r301, outputImage, machMethod);//
         Core.MinMaxLocResult R301 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return R301.maxVal;
@@ -462,7 +469,7 @@ public class autoMarco1080pAnd1440p {
     public double car() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat car = Imgcodecs.imread("weapon/car.jpg");
+        Mat car = Imgcodecs.imread("weapon/" + screenResolution + "/car.jpg");
         Imgproc.matchTemplate(game, car, outputImage, machMethod);//
         Core.MinMaxLocResult CAR = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return CAR.maxVal;
@@ -470,7 +477,7 @@ public class autoMarco1080pAnd1440p {
     public double G7() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat g7 = Imgcodecs.imread("weapon/g7.jpg");
+        Mat g7 = Imgcodecs.imread("weapon/" + screenResolution + "/g7.jpg");
         Imgproc.matchTemplate(game, g7, outputImage, machMethod);//
         Core.MinMaxLocResult G7 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return G7.maxVal;
@@ -478,7 +485,7 @@ public class autoMarco1080pAnd1440p {
     public double L_Star() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat l_star = Imgcodecs.imread("weapon/L-Star.jpg");
+        Mat l_star = Imgcodecs.imread("weapon/" + screenResolution + "/L-Star.jpg");
         Imgproc.matchTemplate(game, l_star, outputImage, machMethod);//
         Core.MinMaxLocResult L_Star = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return L_Star.maxVal;
@@ -486,7 +493,7 @@ public class autoMarco1080pAnd1440p {
     public double r99() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat r99 = Imgcodecs.imread("weapon/r99.jpg");
+        Mat r99 = Imgcodecs.imread("weapon/" + screenResolution + "/r99.jpg");
         Imgproc.matchTemplate(game, r99, outputImage, machMethod);//
         Core.MinMaxLocResult R99 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return R99.maxVal;
@@ -494,7 +501,7 @@ public class autoMarco1080pAnd1440p {
     public double p2020() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat p2020 = Imgcodecs.imread("weapon/p2020.jpg");
+        Mat p2020 = Imgcodecs.imread("weapon/" + screenResolution + "/p2020.jpg");
         Imgproc.matchTemplate(game, p2020, outputImage, machMethod);//
         Core.MinMaxLocResult P2020 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return P2020.maxVal;
@@ -502,7 +509,7 @@ public class autoMarco1080pAnd1440p {
     public double re_45() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat re_45 = Imgcodecs.imread("weapon/re-45.jpg");
+        Mat re_45 = Imgcodecs.imread("weapon/" + screenResolution + "/re-45.jpg");
         Imgproc.matchTemplate(game, re_45, outputImage, machMethod);//
         Core.MinMaxLocResult RE_45 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return RE_45.maxVal;
@@ -510,7 +517,7 @@ public class autoMarco1080pAnd1440p {
     public double 专注() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat zhuanZhu = Imgcodecs.imread("weapon/zhuanZhu.jpg");
+        Mat zhuanZhu = Imgcodecs.imread("weapon/" + screenResolution + "/zhuanZhu.jpg");
         Imgproc.matchTemplate(game, zhuanZhu, outputImage, machMethod);//
         Core.MinMaxLocResult 专注机枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return 专注机枪.maxVal;
@@ -518,7 +525,7 @@ public class autoMarco1080pAnd1440p {
     public double 哈沃克() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat hawoke = Imgcodecs.imread("weapon/hawoke.jpg");
+        Mat hawoke = Imgcodecs.imread("weapon/" + screenResolution + "/hawoke.jpg");
         Imgproc.matchTemplate(game, hawoke, outputImage, machMethod);//
         Core.MinMaxLocResult 哈沃克步枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return 哈沃克步枪.maxVal;
@@ -526,7 +533,7 @@ public class autoMarco1080pAnd1440p {
     public double 喷火() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat fire = Imgcodecs.imread("weapon/fire.jpg");
+        Mat fire = Imgcodecs.imread("weapon/" + screenResolution + "/fire.jpg");
         Imgproc.matchTemplate(game, fire, outputImage, machMethod);//
         Core.MinMaxLocResult 喷火轻机枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return 喷火轻机枪.maxVal;
@@ -534,7 +541,7 @@ public class autoMarco1080pAnd1440p {
     public double 暴走() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat baoZou = Imgcodecs.imread("weapon/baoZou.jpg");
+        Mat baoZou = Imgcodecs.imread("weapon/" + screenResolution + "/baoZou.jpg");
         Imgproc.matchTemplate(game, baoZou, outputImage, machMethod);//
         Core.MinMaxLocResult 暴走冲锋枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return 暴走冲锋枪.maxVal;
@@ -542,7 +549,7 @@ public class autoMarco1080pAnd1440p {
     public double 赫姆洛克() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat hemLock = Imgcodecs.imread("weapon/hemLock.jpg");
+        Mat hemLock = Imgcodecs.imread("weapon/" + screenResolution + "/hemLock.jpg");
         Imgproc.matchTemplate(game, hemLock, outputImage, machMethod);//
         Core.MinMaxLocResult 赫姆洛克突击步枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return 赫姆洛克突击步枪.maxVal;
@@ -550,7 +557,7 @@ public class autoMarco1080pAnd1440p {
     public double 转换者() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat zhuanZhuanZhe = Imgcodecs.imread("weapon/zhuanZhuanZhe.jpg");
+        Mat zhuanZhuanZhe = Imgcodecs.imread("weapon/" + screenResolution + "/zhuanZhuanZhe.jpg");
         Imgproc.matchTemplate(game, zhuanZhuanZhe, outputImage, machMethod);//
         Core.MinMaxLocResult 转换者冲锋枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return 转换者冲锋枪.maxVal;
@@ -558,7 +565,7 @@ public class autoMarco1080pAnd1440p {
     public double 猎兽() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat lieShou = Imgcodecs.imread("weapon/lieShou.jpg");
+        Mat lieShou = Imgcodecs.imread("weapon/" + screenResolution + "/lieShou.jpg");
         Imgproc.matchTemplate(game, lieShou, outputImage, machMethod);//
         Core.MinMaxLocResult 猎兽冲锋枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return 猎兽冲锋枪.maxVal;
@@ -566,7 +573,7 @@ public class autoMarco1080pAnd1440p {
     public double 电能冲锋枪() {
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat dianneng = Imgcodecs.imread("weapon/dianneng.jpg");
+        Mat dianneng = Imgcodecs.imread("weapon/" + screenResolution + "/dianneng.jpg");
         Imgproc.matchTemplate(game, dianneng, outputImage, machMethod);//
         Core.MinMaxLocResult 电能冲锋枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return 电能冲锋枪.maxVal;
@@ -574,7 +581,7 @@ public class autoMarco1080pAnd1440p {
     public double car2(){
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat car2 = Imgcodecs.imread("weapon/car2.jpg");
+        Mat car2 = Imgcodecs.imread("weapon/" + screenResolution + "/car2.jpg");
         Imgproc.matchTemplate(game, car2, outputImage, machMethod);//
         Core.MinMaxLocResult Car2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return Car2.maxVal;
@@ -583,7 +590,7 @@ public class autoMarco1080pAnd1440p {
     public double fuZhuShouQiang(){
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat fuZhuShouQiang = Imgcodecs.imread("weapon/fuZhuShouQiang.jpg");
+        Mat fuZhuShouQiang = Imgcodecs.imread("weapon/" + screenResolution + "/fuZhuShouQiang.jpg");
         Imgproc.matchTemplate(game, fuZhuShouQiang, outputImage, machMethod);//
         Core.MinMaxLocResult fuZhuShouQiang2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return fuZhuShouQiang2.maxVal;
