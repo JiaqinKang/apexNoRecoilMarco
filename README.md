@@ -7,10 +7,10 @@ Fully working no recoil weapon detection with Logitech mouse with Logitech game 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 How to use it:
 使用说明：
-    important : Make sure logitech game software or Ghub is installed
+    important: Make sure Logitech game software or Ghub is installed
     重要：需要安装罗技鼠标驱动lgs或者ghub
     
-     Please make sure your game language is set to Chinese, or the script will not work unless you update the weapon screen shots to english snapshots.
+     Please make sure your game language is set to Chinese, or the script will not work unless you update the weapon screenshots to English snapshots.
                 请确保游戏语言设置为中文，否则脚本将无法工作，除非您更新武器屏幕截图为英文快照
                 
                 操作说明:
@@ -19,24 +19,24 @@ How to use it:
                 - p2020 和 辅助手枪 全自动开枪需要设置第二开枪键为p键
                 
                 English:
-                Mouse sensitivity in game is 1.6, mouse acceleration is off, Logitech driver->pointer settings->report rate is 1000, acceleration is off
-                Havoc and light machine gun must have turbocharger, Numlock switch for on/off macro, hold the right mouse button to start the macro when shooting);
+                Mouse sensitivity in-game is 1.6, mouse acceleration is off, Logitech driver->pointer settings->report rate is 1000, acceleration is off
+                Havoc and light machine gun must have a turbocharger, Numlock switch for on/off macro, hold the right mouse button to start the macro when shooting);
                 - p2020 and Wingman pistol need to set the second shooting key to p key;
    
     1. make sure you installed jdk-18_windows-x64_bin.msi 
        确保安装最新的java jdk，安装文件已经打包在
 
-    2. upload correct marco script to your mouse driver (LGS/GHUB) in MarcoScripts Folder
+    2. upload the correct Marco script to your mouse driver (LGS/GHUB) in MarcoScripts Folder
        上传正确的分辨率脚本文件到对应的罗技驱动，lgs/ghub. 文件在MarcoScripts里面
 
     3. start apex.jar
        启动apex.jar
     
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-Envrioment 
+Environment 
 
-  IDE: intellij
+  IDE: IntelliJ
 
   libary: opencv-460
 
-  java : 1.8
+  java: 1.8
