@@ -34,8 +34,8 @@ How to use it:
 
 There is a version difference between lgs and ghub：
 lgs和ghub有版本区别问题：
-	如果发生问题请手动修改两处loadstring 成load，在每行的开头就可以发现a=loadstring ，修改成 a=load
-	If there is a problem, please manually modify the two loadstrings into load, 
+	如果发生问题请手动修改（ScriptSeason14腰射.lua）中两处loadstring 成load，在每行的开头就可以发现a=loadstring ，修改成 a=load
+	If there is a problem, please manually modify （ScriptSeason14腰射.lua） two loadstrings into load, 
 	you can find a=loadstring at the beginning of each line, and modify it to a=load
 
     
