@@ -1,9 +1,9 @@
 public class test {
     public static void main(String[] args) {
 //        //connect to ftp server
-//        String ftpServer = "ftpupload.net";
-//        String ftpUser = "epiz_32832849";
-//        String ftpPass = "kswT98hlPXhr";
+//        String ftpServer = "";
+//        String ftpUser = "";
+//        String ftpPass = "";
 //        int ftpPort = 21;
 //
 //        ftpConnect ftp = new ftpConnect(ftpServer,ftpPort,ftpUser,ftpPass);
