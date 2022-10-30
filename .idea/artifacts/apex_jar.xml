@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="apex:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/apex_jar</output-path>
+    <root id="archive" name="apex.jar">
+      <element id="module-output" name="apex" />
+      <element id="library" level="project" name="x64" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java/opencv/build/java/opencv-460.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java/mysql/mysql-connector-java-8.0.30.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java/ftp/commons-net-3.8.0/commons-net-3.8.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
