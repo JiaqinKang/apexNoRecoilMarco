@@ -522,7 +522,7 @@ public class autoMarco_1080p {
     public double fuZhuShouQiang(){
         Mat outputImage = new Mat();
         Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat fuZhuShouQiang = Imgcodecs.imread("weapon/fuZhuShouQiang.jpg");
+        Mat fuZhuShouQiang = Imgcodecs.imread("weapon/wingMan.jpg");
         Imgproc.matchTemplate(game, fuZhuShouQiang, outputImage, machMethod);//
         Core.MinMaxLocResult fuZhuShouQiang2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
         return fuZhuShouQiang2.maxVal;

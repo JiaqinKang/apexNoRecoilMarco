@@ -23,5 +23,7 @@
     </orderEntry>
     <orderEntry type="library" exported="" name="x64" level="project" />
     <orderEntry type="library" exported="" name="opencv-460" level="application" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.30" level="application" />
+    <orderEntry type="library" name="commons-net-3.8.0" level="application" />
   </component>
 </module>

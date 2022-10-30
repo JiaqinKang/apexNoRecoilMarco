@@ -23,40 +23,47 @@ public class autoMarco1080pAnd1440p {
     boolean isMute = true;
     boolean r99 = false;
     boolean r301 = false;
-    boolean 转换者 = false;
-    boolean 电能冲锋枪 = false;
-    boolean 喷火 = false;
+    boolean alternatorSMG = false;
+    boolean voltSMG = false;
+    boolean m600Spitfire = false;
     boolean vk = false;
     boolean re_45 = false;
-    boolean 暴走 = false;
-    boolean 哈沃克 = false;
+    boolean rampageLMG = false;
+    boolean havocRifle = false;
     boolean p2020 = false;
-    boolean 专注 = false;
+    boolean devotionLMG = false;
     boolean car = false;
     boolean car2 = false;
-    boolean G7 = false;
-    boolean 赫姆洛克 = false;
-    boolean 猎兽 = false;
+    boolean g7 = false;
+    boolean hemLock = false;
+    boolean prowlerBurstPDW = false;
     boolean L_Star = false;
-    boolean fuZhuShouQiang = false;
+    boolean wingMan = false;
+    boolean _30_30Repeater = false;
+    boolean bocekCompoundBow = false;
+    boolean chargeRifle = false;
+    boolean eva8Auto = false;
+    boolean kraber50CalSniper = false;
+    boolean longbowDMR = false;
+    boolean mastiffShotgun = false;
+    boolean mozambiqueShotgun = false;
+    boolean peaceKeeper = false;
+    boolean sentinel = false;
+    boolean tripleTake = false;
     boolean bag = false;
-
+    boolean dead = false;
+    boolean gameMenu = false;
+    boolean lobby = false;
+    boolean setting = false;
+    boolean exitMenu = false;
+    boolean blackMarket = false;
+    boolean selectChampion = false;
+    boolean inMap = false;
     String gun = "no Weapon";
     File from = new File("ScriptSeason14腰射.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\ScriptSeason14.lua");
 
     File control = new File("C:\\Users\\Public\\Downloads\\123.lua");
-    boolean looting = false;
-    boolean dead = false;
-
-    boolean gameMenu = false;
-
-    boolean lobby = false;
-    boolean setting =false;
-    boolean exitMenu = false ;
-    boolean blackMarket = false;
-
-
 
     //check  system resolution
     int SystemWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -64,7 +71,10 @@ public class autoMarco1080pAnd1440p {
 
     //language
     String language = "中文";
-    private String screenResolution;
+    String screenResolution;
+
+    double deadConfidence = 0.50; //confidence level
+    double confidence = 0.85; //confidence level
 
 
     public autoMarco1080pAnd1440p() {
@@ -129,9 +139,7 @@ public class autoMarco1080pAnd1440p {
         frame.setVisible(true); //show frame
 
         //auto trigger gun mode button every 0.1s
-        Timer timer = new Timer(100, e -> {
-            gunMode.doClick();
-        });
+        Timer timer = new Timer(100, e -> gunMode.doClick());
 
         button1.setBackground(Color.white);
         button2.setBackground(Color.red);
@@ -142,7 +150,7 @@ public class autoMarco1080pAnd1440p {
         //add button listener to update lable
         gunMode.addActionListener(e -> {
             //update gun label
-            if (language == "中文") {
+            if (language.equals("中文")) {
                 gun.setText("当前模式：" + this.gun);
             } else {
                 gun.setText("Current Mode：" + this.gun);
@@ -173,7 +181,7 @@ public class autoMarco1080pAnd1440p {
                 unMute.setText("Activation Sound");
                 button3.setText("切换语言");
                 release.setText("Release Script Ok");
-                gun.setText("Current Gun Mode: " + this.gun);
+                gun.setText("Current Mode: " + this.gun);
             } else {
                 language = "中文";
                 button1.setText("开启");
@@ -182,7 +190,7 @@ public class autoMarco1080pAnd1440p {
                 unMute.setText("开启提示音");
                 button3.setText("Switch Language");
                 release.setText("脚本文件OK");
-                gun.setText("当前枪模式：" + this.gun);
+                gun.setText("当前模式：" + this.gun);
             }
         });
 
@@ -232,6 +240,8 @@ public class autoMarco1080pAnd1440p {
             button1.setBackground(Color.WHITE);
             System.out.println("close");
         });
+
+        frame.setVisible(true); //show frame
 
 
         timer.start();
@@ -298,7 +308,6 @@ public class autoMarco1080pAnd1440p {
         Files.copy(source.toPath(), dest.toPath());//copy file
     }
 
-
     private void scan() throws AWTException {
 
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -307,525 +316,159 @@ public class autoMarco1080pAnd1440p {
 
             // Capture weapon area
             int x = (int) (SystemWidth *0.781);
-            //540
             int y = (int) (SystemHeight *0.9);
-
             int height = (int) (SystemHeight *0.1);
-
             int width = (int) (SystemWidth *0.2);
             //System.out.println(x + " " + y + " " + width + " " + height);
 
-
             //capture for looting area
             int x1 = (SystemWidth / 16);
-
             int y1 = (SystemHeight / 10);
-
             int width1 = (int) (SystemWidth / 8.5) - x1;
-
             int height1 = (int) ((SystemHeight / 8.5) - y1) * 2;
             //System.out.println(x1 + " " + y1 + " " + width1 + " " + height1);
-
-            //capture for setting area
-
-            int x2 = (int) (SystemWidth *0.02);
-
-            int y2 = (int) (SystemHeight * 0.9);
-
-            int height2 = (int) (SystemHeight * 0.1);
-
-            int width2 = (int) (SystemWidth *0.06);
-            //System.out.println(x2 + " " + y2 + " " + width2 + " " + height2);
-
 
             // create robot to capture screen in specific area with parameters from above
             try {
                 Robot robot = new Robot();
+
                 BufferedImage image = robot.createScreenCapture(new Rectangle(x, y, width, height)); //capture weapon area
                 BufferedImage dead = robot.createScreenCapture(new Rectangle(x1, y1, width1, height1)); //capture the death box area
-                BufferedImage setting = robot.createScreenCapture(new Rectangle(x2, y2, width2, height2)); //capture the setting area
+
                 ImageIO.write(image, "jpg", new File("weapon/screenshot.jpg")); //save weapon area screenshot
                 ImageIO.write(dead, "jpg", new File("weapon/deadScreenshot.jpg")); //save dead area screenshot
-                ImageIO.write(setting, "jpg", new File("weapon/settingScreenshot.jpg")); //save setting area screenshot
             } catch (IOException | AWTException e) {
+                //pop up window to tell user to run as admin
+                JOptionPane.showMessageDialog(null, "图片截图失败,请以管理员身份运行程序,并在GitHub上提出bug", "Error", JOptionPane.ERROR_MESSAGE);
                 throw new RuntimeException(e);
             }
 
-            double deadConfidence = 0.95; //confidence level
-            double confidence = 0.90; //confidence level
+            Mat _1weapon = Imgcodecs.imread("weapon/screenshot.jpg");
+            Mat _2dead = Imgcodecs.imread("weapon/deadScreenshot.jpg");
 
-            //check if the player is looting a dead chest
-            if (dead() >= deadConfidence) {
-                System.out.println("dead");
-                restGuns();
-                dead = true;
-                gunMode = 18;
+//            check if the player is looting a dead chest
+            if (imageDetection(_2dead,"dead",false) >= deadConfidence) {
                 this.gun = "Dead";
-            } else if (dead1() >= deadConfidence) {
-                System.out.println("dead 1");
-                restGuns();
-                dead = true;
                 gunMode = 18;
+                switchNow();
+            } else if (imageDetection(_2dead,"dead1",false) >= deadConfidence) {
                 this.gun = "Dead 1";
-            } else if (dead2() >= deadConfidence) {
-                System.out.println("Dead 2");
-                restGuns();
-                dead = true;
                 gunMode = 18;
+                switchNow();
+            } else if (imageDetection(_2dead,"dead2",false) >= deadConfidence) {
                 this.gun = "Dead 2";
-            } else if ( BlackMarket() >= confidence && !blackMarket){
-                System.out.println("Black Market");
-                restGuns();
-                dead = true;
                 gunMode = 18;
+                switchNow();
+            } else if ( imageDetection(_2dead,"blackMarket",false) >= deadConfidence){
                 this.gun = "Black Market";
-            }
-            else {
-                dead = false;
-                blackMarket = false;
-            }
-
-            //check if is in game menu or lobby
-            if (!gameMenu && lobby() >= confidence) {
-                restGuns();
-                gameMenu = true;
-                this.gun = "Game menu";
                 gunMode = 18;
-                System.out.println("Game menu");
-            } else if (!lobby && returnLobby() >= confidence) {
-                restGuns();
-                lobby = true;
-                this.gun = "Game over";
+                switchNow();
+            } else if (imageDetection(_1weapon,"r99",false) >= confidence) {
+                this.gun = "R-99 SMG";
+                gunMode = 1;
+                switchNow();
+            } else if (imageDetection(_1weapon,"r301",false) >= confidence) {
+                this.gun = "R-301 Carbine";
+                gunMode = 2;
+                switchNow();
+            } else if (imageDetection(_1weapon,"alternatorSMG",false) >= confidence ) {
+                this.gun = "Alternator SMG";
+                gunMode = 3;
+                switchNow();
+            } else if (imageDetection(_1weapon,"voltSMG",false) >= confidence ) {
+                this.gun = "Volt SMG";
+                gunMode = 4;
+                switchNow();
+            } else if (imageDetection(_1weapon,"m600Spitfire",false) >= confidence) {
+                this.gun = "M600 Spitfire";
+                gunMode = 10;
+                switchNow();
+            } else if (imageDetection(_1weapon, "vk",false) >= confidence ) {
+                this.gun = "VK-47 Flatline";
+                gunMode = 6;
+                switchNow();
+            } else if (imageDetection(_1weapon,"re-45",false) >= confidence ) {
+                this.gun = "RE_45 Auto";
+                gunMode = 13;
+                switchNow();
+            } else if (imageDetection(_1weapon,"rampageLMG",false) >= confidence ) {
+                this.gun = "Rampage LMG";
+                gunMode = 19;
+                switchNow();
+            } else if (imageDetection(_1weapon,"p2020",false) >= confidence ) {
+                this.gun = "P2020";
+                gunMode = 9;
+                switchNow();
+            } else if (imageDetection(_1weapon,"havoc",false) >= confidence ) {
+                this.gun = "Havoc Rifle";
+                gunMode = 16;
+                switchNow();
+            } else if (imageDetection(_1weapon,"devotionLMG",false) >= confidence ) {
+                this.gun = "Devotion LMG";
+                gunMode = 5;
+                switchNow();
+            } else if (imageDetection(_1weapon,"car",false) >= confidence ) {
+                this.gun = "C.A.R SMG";
+                gunMode = 20;
+                switchNow();
+            } else if (imageDetection(_1weapon,"car2",false) >= confidence ) {
+                this.gun = "C.A.R SMG";
+                gunMode = 20;
+                switchNow();
+            } else if (imageDetection(_1weapon,"g7",false) >= confidence ) {
+                this.gun = "G7 Scout";
+                gunMode = 17;
+                switchNow();
+            } else if (imageDetection(_1weapon,"hemLock",false)>= confidence) {
+                this.gun = "Hemlok Burst";
+                gunMode = 8;
+                switchNow();
+            } else if (imageDetection(_1weapon,"prowlerBurstPDW",false) >= confidence ) {
+                this.gun = "Prowler Burst PDW";
+                gunMode = 7;
+                switchNow();
+            } else if (imageDetection(_1weapon,"L-Star",false) >= confidence ) {
+                this.gun = "L_Star EMG";
+                gunMode = 11;
+                switchNow();
+            } else {
+                this.gun = "未检测到支持武器";
                 gunMode = 18;
-                System.out.println("Game over");
-            } else if (settings() >= confidence && !setting) {
-                restGuns();
-                setting = true;
-                this.gun = "Setting";
-                gunMode = 18;
-                System.out.println("Setting");
-            } else if (exitMenu() >= confidence && !exitMenu){
-                restGuns();
-                exitMenu = true;
-                this.gun = "Exit menu";
-                gunMode = 18;
-                System.out.println("Exit menu");
-
+                switchNow();
             }
 
-            //if the game is not in the menu or game over screen then scan for weapons
-            if (!dead && !blackMarket ) {
-                if (bag() >= confidence && !bag) {
-                    System.out.println("bag");
-                    gunMode = 18;
-                    restGuns();//reset all guns
-                    r99 = true; //set r99 to true to avoid multiple detection
-                    this.gun = "inventory";
-                } else if (!r99 && r99() >= confidence) {
-                    System.out.println("r99");
-                    gunMode = 1;
-                    restGuns();//reset all guns
-                    r99 = true; //set r99 to true to avoid multiple detection
-                    this.gun = "R-99 SMG";
-                } else if (!r301 && r301() >= confidence) {
-                    System.out.println("r301");
-                    gunMode = 2;
-                    restGuns();
-                    r301 = true;
-                    this.gun = "R-301 Carbine";
-                } else if (转换者() >= confidence && !转换者) {
-                    System.out.println("zhuanHuanZhe");
-                    gunMode = 3;
-                    restGuns();
-                    转换者 = true;
-                    this.gun = "Alternator SMG";
-                } else if (电能冲锋枪() >= confidence && !电能冲锋枪) {
-                    System.out.println("dianNeng");
-                    gunMode = 4;
-                    restGuns();
-                    电能冲锋枪 = true;
-                    this.gun = "Volt SMG";
-                } else if (喷火() >= confidence && !喷火) {
-                    System.out.println("penhuo");
-                    gunMode = 10;
-                    restGuns();
-                    喷火 = true;
-                    this.gun = "M600 Spitfire";
-                } else if (vk() >= confidence && !vk) {
-                    System.out.println("vk");
-                    gunMode = 6;
-                    restGuns();
-                    vk = true;
-                    this.gun = "VK-47 Flatline";
-                } else if (re_45() >= confidence && !re_45) {
-                    System.out.println("re_45");
-                    gunMode = 13;
-                    restGuns();
-                    re_45 = true;
-                    this.gun = "RE_45 Auto";
-                } else if (暴走() >= confidence && !暴走) {
-                    System.out.println("baozou");
-                    gunMode = 19;
-                    restGuns();
-                    暴走 = true;
-                    this.gun = "Rampage LMG";
-                } else if (p2020() >= confidence && !p2020) {
-                    System.out.println("p2020");
-                    gunMode = 9;
-                    restGuns();
-                    p2020 = true;
-                    this.gun = "P2020";
-                } else if (哈沃克() >= confidence && !哈沃克) {
-                    System.out.println("hawoke");
-                    gunMode = 16;
-                    restGuns();
-                    哈沃克 = true;
-                    this.gun = "Havoc Rifle";
-                } else if (专注() >= confidence && !专注) {
-                    System.out.println("zhuanzhu");
-                    gunMode = 5;
-                    restGuns();
-                    专注 = true;
-                    this.gun = "Devotion LMG";
-                } else if (car() >= confidence && !car) {
-                    System.out.println("car");
-                    gunMode = 20;
-                    restGuns();
-                    //same recoil now both set to true for debug
-                    car = true;
-                    car2 = true;
-                    this.gun = "C.A.R SMG";
-                } else if (car2() >= confidence && !car2) {
-                    System.out.println("car2");
-                    gunMode = 20;
-                    restGuns();
-                    //same recoil now both set to true for debug
-                    car = true;
-                    car2 = true;
-                    this.gun = "C.A.R SMG";
-                } else if (G7() >= confidence && !G7) {
-                    System.out.println("G7");
-                    gunMode = 17;
-                    restGuns();
-                    G7 = true;
-                    this.gun = "G7 Scout";
-                } else if (赫姆洛克() >= confidence && !赫姆洛克) {
-                    System.out.println("hemuloke");
-                    gunMode = 8;
-                    restGuns();
-                    赫姆洛克 = true;
-                    this.gun = "Hemlok Burst";
-                } else if (猎兽() >= confidence && !猎兽) {
-                    System.out.println("lieshou");
-                    gunMode = 7;
-                    restGuns();
-                    猎兽 = true;
-                    this.gun = "Prowler Burst PDW";
-                } else if (L_Star() >= confidence && !L_Star) {
-                    System.out.println("L_Star");
-                    gunMode = 11;
-                    restGuns();
-                    L_Star = true;
-                    this.gun = "L_Star EMG";
-                } else if (fuZhuShouQiang() >= confidence && !fuZhuShouQiang) {
-                    System.out.println("fuZhuShouQiang");
-                    gunMode = 9; //same as p2020
-                    restGuns();
-                    fuZhuShouQiang = true;
-                    this.gun = "Wingman";
-                }
-            }
-
-            //write to file only when the gun is changed
-            if (tempGunMode != gunMode) {
-                tempGunMode = gunMode; //update the gunMode
-                write_to_file(tempGunMode); //write to file
-                playBeep(); //play beep sound
-                System.out.println("write to file");
-            }
-
+            System.gc(); //free memory
             if (!on_or_off) { //if the program is closed, break the loop
-                restGuns();
                 break; //break the loop
             }
         }
     }
 
-
-    //rest all weapons to false
-    public void restGuns() {
-        r99 = false;
-        r301 = false;
-        转换者 = false;
-        电能冲锋枪 = false;
-        喷火 = false;
-        vk = false;
-        re_45 = false;
-        暴走 = false;
-        p2020 = false;
-        哈沃克 = false;
-        专注 = false;
-        car = false;
-        car2 = false;
-        G7 = false;
-        赫姆洛克 = false;
-        猎兽 = false;
-        L_Star = false;
-        fuZhuShouQiang = false;
-        dead = false;
-        gameMenu = false;
-        lobby = false;
-        looting = false;
-        bag = false;
-        setting = false;
-        blackMarket = false;
+    public void switchNow(){
+        //write to file only when the gun is changed
+        if (tempGunMode != gunMode) {
+            tempGunMode = gunMode; //update the gunMode
+            write_to_file(tempGunMode); //write to file
+            playBeep(); //play beep sound
+            System.out.println("write to file");
+        }
     }
 
-    public double vk() {
+    public double imageDetection(Mat _1weapon_2dead_3setting, String checkItem, boolean debugVerbose) {
+
         Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat vk = Imgcodecs.imread("weapon/" + screenResolution + "/vk.jpg");
-        Imgproc.matchTemplate(game, vk, outputImage, machMethod);//
-        Core.MinMaxLocResult Vk = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return Vk.maxVal;
+        Mat checkItemMat = Imgcodecs.imread("weapon/" + screenResolution + "/" + checkItem +".jpg");
+        Imgproc.matchTemplate(_1weapon_2dead_3setting, checkItemMat, outputImage, machMethod);//
+        Core.MinMaxLocResult confidenceValue = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
+        if (debugVerbose) {
+            System.out.println("checkItem: " + checkItem);
+            System.out.println("screenshot: " +_1weapon_2dead_3setting);
+            System.out.println("screenResolution: " + screenResolution);
+            System.out.println("confidenceValue.maxVal = " + confidenceValue.maxVal);
+        }
+        System.gc();
+        return confidenceValue.maxVal;
     }
-
-    public double r301() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat r301 = Imgcodecs.imread("weapon/" + screenResolution + "/r301.jpg");
-        Imgproc.matchTemplate(game, r301, outputImage, machMethod);//
-        Core.MinMaxLocResult R301 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return R301.maxVal;
-    }
-
-    public double car() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat car = Imgcodecs.imread("weapon/" + screenResolution + "/car.jpg");
-        Imgproc.matchTemplate(game, car, outputImage, machMethod);//
-        Core.MinMaxLocResult CAR = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return CAR.maxVal;
-    }
-
-    public double G7() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat g7 = Imgcodecs.imread("weapon/" + screenResolution + "/g7.jpg");
-        Imgproc.matchTemplate(game, g7, outputImage, machMethod);//
-        Core.MinMaxLocResult G7 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return G7.maxVal;
-    }
-
-    public double L_Star() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat l_star = Imgcodecs.imread("weapon/" + screenResolution + "/L-Star.jpg");
-        Imgproc.matchTemplate(game, l_star, outputImage, machMethod);//
-        Core.MinMaxLocResult L_Star = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return L_Star.maxVal;
-    }
-
-    public double r99() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat r99 = Imgcodecs.imread("weapon/" + screenResolution + "/r99.jpg");
-        Imgproc.matchTemplate(game, r99, outputImage, machMethod);//
-        Core.MinMaxLocResult R99 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return R99.maxVal;
-    }
-
-    public double p2020() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat p2020 = Imgcodecs.imread("weapon/" + screenResolution + "/p2020.jpg");
-        Imgproc.matchTemplate(game, p2020, outputImage, machMethod);//
-        Core.MinMaxLocResult P2020 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return P2020.maxVal;
-    }
-
-    public double re_45() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat re_45 = Imgcodecs.imread("weapon/" + screenResolution + "/re-45.jpg");
-        Imgproc.matchTemplate(game, re_45, outputImage, machMethod);//
-        Core.MinMaxLocResult RE_45 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return RE_45.maxVal;
-    }
-
-    public double 专注() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat zhuanZhu = Imgcodecs.imread("weapon/" + screenResolution + "/zhuanZhu.jpg");
-        Imgproc.matchTemplate(game, zhuanZhu, outputImage, machMethod);//
-        Core.MinMaxLocResult 专注机枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return 专注机枪.maxVal;
-    }
-
-    public double 哈沃克() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat hawoke = Imgcodecs.imread("weapon/" + screenResolution + "/hawoke.jpg");
-        Imgproc.matchTemplate(game, hawoke, outputImage, machMethod);//
-        Core.MinMaxLocResult 哈沃克步枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return 哈沃克步枪.maxVal;
-    }
-
-    public double 喷火() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat fire = Imgcodecs.imread("weapon/" + screenResolution + "/fire.jpg");
-        Imgproc.matchTemplate(game, fire, outputImage, machMethod);//
-        Core.MinMaxLocResult 喷火轻机枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return 喷火轻机枪.maxVal;
-    }
-
-    public double 暴走() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat baoZou = Imgcodecs.imread("weapon/" + screenResolution + "/baoZou.jpg");
-        Imgproc.matchTemplate(game, baoZou, outputImage, machMethod);//
-        Core.MinMaxLocResult 暴走冲锋枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return 暴走冲锋枪.maxVal;
-    }
-
-    public double 赫姆洛克() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat hemLock = Imgcodecs.imread("weapon/" + screenResolution + "/hemLock.jpg");
-        Imgproc.matchTemplate(game, hemLock, outputImage, machMethod);//
-        Core.MinMaxLocResult 赫姆洛克突击步枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return 赫姆洛克突击步枪.maxVal;
-    }
-
-    public double 转换者() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat zhuanZhuanZhe = Imgcodecs.imread("weapon/" + screenResolution + "/zhuanZhuanZhe.jpg");
-        Imgproc.matchTemplate(game, zhuanZhuanZhe, outputImage, machMethod);//
-        Core.MinMaxLocResult 转换者冲锋枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return 转换者冲锋枪.maxVal;
-    }
-
-    public double 猎兽() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat lieShou = Imgcodecs.imread("weapon/" + screenResolution + "/lieShou.jpg");
-        Imgproc.matchTemplate(game, lieShou, outputImage, machMethod);//
-        Core.MinMaxLocResult 猎兽冲锋枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return 猎兽冲锋枪.maxVal;
-    }
-
-    public double 电能冲锋枪() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat dianneng = Imgcodecs.imread("weapon/" + screenResolution + "/dianneng.jpg");
-        Imgproc.matchTemplate(game, dianneng, outputImage, machMethod);//
-        Core.MinMaxLocResult 电能冲锋枪 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return 电能冲锋枪.maxVal;
-    }
-
-    public double car2() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat car2 = Imgcodecs.imread("weapon/" + screenResolution + "/car2.jpg");
-        Imgproc.matchTemplate(game, car2, outputImage, machMethod);//
-        Core.MinMaxLocResult Car2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return Car2.maxVal;
-    }
-
-    public double fuZhuShouQiang() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat fuZhuShouQiang = Imgcodecs.imread("weapon/" + screenResolution + "/fuZhuShouQiang.jpg");
-        Imgproc.matchTemplate(game, fuZhuShouQiang, outputImage, machMethod);//
-        Core.MinMaxLocResult fuZhuShouQiang2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return fuZhuShouQiang2.maxVal;
-    }
-
-    public double dead() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/deadScreenshot.jpg");
-        Mat dead = Imgcodecs.imread("weapon/" + screenResolution + "/dead.jpg");
-        Imgproc.matchTemplate(game, dead, outputImage, machMethod);//
-        Core.MinMaxLocResult dead2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        //System.out.println("dead2.maxVal = " + dead2.maxVal);
-        return dead2.maxVal;
-    }
-
-    public double dead1() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/deadScreenshot.jpg");
-        Mat dead1 = Imgcodecs.imread("weapon/" + screenResolution + "/dead1.jpg");
-        Imgproc.matchTemplate(game, dead1, outputImage, machMethod);//
-        Core.MinMaxLocResult dead3 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return dead3.maxVal;
-    }
-
-    public double dead2() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/deadScreenshot.jpg");
-        Mat dead2 = Imgcodecs.imread("weapon/" + screenResolution + "/dead2.jpg");
-        Imgproc.matchTemplate(game, dead2, outputImage, machMethod);//
-        Core.MinMaxLocResult dead4 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return dead4.maxVal;
-    }
-
-
-    public double lobby() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat notInGame = Imgcodecs.imread("weapon/" + screenResolution + "/menu.jpg");
-        Imgproc.matchTemplate(game, notInGame, outputImage, machMethod);//
-        Core.MinMaxLocResult notInGame2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return notInGame2.maxVal;
-    }
-
-    public double returnLobby() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat notInGame1 = Imgcodecs.imread("weapon/" + screenResolution + "/returnLobby.jpg");
-        Imgproc.matchTemplate(game, notInGame1, outputImage, machMethod);//
-        Core.MinMaxLocResult notInGame3 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return notInGame3.maxVal;
-    }
-
-    public double exitMenu(){
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/screenshot.jpg");
-        Mat exitMenu = Imgcodecs.imread("weapon/" + screenResolution + "/exitToMenu.jpg");
-        Imgproc.matchTemplate(game, exitMenu, outputImage, machMethod);//
-        Core.MinMaxLocResult exitMenu2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return exitMenu2.maxVal;
-    }
-
-    public double bag() {
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/settingScreenshot.jpg");
-        Mat bag = Imgcodecs.imread("weapon/" + screenResolution + "/bag.jpg");
-        Imgproc.matchTemplate(game, bag, outputImage, machMethod);//
-        Core.MinMaxLocResult bag2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return bag2.maxVal;
-    }
-
-    public double settings(){
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/settingScreenshot.jpg");
-        Mat settings = Imgcodecs.imread("weapon/" + screenResolution + "/setting.jpg");
-        Imgproc.matchTemplate(game, settings, outputImage, machMethod);//
-        Core.MinMaxLocResult settings2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return settings2.maxVal;
-    }
-
-    public double BlackMarket(){
-        Mat outputImage = new Mat();
-        Mat game = Imgcodecs.imread("weapon/deadScreenshot.jpg");
-        Mat BlackMarket = Imgcodecs.imread("weapon/" + screenResolution + "/blackMarket.jpg");
-        Imgproc.matchTemplate(game, BlackMarket, outputImage, machMethod);//
-        Core.MinMaxLocResult BlackMarket2 = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        return BlackMarket2.maxVal;
-    }
-
 
     public void playBeep() {
         if (!isMute) {
@@ -837,5 +480,6 @@ public class autoMarco1080pAnd1440p {
     public static void main(String[] args) {
         new autoMarco1080pAnd1440p();
     }
+
 
 }
