@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<profiles xmlns="http://www.logitech.com/Cassandra/2010.7/Profile">
+  <profile guid="{2243542F-CA86-43B5-906C-C0CAFC2DB828}" gpasupported="0" launchable="1" lastplayeddate="2022-12-04T21:07:18" lock="1" gkeysdk="0" name="腰射自动识别" gameid="">
+    <description></description>
+    <target path="H:\STEAM\STEAMAPPS\COMMON\APEX LEGENDS\R5APEX.EXE"/>
+    <target path="D:\STEAMLIBRARY\STEAMAPPS\COMMON\APEX LEGENDS\R5APEX.EXE"/>
+    <signature key="" executable="" name="" value=""/>
+    <macros>
+      <macro color="4278246655" original="true" guid="{5DAFA657-7E0B-4D37-9F7A-FA252ED551E6}" hidden="false" name="左键单击">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="leftclick"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{9D0F4485-F6CE-49AF-B3FB-328DBF996F1E}" hidden="false" name="右键单击">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="rightclick"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{8B615B23-6FDC-4430-9E57-E5CCBCAC4575}" hidden="false" name="单击中键">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="middleclick"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" repeatmode="pressed" original="true" guid="{6A500E2A-2215-452C-98FC-BBF02DEB738A}" repeatdelay="25" hidden="false" name="[">
+        <multikey xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MultiKey">
+          <mousebutton button="left" direction="down"/>
+          <delay milliseconds="80"/>
+          <mousebutton button="left" direction="up"/>
+        </multikey>
+      </macro>
+      <macro color="4278246655" original="true" guid="{908EB80F-428E-4852-8A5A-53B8368E81A9}" hidden="false" name="]">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="RBRACKET"/>
+        </keystroke>
+      </macro>
+      <macro color="4278246655" original="true" guid="{58EC429E-1554-4CAF-A6D8-7776FD208A41}" hidden="false" name="=">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="EQUAL"/>
+        </keystroke>
+      </macro>
+      <macro color="4278246655" original="true" guid="{A0D817F6-1D5D-483B-ADD0-2634CD93D42A}" hidden="false" name="返回">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="back"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{8B13562D-60F2-460F-9588-8C84168C81BC}" hidden="false" name="前进">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="forward"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{A1FEC5BC-9A8A-49C5-B085-0E2EDCEF1F55}" devicecategory="Logitech.Gaming.Mouse" hidden="false" name="切换 DPI">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpishift"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{12C9716B-4D7A-4F6F-AF20-A0369219119A}" devicecategory="Logitech.Gaming.Mouse" hidden="false" name="降低 DPI">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpidown"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{68A1C0B2-2996-4992-9CC5-3285AC8E9740}" devicecategory="Logitech.Gaming.Mouse" hidden="false" name="提高 DPI">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpiup"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{40AB5022-B2E7-4E96-9BB1-47BF8D5AB9B3}" hidden="false" name="向右滚动">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="scrollright"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{FA5BD2A2-621E-4756-9EE9-79162BEF8A02}" hidden="false" name="向左滚动">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="scrollleft"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{C1424619-F00D-42DD-928B-3BAC81A6C896}" hidden="true" name="左键单击">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="leftclick"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{542540A1-DD8B-424D-B1E4-99CCBAC167EF}" hidden="true" name="右键单击">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="rightclick"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{C8795E7C-C0AE-4C2F-A885-4EF7EAE0FD60}" hidden="true" name="单击中键">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="middleclick"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{B8450DC1-1AF5-4C06-9901-D61F2B9F1A47}" hidden="true" name="返回">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="back"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{D004A33F-C614-428F-B695-CD28FC1A9D0F}" hidden="true" name="前进">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="forward"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{51E08B71-6FBA-4E5F-9BBD-C441B8ACBA55}" hidden="true" name="LCTRL">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="LCTRL"/>
+        </keystroke>
+      </macro>
+      <macro color="4278246655" original="true" guid="{C01BE40D-CCE6-4C95-8B9E-3713E5C9CF7A}" hidden="false" name="LCTRL">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="LCTRL"/>
+        </keystroke>
+      </macro>
+      <macro color="4278246655" original="true" guid="{A51D3341-B774-43BA-ADD3-AB3BD84EC893}" devicecategory="Logitech.Gaming.Mouse" hidden="true" name="降低 DPI">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpidown"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{B7B679C3-16D0-4C6D-A798-402B95EACBD7}" hidden="true" name="复制">
+        <hotkeys xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Hotkeys">
+          <do task="copy"/>
+        </hotkeys>
+      </macro>
+      <macro color="4278246655" original="true" guid="{DE2FF421-580F-436E-A879-401D20992CE9}" hidden="false" name="复制">
+        <hotkeys xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Hotkeys">
+          <do task="copy"/>
+        </hotkeys>
+      </macro>
+      <macro color="4278246655" original="true" guid="{7AB4B9AF-969A-4797-B078-6F13830433F2}" hidden="true" name="LALT">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="LALT"/>
+        </keystroke>
+      </macro>
+      <macro color="4278246655" original="true" guid="{9BFD83B0-42B9-41C1-B2FA-CD32D8EC2949}" hidden="false" name="LALT">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="LALT"/>
+        </keystroke>
+      </macro>
+      <macro color="4278246655" original="true" guid="{945DEF49-8D93-4824-A233-F7A0E4B133A0}" devicecategory="Logitech.Gaming.Mouse" hidden="true" name="提高 DPI">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpiup"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{5F8D10AA-8113-41B6-A65A-22FE8D88A1E2}" hidden="true" name="粘贴">
+        <hotkeys xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Hotkeys">
+          <do task="paste"/>
+        </hotkeys>
+      </macro>
+      <macro color="4278246655" original="true" guid="{8D3421A9-D968-4042-A899-8E321EE9A18D}" hidden="false" name="粘贴">
+        <hotkeys xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Hotkeys">
+          <do task="paste"/>
+        </hotkeys>
+      </macro>
+      <macro color="4278246655" original="true" guid="{EFE79A05-1C2D-4049-A4E2-00ABF655E3A4}" devicecategory="Logitech.Gaming.Mouse.G300" hidden="true" name="模式切换 (G300/s)">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="modeswitch"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{C0AB32B4-1683-4B2C-8F76-B964E8253976}" devicecategory="Logitech.Gaming.Mouse.G300" hidden="false" name="模式切换 (G300/s)">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="modeswitch"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{59C513E8-E68B-4DEB-B904-A0BE21A12F7C}" devicecategory="Logitech.Gaming.Mouse" hidden="true" name="DPI 周期循环">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpicycling"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{47A4A04F-AA3D-4023-8807-CFC22F8089AF}" devicecategory="Logitech.Gaming.Mouse" hidden="false" name="DPI 周期循环">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpicycling"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{05083B24-6EA7-4ADE-8B95-5C3CC55BA117}" devicecategory="Logitech.Gaming.Mouse" hidden="true" name="切换 DPI">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpishift"/>
+        </mousefunction>
+      </macro>
+      <macro color="4278246655" original="true" guid="{79D99639-36BD-490C-8538-1ECD7F6B207A}" hidden="true" name="剪切">
+        <hotkeys xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Hotkeys">
+          <do task="cut"/>
+        </hotkeys>
+      </macro>
+      <macro color="4278246655" original="true" guid="{8A22E3FB-03AB-4459-9A2D-9689E90B45F7}" hidden="false" name="剪切">
+        <hotkeys xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Hotkeys">
+          <do task="cut"/>
+        </hotkeys>
+      </macro>
+    </macros>
+    <assignments devicecategory="Logitech.Gaming.Mouse.C08B">
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button1" macroguid="{5DAFA657-7E0B-4D37-9F7A-FA252ED551E6}"/>
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button2" macroguid="{9D0F4485-F6CE-49AF-B3FB-328DBF996F1E}"/>
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button3" macroguid="{8B615B23-6FDC-4430-9E57-E5CCBCAC4575}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button1" macroguid="{5DAFA657-7E0B-4D37-9F7A-FA252ED551E6}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button2" macroguid="{9D0F4485-F6CE-49AF-B3FB-328DBF996F1E}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button3" macroguid="{8B615B23-6FDC-4430-9E57-E5CCBCAC4575}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button4" macroguid="{A0D817F6-1D5D-483B-ADD0-2634CD93D42A}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button5" macroguid="{8B13562D-60F2-460F-9588-8C84168C81BC}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button6" macroguid="{A1FEC5BC-9A8A-49C5-B085-0E2EDCEF1F55}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button7" macroguid="{12C9716B-4D7A-4F6F-AF20-A0369219119A}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button8" macroguid="{68A1C0B2-2996-4992-9CC5-3285AC8E9740}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button10" macroguid="{40AB5022-B2E7-4E96-9BB1-47BF8D5AB9B3}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button11" macroguid="{FA5BD2A2-621E-4756-9EE9-79162BEF8A02}"/>
+      <assignment backup="false" original="false" shiftstate="1" contextid="Button10" macroguid="{40AB5022-B2E7-4E96-9BB1-47BF8D5AB9B3}"/>
+      <assignment backup="false" original="false" shiftstate="1" contextid="Button11" macroguid="{FA5BD2A2-621E-4756-9EE9-79162BEF8A02}"/>
+      <assignment backup="false" original="false" shiftstate="1" contextid="Button5" macroguid="{8B13562D-60F2-460F-9588-8C84168C81BC}"/>
+      <assignment backup="false" original="false" shiftstate="1" contextid="Button6" macroguid="{A1FEC5BC-9A8A-49C5-B085-0E2EDCEF1F55}"/>
+    </assignments>
+    <assignments devicecategory="Logitech.Gaming.Mouse.G300">
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button1" macroguid="{5DAFA657-7E0B-4D37-9F7A-FA252ED551E6}"/>
+      <assignment backup="false" original="true" shiftstate="2" contextid="Button1" macroguid="{5DAFA657-7E0B-4D37-9F7A-FA252ED551E6}"/>
+      <assignment backup="false" original="true" shiftstate="3" contextid="Button1" macroguid="{5DAFA657-7E0B-4D37-9F7A-FA252ED551E6}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button1" macroguid="{5DAFA657-7E0B-4D37-9F7A-FA252ED551E6}"/>
+      <assignment backup="false" original="true" shiftstate="5" contextid="Button1" macroguid="{5DAFA657-7E0B-4D37-9F7A-FA252ED551E6}"/>
+      <assignment backup="false" original="true" shiftstate="6" contextid="Button1" macroguid="{5DAFA657-7E0B-4D37-9F7A-FA252ED551E6}"/>
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button2" macroguid="{9D0F4485-F6CE-49AF-B3FB-328DBF996F1E}"/>
+      <assignment backup="false" original="true" shiftstate="2" contextid="Button2" macroguid="{9D0F4485-F6CE-49AF-B3FB-328DBF996F1E}"/>
+      <assignment backup="false" original="true" shiftstate="3" contextid="Button2" macroguid="{9D0F4485-F6CE-49AF-B3FB-328DBF996F1E}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button2" macroguid="{9D0F4485-F6CE-49AF-B3FB-328DBF996F1E}"/>
+      <assignment backup="false" original="true" shiftstate="5" contextid="Button2" macroguid="{9D0F4485-F6CE-49AF-B3FB-328DBF996F1E}"/>
+      <assignment backup="false" original="true" shiftstate="6" contextid="Button2" macroguid="{9D0F4485-F6CE-49AF-B3FB-328DBF996F1E}"/>
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button3" macroguid="{8B615B23-6FDC-4430-9E57-E5CCBCAC4575}"/>
+      <assignment backup="false" original="true" shiftstate="2" contextid="Button3" macroguid="{8B615B23-6FDC-4430-9E57-E5CCBCAC4575}"/>
+      <assignment backup="false" original="true" shiftstate="3" contextid="Button3" macroguid="{8B615B23-6FDC-4430-9E57-E5CCBCAC4575}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button3" macroguid="{8B615B23-6FDC-4430-9E57-E5CCBCAC4575}"/>
+      <assignment backup="false" original="true" shiftstate="5" contextid="Button3" macroguid="{8B615B23-6FDC-4430-9E57-E5CCBCAC4575}"/>
+      <assignment backup="false" original="true" shiftstate="6" contextid="Button3" macroguid="{8B615B23-6FDC-4430-9E57-E5CCBCAC4575}"/>
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button4" macroguid="{A0D817F6-1D5D-483B-ADD0-2634CD93D42A}"/>
+      <assignment backup="false" original="true" shiftstate="2" contextid="Button4" macroguid="{A0D817F6-1D5D-483B-ADD0-2634CD93D42A}"/>
+      <assignment backup="false" original="true" shiftstate="3" contextid="Button4" macroguid="{A0D817F6-1D5D-483B-ADD0-2634CD93D42A}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button4" macroguid="{A0D817F6-1D5D-483B-ADD0-2634CD93D42A}"/>
+      <assignment backup="false" original="true" shiftstate="5" contextid="Button4" macroguid="{A0D817F6-1D5D-483B-ADD0-2634CD93D42A}"/>
+      <assignment backup="false" original="true" shiftstate="6" contextid="Button4" macroguid="{A0D817F6-1D5D-483B-ADD0-2634CD93D42A}"/>
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button5" macroguid="{8B13562D-60F2-460F-9588-8C84168C81BC}"/>
+      <assignment backup="false" original="true" shiftstate="2" contextid="Button5" macroguid="{8B13562D-60F2-460F-9588-8C84168C81BC}"/>
+      <assignment backup="false" original="true" shiftstate="3" contextid="Button5" macroguid="{8B13562D-60F2-460F-9588-8C84168C81BC}"/>
+      <assignment backup="false" original="true" shiftstate="4" contextid="Button5" macroguid="{8B13562D-60F2-460F-9588-8C84168C81BC}"/>
+      <assignment backup="false" original="true" shiftstate="5" contextid="Button5" macroguid="{8B13562D-60F2-460F-9588-8C84168C81BC}"/>
+      <assignment backup="false" original="true" shiftstate="6" contextid="Button5" macroguid="{8B13562D-60F2-460F-9588-8C84168C81BC}"/>
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button6" macroguid="{C01BE40D-CCE6-4C95-8B9E-3713E5C9CF7A}"/>
+      <assignment backup="false" original="true" shiftstate="2" contextid="Button6" macroguid="{12C9716B-4D7A-4F6F-AF20-A0369219119A}"/>
+      <assignment backup="false" original="true" shiftstate="3" contextid="Button6" macroguid="{DE2FF421-580F-436E-A879-401D20992CE9}"/>
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button7" macroguid="{9BFD83B0-42B9-41C1-B2FA-CD32D8EC2949}"/>
+      <assignment backup="false" original="true" shiftstate="2" contextid="Button7" macroguid="{68A1C0B2-2996-4992-9CC5-3285AC8E9740}"/>
+      <assignment backup="false" original="true" shiftstate="3" contextid="Button7" macroguid="{8D3421A9-D968-4042-A899-8E321EE9A18D}"/>
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button8" macroguid="{C0AB32B4-1683-4B2C-8F76-B964E8253976}"/>
+      <assignment backup="false" original="true" shiftstate="2" contextid="Button8" macroguid="{C0AB32B4-1683-4B2C-8F76-B964E8253976}"/>
+      <assignment backup="false" original="true" shiftstate="3" contextid="Button8" macroguid="{C0AB32B4-1683-4B2C-8F76-B964E8253976}"/>
+      <assignment backup="false" original="true" shiftstate="1" contextid="Button9" macroguid="{47A4A04F-AA3D-4023-8807-CFC22F8089AF}"/>
+      <assignment backup="false" original="true" shiftstate="2" contextid="Button9" macroguid="{A1FEC5BC-9A8A-49C5-B085-0E2EDCEF1F55}"/>
+      <assignment backup="false" original="true" shiftstate="3" contextid="Button9" macroguid="{8A22E3FB-03AB-4459-9A2D-9689E90B45F7}"/>
+    </assignments>
+    <pointers>
+      <pointer devicemodel="Logitech.Gaming.Mouse.C08B">
+        <mode shiftstate="1">
+          <reportrate rate="1000"/>
+          <powermode value="2"/>
+          <dpitable defaultindex="0" shiftindex="0" syncxy="1">
+            <dpi enabled="1" x="1250" y="1250"/>
+          </dpitable>
+          <movement acceleration="0" speed="-1"/>
+        </mode>
+      </pointer>
+    </pointers>
+    <script>--操作说明:																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							
+--游戏中鼠标灵敏度为1.6，鼠标加速度关闭，罗技驱动——>指针设置——>报告率改为1000，加速关闭																																																																																																																																																																																																																																																																																																																																																																																																																																																								
+--打开识别软件挂着，直接上游戏就行了			
+Logitech = "GHUB" -- （不建议修改）																																																																																																																																																																																																																																																																																																		--]]																																																																																																																																																																																																																																																																																																																																																																																																																																																									 		
+keybb="alt"		--长按此键+左键暂停压枪，可改成alt或ctrl（可修改，蹲下后不压枪）
+LSKG = 0			--将0改成1才会生效暂停压枪 （不建议修改）
+offset_pattern2= 3 --默认压枪方式（2：按住右键，3：大写锁定并按住右键(带腰射智能压枪)可自行修改如果只需要开镜压枪，将3改成2即可）
+KaiGuan="numlock" --默认是开关是大写键，可改成数字键numlock （不建议修改）
+LS_5LianFa = 1 --【猎兽冲锋枪】0为连发，改成1就是变成五连发（仅LGS驱动生效）
+Lstar_KEY={"k",0}  --【Lstar】过热自动切换武器，仅包括蓝弹夹以上有效，此键应对应游戏设置的【切换武器】键
+	--｛按键，0关1开｝默认关闭
+Change_KEY = 0 --换甲宏，绑定鼠标侧键号开发中
+a4 = 4 --兔子跳修改数字进行使用 按键图在GitHub上
+l080or2k = 1   --改成1或2就不用填下面坐标，只支持1080或2k，（1：1080p，2：2k）
+location = {{0,0},{0,0},{0,0},{0,0}}--自定义分辨率
+dofile("C:/Users/Public/Downloads/ScriptSeason14.lua")
+</script>
+  </profile>
+</profiles>

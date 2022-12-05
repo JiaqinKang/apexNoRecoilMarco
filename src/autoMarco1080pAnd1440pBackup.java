@@ -60,7 +60,7 @@ public class autoMarco1080pAnd1440pBackup {
     boolean selectChampion = false;
     boolean inMap = false;
     String gun = "no Weapon";
-    File from = new File("ScriptSeason14腰射.lua");
+    File from = new File("ScriptSeason14开镜_腰射.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\ScriptSeason14.lua");
 
     File control = new File("C:\\Users\\Public\\Downloads\\123.lua");

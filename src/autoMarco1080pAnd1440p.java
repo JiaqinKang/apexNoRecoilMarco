@@ -22,10 +22,14 @@ public class autoMarco1080pAnd1440p {
     boolean on_or_off = false;
     boolean isMute = true;
     String gun = "no Weapon";
-    File from = new File("ScriptSeason14腰射.lua");
+    File from = new File("ScriptSeason14开镜_腰射.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\ScriptSeason14.lua");
 
     File control = new File("C:\\Users\\Public\\Downloads\\123.lua");
+
+    File thermiteControl = new File("C:\\Users\\Public\\Downloads\\thermite.lua");
+
+    File havocControl = new File("C:\\Users\\Public\\Downloads\\hwk_state.lua");
 
     //check  system resolution
     int SystemWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -36,7 +40,19 @@ public class autoMarco1080pAnd1440p {
     String screenResolution;
 
     double deadConfidence = 0.50; //confidence level
-    double confidence = 0.85; //confidence level
+    double confidence = 0.80; //confidence level
+
+    int x;
+    int y;
+    int width;
+    int height;
+
+    int x1;
+    int y1;
+    int width1;
+    int height1;
+
+
 
 
     public autoMarco1080pAnd1440p() {
@@ -73,6 +89,8 @@ public class autoMarco1080pAnd1440p {
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 to.delete();
                 control.delete();
+                thermiteControl.delete();
+                havocControl.delete();
             }
         });
 
@@ -159,6 +177,8 @@ public class autoMarco1080pAnd1440p {
         //release script file to local
         try {
             copyFileUsingJava7Files(from, to);
+            write_to_file(18);
+            write_to_file2(0);
             //disable button
             release.setEnabled(false);
             //show message
@@ -179,12 +199,21 @@ public class autoMarco1080pAnd1440p {
                                 
                 操作说明:
                 游戏中鼠标灵敏度为1.6，鼠标加速度关闭，罗技驱动——>指针设置——>报告率改为1000，加速关闭
-                哈沃克和轻型机枪必须有涡轮增压器,Numlock开关宏,开枪时按住鼠标右键启动宏
-                - p2020 和 辅助手枪 全自动开枪需要设置第二开枪键为p键
+                哈沃克涡轮增压器自动检测
+                暴走燃烧弹自动检测
+                兔子跳 设置下蹲键为 l // 鼠标启动按键需要自己设置，各种鼠标按键图在文件夹里
+                Numlock小键盘锁开关宏,支持腰射和开镜压枪
+                p2020 全自动开枪需要设置第二开枪键为p键
+                
+                
+             
                                 
                 English:
                 Mouse sensitivity in game is 1.6, mouse acceleration is off, Logitech driver->pointer settings->report rate is 1000, acceleration is off
-                Havoc and light machine gun must have turbocharger, Numlock switch for on/off macro, hold the right mouse button to start the macro when shooting);
+                Havoc turbocharger is automatically detected
+                thermite is automatically detected
+                rabbit jump set crouch key to l // mouse start key needs to be set by yourself, various mouse keys binding are in the folder
+                Numlock switch for on/off macro, support hip fire and aim down sight
                 - p2020 and Wingman pistol need to set the second shooting key to p key;
                 """
         );
@@ -261,6 +290,40 @@ public class autoMarco1080pAnd1440p {
         }
     }
 
+    private void write_to_file2(int i) {
+        //write lua file to C:\Users\Public\Downloads
+        String path = "C:\\Users\\Public\\Downloads\\";
+        String file_name = "thermit.lua";
+        String file_path = path + file_name;
+        String file_content = "BZ_LRJ = " + i;
+        File file = new File(file_path);
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(file_content);
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void write_to_file1(int i ){
+        //write lua file to C:\Users\Public\Downloads
+        String path = "C:\\Users\\Public\\Downloads\\";
+        String file_name = "hwk_state.lua";
+        String file_path = path + file_name;
+        String file_content = "hwk_state = " + i;
+        File file = new File(file_path);
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(file_content);
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void copyFileUsingJava7Files(File source, File dest) throws IOException {
         //if file already exist then delete it first
         if (dest.exists()) {
@@ -277,18 +340,25 @@ public class autoMarco1080pAnd1440p {
         while (true) {
 
             // Capture weapon area
-            int x = (int) (SystemWidth *0.781);
-            int y = (int) (SystemHeight *0.9);
-            int height = (int) (SystemHeight *0.1);
-            int width = (int) (SystemWidth *0.2);
+            x = (int) (SystemWidth *0.781);
+            y = (int) (SystemHeight *0.9);
+            height = (int) (SystemHeight *0.1);
+            width = (int) (SystemWidth *0.2);
             //System.out.println(x + " " + y + " " + width + " " + height);
 
-            //capture for looting area
-            int x1 = (SystemWidth / 16);
-            int y1 = (SystemHeight / 10);
-            int width1 = (int) (SystemWidth / 8.5) - x1;
-            int height1 = (int) ((SystemHeight / 8.5) - y1) * 2;
-            //System.out.println(x1 + " " + y1 + " " + width1 + " " + height1);
+            if (SystemWidth != 3440) {
+                //capture for looting area
+                x1 = (SystemWidth / 16);
+                y1 = (SystemHeight / 10);
+                width1 = (int) (SystemWidth / 8.5) - x1;
+                height1 = (int) ((SystemHeight / 8.5) - y1) * 2;
+                //System.out.println(x1 + " " + y1 + " " + width1 + " " + height1);
+            }else {
+                x1 = (550);
+                y1 = (100);
+                width1 = 200;
+                height1 = 100;
+            }
 
             // create robot to capture screen in specific area with parameters from above
             try {
@@ -357,6 +427,13 @@ public class autoMarco1080pAnd1440p {
                 this.gun = "Rampage LMG";
                 gunMode = 19;
                 switchNow();
+                if (imageDetection(_1weapon,"thermite",false) >= confidence ) {
+                    this.gun = "Rampage LMG + Thermite";
+                    write_to_file2(1);
+                    System.out.println("Thermite");
+                }else {
+                    write_to_file2(0);
+                }
             } else if (imageDetection(_1weapon,"p2020",false) >= confidence ) {
                 this.gun = "P2020";
                 gunMode = 9;
@@ -365,10 +442,22 @@ public class autoMarco1080pAnd1440p {
                 this.gun = "Havoc Rifle";
                 gunMode = 16;
                 switchNow();
+                if (imageDetection(_1weapon,"turbo",false) >= confidence ) {
+                    this.gun = "Havoc + turbocharger";
+                    write_to_file1(1);
+                    }else {
+                    write_to_file1(0);
+                }
             } else if (imageDetection(_1weapon,"devotionLMG",false) >= confidence ) {
                 this.gun = "Devotion LMG";
                 gunMode = 5;
                 switchNow();
+                if (imageDetection(_1weapon,"turbo",false) >= confidence ) {
+                    this.gun = "Devotion LMG + turbocharger";
+                    write_to_file1(1);
+                }else {
+                    write_to_file1(0);
+                }
             } else if (imageDetection(_1weapon,"car",false) >= confidence ) {
                 this.gun = "C.A.R SMG";
                 gunMode = 20;
@@ -412,7 +501,7 @@ public class autoMarco1080pAnd1440p {
             tempGunMode = gunMode; //update the gunMode
             write_to_file(tempGunMode); //write to file
             playBeep(); //play beep sound
-            System.out.println("write to file");
+            System.out.println(gun);
         }
     }
 

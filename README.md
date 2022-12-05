@@ -14,14 +14,6 @@ How to use it:
 
      Please make sure your game language is set to Chinese, or the script will not work unless you update the weapon screen shots to english snapshots.
       请确保游戏语言设置为中文，否则脚本将无法工作，除非您更新武器屏幕截图为英文快照
-                
-         操作说明:
-                游戏中鼠标灵敏度为1.6，鼠标加速度关闭，罗技驱动——>指针设置——>报告率改为1000，加速关闭
-                哈沃克和轻型机枪必须有涡轮增压器,Numlock开关宏,开枪时按住鼠标右键启动宏
-                
-         English:
-                Mouse sensitivity in game is 1.6, mouse acceleration is off, Logitech driver->pointer settings->report rate is 1000, acceleration is off
-                Havoc and light machine gun must have turbocharger, Numlock switch for on/off macro, hold the right mouse button to start the macro when shooting);
    
     1. make sure you installed jdk-18_windows-x64_bin.msi 
        确保安装最新的java jdk，安装文件已经打包在
@@ -32,11 +24,8 @@ How to use it:
     3. start apex.jar
        启动apex.jar
 
-There is a version difference between lgs and ghub：
-lgs和ghub有版本区别问题：
-	如果发生问题请手动修改（ScriptSeason14腰射.lua）中两处loadstring 成load，在每行的开头就可以发现a=loadstring ，修改成 a=load
-	If there is a problem, please manually modify （ScriptSeason14腰射.lua） two loadstrings into load, 
-	you can find a=loadstring at the beginning of each line, and modify it to a=load
+There is a version difference between lgs and ghub： if countering issues,please run the debug启动器 and check the console output for more information screenshot it and send it to me, I will try to help you.
+lgs和ghub有版本区别问题：如果遇到问题请提交debug启动器的截图，我会尽快修复
 
     
 ---------------------------------------------------------------------------------------------------------------------------------------------------------

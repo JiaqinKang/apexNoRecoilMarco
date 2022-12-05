@@ -40,7 +40,7 @@ public class autoMarco_1080p {
 
     boolean fuZhuShouQiang = false;
     String gun = "无";
-    File from = new File("ScriptSeason14腰射.lua");
+    File from = new File("ScriptSeason14开镜_腰射.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\ScriptSeason14.lua");
 
     public autoMarco_1080p() {

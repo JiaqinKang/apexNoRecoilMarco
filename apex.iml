@@ -7,23 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
-      <library name="opencv-460.jar">
-        <CLASSES>
-          <root url="jar://C:/java/opencv/build/java/opencv-460.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <NATIVE>
-          <root url="file://C:/java/opencv/build/java/x64" />
-        </NATIVE>
-        <SOURCES>
-          <root url="jar://C:/java/opencv/build/java/opencv-460.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="library" exported="" name="x64" level="project" />
-    <orderEntry type="library" exported="" name="opencv-460" level="application" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.30" level="application" />
-    <orderEntry type="library" name="commons-net-3.8.0" level="application" />
+    <orderEntry type="library" name="java" level="application" />
+    <orderEntry type="library" name="opencv" level="project" />
+    <orderEntry type="library" name="opencv-4601" level="application" />
   </component>
 </module>
