@@ -131,7 +131,7 @@ public class autoMarco1080pAnd1440p {
         gunMode.addActionListener(e -> {
             //update gun label
             if (language.equals("中文")) {
-                gun.setText("当前模式：" + this.gun);
+                gun.setText(this.gun);
             } else {
                 gun.setText("Current Mode：" + this.gun);
             }
@@ -177,8 +177,9 @@ public class autoMarco1080pAnd1440p {
         //release script file to local
         try {
             copyFileUsingJava7Files(from, to);
-            write_to_file(18);
-            write_to_file2(0);
+            write_to_file(18); // 123.lua
+            write_to_file2(0); // thermite.lua
+            write_to_file1(0); // hwk_state.lua
             //disable button
             release.setEnabled(false);
             //show message
@@ -190,6 +191,13 @@ public class autoMarco1080pAnd1440p {
             //show message
             JOptionPane.showMessageDialog(frame, "脚本文件释放失败,Script File Release Failed");
             release.setBackground(Color.red);
+            //disable all button
+            button1.setEnabled(false);
+            button2.setEnabled(false);
+            mute.setEnabled(false);
+            unMute.setEnabled(false);
+            release.setEnabled(false);
+            button3.setEnabled(false);
         }
 
         //pop up message when start the program
@@ -293,7 +301,7 @@ public class autoMarco1080pAnd1440p {
     private void write_to_file2(int i) {
         //write lua file to C:\Users\Public\Downloads
         String path = "C:\\Users\\Public\\Downloads\\";
-        String file_name = "thermit.lua";
+        String file_name = "thermite.lua";
         String file_path = path + file_name;
         String file_content = "BZ_LRJ = " + i;
         File file = new File(file_path);
@@ -424,7 +432,6 @@ public class autoMarco1080pAnd1440p {
                 gunMode = 13;
                 switchNow();
             } else if (imageDetection(_1weapon,"rampageLMG",false) >= confidence ) {
-                this.gun = "Rampage LMG";
                 gunMode = 19;
                 switchNow();
                 if (imageDetection(_1weapon,"thermite",false) >= confidence ) {
@@ -432,6 +439,7 @@ public class autoMarco1080pAnd1440p {
                     write_to_file2(1);
                     System.out.println("Thermite");
                 }else {
+                    this.gun = "Rampage LMG";
                     write_to_file2(0);
                 }
             } else if (imageDetection(_1weapon,"p2020",false) >= confidence ) {
@@ -439,23 +447,23 @@ public class autoMarco1080pAnd1440p {
                 gunMode = 9;
                 switchNow();
             } else if (imageDetection(_1weapon,"havoc",false) >= confidence ) {
-                this.gun = "Havoc Rifle";
                 gunMode = 16;
                 switchNow();
                 if (imageDetection(_1weapon,"turbo",false) >= confidence ) {
                     this.gun = "Havoc + turbocharger";
                     write_to_file1(1);
                     }else {
+                    this.gun = "Havoc Rifle";
                     write_to_file1(0);
                 }
             } else if (imageDetection(_1weapon,"devotionLMG",false) >= confidence ) {
-                this.gun = "Devotion LMG";
                 gunMode = 5;
                 switchNow();
                 if (imageDetection(_1weapon,"turbo",false) >= confidence ) {
                     this.gun = "Devotion LMG + turbocharger";
                     write_to_file1(1);
                 }else {
+                    this.gun = "Devotion LMG";
                     write_to_file1(0);
                 }
             } else if (imageDetection(_1weapon,"car",false) >= confidence ) {
