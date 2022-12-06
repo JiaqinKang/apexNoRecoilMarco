@@ -1,10 +1,11 @@
+function mathing(sj)local sj1 = ""for i =1,#sj do sj1 = sj1 .. string.char(sj[i])end return sj1 end
+
 method={0,1,2,3,4,5,6,7,8}
 info = "永久免费，打赏一杯咖啡https://github.com/JiaqinKang/apexNoRecoilMarco"
 offset_pattern1= offset_pattern2
 a1 = 1
 text_bbdate = "2022-12-04"
 offset_pattern = 2
-
 
 
 if (l080or2k == 1) then
@@ -1474,7 +1475,7 @@ function OnEvent(event, arg)
 		end
 
 		if (event == "MOUSE_BUTTON_PRESSED" and arg == a1) then
-			if (offset_pattern == 2 and IsMouseButtonPressed(3) and IsKeyLockOn(KaiGuan)) then
+			if (offset_pattern == 2 and IsMouseButtonPressed(3) ) then
 				kg = 2
 				if ( qx1_1 == "Y_P20") then
 
