@@ -25,6 +25,8 @@ How to use it:
        启动apex.jar
 
 There is a version difference between lgs and ghub： if countering issues,please run the debug启动器 and check the console output for more information screenshot it and send it to me, I will try to help you.
+
+
 lgs和ghub有版本区别问题：如果遇到问题请提交debug启动器的截图，我会尽快修复
 
     
@@ -33,6 +35,9 @@ Envrioment
   IDE: intellij
   libary: opencv-460
   java : 1.8
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+  Huge thanks for 空话lua的解码
+  https://github.com/KonghuanSmart
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 **打赏杯咖啡**
 
