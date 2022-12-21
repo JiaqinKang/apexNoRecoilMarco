@@ -40,7 +40,7 @@ public class autoMarco1080pAnd1440p {
     String screenResolution;
 
     double deadConfidence = 0.50; //confidence level
-    double confidence = 0.80; //confidence level
+    double confidence = 0.933; //confidence level
 
     int x;
     int y;
@@ -409,7 +409,7 @@ public class autoMarco1080pAnd1440p {
                 switchNow();
             } else if (imageDetection(_1weapon,"r301",false) >= confidence) {
                 this.gun = "R-301 Carbine";
-                gunMode = 2;
+                gunMode = 2; // 14 点射
                 switchNow();
             } else if (imageDetection(_1weapon,"alternatorSMG",false) >= confidence ) {
                 this.gun = "Alternator SMG";
