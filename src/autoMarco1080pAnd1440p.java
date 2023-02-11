@@ -52,6 +52,8 @@ public class autoMarco1080pAnd1440p {
     int width1;
     int height1;
 
+    boolean memoryClean = false;
+
 
 
 
@@ -82,6 +84,8 @@ public class autoMarco1080pAnd1440p {
         button3.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         JButton release = new JButton("释放脚本文件到本地");
         release.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        JButton button4 = new JButton("自动清理内存");
+        button4.setFont(new Font("微软雅黑", Font.PLAIN, 30));
 
         //when the program close, delete the script file
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -110,6 +114,7 @@ public class autoMarco1080pAnd1440p {
         panel1.add(mute);
         panel1.add(unMute);
         panel1.add(release);
+        panel1.add(button4);
         panel1.add(button3);
 
         // add invisible button to change gun mode
@@ -161,6 +166,7 @@ public class autoMarco1080pAnd1440p {
                 unMute.setText("Activation Sound");
                 button3.setText("切换语言");
                 release.setText("Release Script Ok");
+                button4.setText("Auto Clean Memory");
                 gun.setText("Current Mode: " + this.gun);
             } else {
                 language = "中文";
@@ -170,7 +176,23 @@ public class autoMarco1080pAnd1440p {
                 unMute.setText("开启提示音");
                 button3.setText("Switch Language");
                 release.setText("脚本文件OK");
+                button4.setText("自动清理内存");
                 gun.setText("当前模式：" + this.gun);
+            }
+        });
+
+        button4.addActionListener(e -> {
+            // set memoryClean to true
+            memoryClean = true;
+            // disable button
+            button4.setEnabled(false);
+            // set background to red
+            button4.setBackground(Color.red);
+            //show message 卡顿请关闭
+            if (language.equals("中文")) {
+                JOptionPane.showMessageDialog(frame, "内存清理中,如果游戏卡顿请请勿开启内存自动清理，重启程序即可");
+            } else {
+                JOptionPane.showMessageDialog(frame, "Memory cleaning, if the game is stuck, please turn off the memory automatic cleaning");
             }
         });
 
@@ -198,6 +220,7 @@ public class autoMarco1080pAnd1440p {
             unMute.setEnabled(false);
             release.setEnabled(false);
             button3.setEnabled(false);
+            button4.setEnabled(false);
         }
 
         //pop up message when start the program
@@ -213,7 +236,7 @@ public class autoMarco1080pAnd1440p {
                 Numlock小键盘锁开关宏,支持腰射和开镜压枪
                 p2020 全自动开枪需要设置第二开枪键为p键
                 
-                
+             
              
                                 
                 English:
@@ -495,8 +518,10 @@ public class autoMarco1080pAnd1440p {
                 gunMode = 18;
                 switchNow();
             }
-
-            System.gc(); //free memory
+            if (memoryClean){
+                //System.out.println("Memory Clean");
+                System.gc();
+            }
             if (!on_or_off) { //if the program is closed, break the loop
                 break; //break the loop
             }
@@ -525,7 +550,6 @@ public class autoMarco1080pAnd1440p {
             System.out.println("screenResolution: " + screenResolution);
             System.out.println("confidenceValue.maxVal = " + confidenceValue.maxVal);
         }
-        System.gc();
         return confidenceValue.maxVal;
     }
 
