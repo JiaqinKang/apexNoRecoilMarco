@@ -539,18 +539,24 @@ public class autoMarco1080pAnd1440p {
     }
 
     public double imageDetection(Mat _1weapon_2dead_3setting, String checkItem, boolean debugVerbose) {
-
-        Mat outputImage = new Mat();
-        Mat checkItemMat = Imgcodecs.imread("weapon/" + screenResolution + "/" + checkItem +".jpg");
-        Imgproc.matchTemplate(_1weapon_2dead_3setting, checkItemMat, outputImage, machMethod);//
-        Core.MinMaxLocResult confidenceValue = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
-        if (debugVerbose) {
-            System.out.println("checkItem: " + checkItem);
-            System.out.println("screenshot: " +_1weapon_2dead_3setting);
-            System.out.println("screenResolution: " + screenResolution);
-            System.out.println("confidenceValue.maxVal = " + confidenceValue.maxVal);
+        try {
+            Mat outputImage = new Mat();
+            Mat checkItemMat = Imgcodecs.imread("weapon/" + screenResolution + "/" + checkItem +".jpg");
+            Imgproc.matchTemplate(_1weapon_2dead_3setting, checkItemMat, outputImage, machMethod);//
+            Core.MinMaxLocResult confidenceValue = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
+            if (debugVerbose) {
+                System.out.println("checkItem: " + checkItem);
+                System.out.println("screenshot: " +_1weapon_2dead_3setting);
+                System.out.println("screenResolution: " + screenResolution);
+                System.out.println("confidenceValue.maxVal = " + confidenceValue.maxVal);
+                // out
+            }
+            return confidenceValue.maxVal;
+        } catch (Exception e) {
+            // output error message to ui
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            return 0;
         }
-        return confidenceValue.maxVal;
     }
 
     public void playBeep() {
