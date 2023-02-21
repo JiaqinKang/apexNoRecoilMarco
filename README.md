@@ -5,6 +5,11 @@ The purpose of my development is for educational purposes. If you use this softw
 Apex 无后座力力脚本
 Fully working no recoil with Logitech mouse with Logitech game software & ghub
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
+支持枪：
+ - [x] alternator SMG 转换者
+ - [x] 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 How to use it:
 使用说明：within the ide 
     important : Make sure logitech game software or Ghub is installed
