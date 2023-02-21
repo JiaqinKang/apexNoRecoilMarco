@@ -475,7 +475,7 @@ public class autoMarco1080pAnd1440p {
                 if (imageDetection(_1weapon,"turbo",false) >= confidence ) {
                     this.gun = "Havoc + turbocharger";
                     write_to_file1(1);
-                    }else {
+                }else {
                     this.gun = "Havoc Rifle";
                     write_to_file1(0);
                 }
@@ -502,9 +502,15 @@ public class autoMarco1080pAnd1440p {
                 gunMode = 17;
                 switchNow();
             } else if (imageDetection(_1weapon,"hemLock",false)>= confidence) {
-                this.gun = "Hemlok Burst";
-                gunMode = 8;
-                switchNow();
+                if (imageDetection(_1weapon,"hemLockSingle",false) >= confidence ) {
+                    this.gun = "Hemlock + Single";
+                    gunMode = 8;
+                    switchNow();
+                }else {
+                    this.gun = "Hemlock + Burst";
+                    gunMode = 18;
+                    switchNow();
+                }
             } else if (imageDetection(_1weapon,"prowlerBurstPDW",false) >= confidence ) {
                 this.gun = "Prowler Burst PDW";
                 gunMode = 7;
@@ -513,7 +519,17 @@ public class autoMarco1080pAnd1440p {
                 this.gun = "L_Star EMG";
                 gunMode = 11;
                 switchNow();
-            } else {
+            } else if (imageDetection(_1weapon,"wingMan",false) >= confidence){
+                this.gun = "Wingman";
+                gunMode = 12;
+                switchNow();
+            } else if (imageDetection(_1weapon,"revengGoddess",false)>= confidence){
+                this.gun = "先套用猎兽，大概率考虑删除";
+                gunMode = 7;
+                switchNow();
+            }
+
+            else {
                 this.gun = "未检测到支持武器";
                 gunMode = 18;
                 switchNow();

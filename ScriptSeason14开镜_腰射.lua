@@ -7,7 +7,7 @@ offset_pattern1= offset_pattern2
 
 a1 = 1
 
-text_bbdate = "2022-12-19"
+text_bbdate = "2023-02-20"
 
 offset_pattern = 2
 
@@ -128,13 +128,8 @@ BZ_offset_trim_list = {
 	{40,0,0}
 
 }
-
 BZ_offset_trim_ratio = {1,1}
-
 BZ_offset_trim_amend = {0,0}
-
-
-
 
 
 CN_offset_trim_list = {
@@ -178,13 +173,8 @@ CN_offset_trim_list = {
 	{55,0,0}
 
 }
-
 CN_offset_trim_ratio = {1,1}
-
 CN_offset_trim_amend = {0,0}
-
-
-
 
 
 G7_offset_trim_list = {
@@ -204,13 +194,8 @@ G7_offset_trim_list = {
 	{19,0,0},					{20,0,0}
 
 }
-
 G7_offset_trim_ratio = {1,1}
-
 G7_offset_trim_amend = {0,0}
-
-
-
 
 
 PXDD_offset_trim_list = {
@@ -226,13 +211,8 @@ PXDD_offset_trim_list = {
 	{13,0,0},					{14,0,0},					{15,0,0}
 
 }
-
 PXDD_offset_trim_ratio = {1,1}
-
 PXDD_offset_trim_amend = {0,0}
-
-
-
 
 
 R301DD_offset_trim_list = {
@@ -248,13 +228,8 @@ R301DD_offset_trim_list = {
 	{13,0,0},					{14,0,0}
 
 }
-
 R301DD_offset_trim_ratio = {1,1}
-
 R301DD_offset_trim_amend = {0,0}
-
-
-
 
 
 RE45_offset_trim_list = {
@@ -278,13 +253,8 @@ RE45_offset_trim_list = {
 	{25,0,0},					{26,0,0},					{27,0,0}
 
 }
-
 RE45_offset_trim_ratio = {1,1}
-
 RE45_offset_trim_amend = {0,0}
-
-
-
 
 
 M600_offset_trim_list = {
@@ -308,11 +278,8 @@ M600_offset_trim_list = {
 	{25,0,0},					{26,0,0},					{27,0,0}
 
 }
-
 M600_offset_trim_ratio = {1,1}
-
 M600_offset_trim_amend = {0,0}
-
 
 
 Lstar_offset_trim_list = {
@@ -336,11 +303,8 @@ Lstar_offset_trim_list = {
 	{25,0,0},					{26,0,0},					{27,0,0}
 
 }
-
 Lstar_offset_trim_ratio = {1,1}
-
 Lstar_offset_trim_amend = {0,0}
-
 
 
 R301_offset_trim_list = {
@@ -366,21 +330,8 @@ R301_offset_trim_list = {
 	{28,0,0}
 
 }
-
 R301_offset_trim_ratio = {1,1}
-
 R301_offset_trim_amend = {0,0}
-
-XBS_offset_trim_list = {
-	{1 ,0,0},					{2 ,0,0},					{3 ,0,0},
-
-	{4 ,0,0},					{5 ,0,0},					{6 ,0,0},
-
-	{7 ,0,0},
-}
-XBS_offset_trim_ratio = {1,1}
-XBS_offset_trim_amend = {0,0}
-
 
 
 R99_offset_trim_list = {
@@ -404,9 +355,7 @@ R99_offset_trim_list = {
 	{25,0,0},					{26,0,0},					{27,0,0}
 
 }
-
 R99_offset_trim_ratio = {1,1}
-
 R99_offset_trim_amend = {0,0}
 
 
@@ -434,9 +383,7 @@ PX_offset_trim_list = {
 	{28,0,0},					{29,0,0},					{30,0,0}
 
 }
-
 PX_offset_trim_ratio = {1,1}
-
 PX_offset_trim_amend = {0,0}
 
 
@@ -468,9 +415,7 @@ LS_offset_trim_list = {
 	{34,0,0},					{35,0,0}
 
 }
-
 LS_offset_trim_ratio = {1,1}
-
 LS_offset_trim_amend = {0,0}
 
 
@@ -502,9 +447,7 @@ HWK_offset_trim_list = {
 	{34,0,0},					{35,0,0},					{36,0,0}
 
 }
-
 HWK_offset_trim_ratio = {1,1}
-
 HWK_offset_trim_amend = {0,0}
 
 
@@ -536,11 +479,8 @@ ZZ_offset_trim_list = {
 	{34,0,0},					{35,0,0},					{36,0,0}
 
 }
-
 ZZ_offset_trim_ratio = {1,1}
-
 ZZ_offset_trim_amend = {0,0}
-
 
 
 DN_offset_trim_list = {
@@ -564,9 +504,7 @@ DN_offset_trim_list = {
 	{25,0,0},					{26,0,0}
 
 }
-
 DN_offset_trim_ratio = {1,1}
-
 DN_offset_trim_amend = {0,0}
 
 
@@ -612,11 +550,8 @@ M600_offset_trim_list = {
 	{55,0,0}
 
 }
-
 M600_offset_trim_ratio = {1,1}
-
 M600_offset_trim_amend = {0,0}
-
 
 
 ZHZ_offset_trim_list = {
@@ -640,11 +575,8 @@ ZHZ_offset_trim_list = {
 	{25,0,0},					{26,0,0},					{27,0,0}
 
 }
-
 ZHZ_offset_trim_ratio = {1,1}
-
 ZHZ_offset_trim_amend = {0,0}
-
 
 
 P20_offset_trim_list = {
@@ -664,11 +596,8 @@ P20_offset_trim_list = {
 	{19,0,0},					{20,0,0},					{21,0,0}
 
 }
-
 P20_offset_trim_ratio = {1,1}
-
 P20_offset_trim_amend = {0,0}
-
 
 
 Y_P20_offset_trim_list = {
@@ -688,11 +617,29 @@ Y_P20_offset_trim_list = {
 	{19,0,0},					{20,0,0},					{21,0,0}
 
 }
-
 Y_P20_offset_trim_ratio = {1,1}
-
 Y_P20_offset_trim_amend = {0,0}
 
+XBS_offset_trim_list = {
+	{1 ,0,0},					{2 ,0,0},					{3 ,0,0},
+
+	{4 ,0,0},					{5 ,0,0},					{6 ,0,0},
+
+	{7 ,0,0}, 					{8 ,0,0},					{9 ,0,0}
+}
+XBS_offset_trim_ratio = {1,1}
+XBS_offset_trim_amend = {0,0}
+
+
+Y_XBS_offset_trim_list = {
+	{1 ,0,0},					{2 ,0,0},					{3 ,0,0},
+
+	{4 ,0,0},					{5 ,0,0},					{6 ,0,0},
+
+	{7 ,0,0}, 					{8 ,0,0},					{9 ,0,0}
+}
+Y_XBS_offset_trim_ratio = {1,1}
+Y_XBS_offset_trim_amend = {0,0}
 
 
 HMLK_DD_offset_trim_list = {
@@ -722,17 +669,10 @@ HMLK_DD_offset_trim_list = {
 	{34,0,0},					{35,0,0},					{36,0,0}
 
 }
-
 HMLK_DD_offset_trim_ratio = {1,1}
-
 HMLK_DD_offset_trim_amend = {0,0}
 
 -----------------------------------------------------------------------------------------------
-
-
-
-
-
 
 
 Y_RE45_offset_trim_list = {
@@ -756,11 +696,8 @@ Y_RE45_offset_trim_list = {
 	{25,0,0}
 
 }
-
 Y_RE45_offset_trim_ratio = {1,1}
-
 Y_RE45_offset_trim_amend = {0,0}
-
 
 
 Y_R99_offset_trim_list = {
@@ -784,13 +721,8 @@ Y_R99_offset_trim_list = {
 	{25,0,0},					{26,0,0},					{27,0,0}
 
 }
-
 Y_R99_offset_trim_ratio = {1,1}
-
 Y_R99_offset_trim_amend = {0,0}
-
-
-
 
 
 Y_R301_offset_trim_list = {
@@ -816,25 +748,8 @@ Y_R301_offset_trim_list = {
 	{28,0,0}
 
 }
-
 Y_R301_offset_trim_ratio = {1,1}
-
 Y_R301_offset_trim_amend = {0,0}
-
-
-Y_XBS_offset_trim_list = {
-	{1 ,0,0},					{2 ,0,0},					{3 ,0,0},
-
-	{4 ,0,0},					{5 ,0,0},					{6 ,0,0},
-
-	{7 ,0,0}
-}
-Y_XBS_offset_trim_ratio = {1,1}
-Y_XBS_offset_trim_amend = {0,0}
-
-
-
-
 
 
 Y_ZHZ_offset_trim_list = {
@@ -858,13 +773,8 @@ Y_ZHZ_offset_trim_list = {
 	{25,0,0},					{26,0,0},					{27,0,0}
 
 }
-
 Y_ZHZ_offset_trim_ratio = {1,1}
-
 Y_ZHZ_offset_trim_amend = {0,0}
-
-
-
 
 
 Y_DN_offset_trim_list = {
@@ -888,13 +798,8 @@ Y_DN_offset_trim_list = {
 	{25,0,0},					{26,0,0}
 
 }
-
 Y_DN_offset_trim_ratio = {1,1}
-
 Y_DN_offset_trim_amend = {0,0}
-
-
-
 
 
 Y_PX_offset_trim_list = {
@@ -920,13 +825,8 @@ Y_PX_offset_trim_list = {
 	{28,0,0},					{29,0,0},					{30,0,0}
 
 }
-
 Y_PX_offset_trim_ratio = {1,1}
-
 Y_PX_offset_trim_amend = {0,0}
-
-
-
 
 
 Y_LS_offset_trim_list = {
@@ -956,21 +856,8 @@ Y_LS_offset_trim_list = {
 	{34,0,0},					{35,0,0}
 
 }
-
 Y_LS_offset_trim_ratio = {1,1}
-
 Y_LS_offset_trim_amend = {0,0}
-
-
-
-
-
-
-
-
-
-
-
 
 
 Lstar_offset_trim_list = {
@@ -994,13 +881,8 @@ Lstar_offset_trim_list = {
 	{25,0,0},					{26,0,0},					{27,0,0}
 
 }
-
 Lstar_offset_trim_ratio = {1,1}
-
 Lstar_offset_trim_amend = {0,0}
-
-
-
 
 
 CAR_offset_trim_list = {
@@ -1024,9 +906,7 @@ CAR_offset_trim_list = {
 	{25,0,0},					{26,0,0},					{27,0,0}
 
 }
-
 CAR_offset_trim_ratio = {1,1}
-
 CAR_offset_trim_amend = {0,0}
 
 -----------------------------------------------------------------------------------------------
@@ -1054,11 +934,7 @@ CAR_offset_list = {
 	{25,0,3,3},					{26,2,3,3},					{27,2,0,3}
 
 }
-
-
-
 CAR_offset_time = 20
-
 
 
 BZ_offset_list = {
@@ -1092,11 +968,7 @@ BZ_offset_list = {
 	{40,0,1,5}
 
 }
-
-
-
 BZ_offset_time = 38
-
 
 
 CN_offset_list = {
@@ -1142,13 +1014,7 @@ CN_offset_list = {
 
 
 }
-
-
-
 CN_offset_time = 25
-
-
-
 
 
 G7_offset_list = {
@@ -1170,11 +1036,7 @@ G7_offset_list = {
 
 
 }
-
-
-
 G7_offset_time = 48
-
 
 
 PXDD_offset_list = {
@@ -1192,11 +1054,7 @@ PXDD_offset_list = {
 
 
 }
-
-
-
 PXDD_offset_time = 66
-
 
 
 R301DD_offset_list = {
@@ -1222,13 +1080,7 @@ R301DD_offset_list = {
 
 
 }
-
-
-
 R301DD_offset_time = 54
-
-
-
 
 
 RE45_offset_list = {
@@ -1270,13 +1122,7 @@ RE45_offset_list = {
 
 
 }
-
-
-
 RE45_offset_time = 14
-
-
-
 
 
 Lstar_offset_list = {
@@ -1320,11 +1166,7 @@ Lstar_offset_list = {
 
 
 }
-
-
-
 Lstar_offset_time = 25
-
 
 
 M600_offset_list = {
@@ -1368,11 +1210,7 @@ M600_offset_list = {
 
 
 }
-
-
-
 M600_offset_time = 21
-
 
 
 R301_offset_list = {
@@ -1420,29 +1258,7 @@ R301_offset_list = {
 
 
 }
-
-
-
 R301_offset_time = 25
-
-XBS_offset_list = {
-	{1 ,0,4,5},					{2 ,0,5,5},					{3 ,0,3,5},
-
-
-
-	{4 ,-1,3,5},					{5 ,0,5,5},					{6 ,0,5,5},
-
-
-
-	{7 ,-2,5,5}
-}
-
-XBS_offset_time = 25
-
-
-
-
-
 
 
 R99_offset_list = {
@@ -1470,15 +1286,7 @@ R99_offset_list = {
 
 
 }
-
-
-
 R99_offset_time = 25
-
-
-
-
-
 
 
 ZHZ_offset_list = {
@@ -1506,15 +1314,7 @@ ZHZ_offset_list = {
 
 
 }
-
-
-
 ZHZ_offset_time = 19
-
-
-
-
-
 
 
 PX_offset_list = {
@@ -1562,11 +1362,7 @@ PX_offset_list = {
 
 
 }
-
-
-
 PX_offset_time = 32
-
 
 
 LS_offset_list = {
@@ -1622,17 +1418,7 @@ LS_offset_list = {
 
 
 }
-
-
-
 LS_offset_time = 24
-
-
-
-
-
-
-
 
 
 HWK_offset_list = {
@@ -1666,15 +1452,7 @@ HWK_offset_list = {
 
 
 }
-
-
-
 HWK_offset_time = 30
-
-
-
-
-
 
 
 ZZ_offset_list = {
@@ -1698,16 +1476,7 @@ ZZ_offset_list = {
 
 
 }
-
-
-
 ZZ_offset_time = 20
-
-
-
-
-
-
 
 DN_offset_list = {
 
@@ -1734,16 +1503,7 @@ DN_offset_list = {
 
 
 }
-
-
-
 DN_offset_time = 20
-
-
-
-
-
-
 
 P20_offset_list = {
 
@@ -1778,15 +1538,20 @@ P20_offset_list = {
 
 
 }
-
-
-
 P20_offset_time = 36
 
+XBS_offset_list = {
+	{1 ,0,4,5},					{2 ,0,5,5},					{3 ,0,3,5},
 
 
 
+	{4 ,-1,3,5},				{5 ,0,5,5},					{6 ,0,5,5},
 
+
+
+	{7 ,-2,5,5},				{8 ,0,5,5},					{9 ,0,5,5}
+}
+XBS_offset_time = 80
 
 
 HMLK_DD_offset_list = {
@@ -1834,20 +1599,11 @@ HMLK_DD_offset_list = {
 
 
 }
-
-
-
 HMLK_DD_offset_time = 40
 
 
 
 -----------------------------------------------------------------------------------------------
-
-
-
-
-
-
 
 Y_RE45_offset_list = {
 
@@ -1870,11 +1626,7 @@ Y_RE45_offset_list = {
 	{25,-2,2,5}
 
 }
-
-
-
 Y_RE45_offset_time = 14
-
 
 
 Y_R99_offset_list = {
@@ -1902,13 +1654,7 @@ Y_R99_offset_list = {
 
 
 }
-
-
-
 Y_R99_offset_time = 25
-
-
-
 
 
 Y_R301_offset_list = {
@@ -1956,13 +1702,7 @@ Y_R301_offset_list = {
 
 
 }
-
-
-
 Y_R301_offset_time = 25
-
-
-
 
 
 Y_ZHZ_offset_list = {
@@ -2006,13 +1746,7 @@ Y_ZHZ_offset_list = {
 
 
 }
-
-
-
 Y_ZHZ_offset_time = 19
-
-
-
 
 
 Y_DN_offset_list = {
@@ -2056,14 +1790,7 @@ Y_DN_offset_list = {
 
 
 }
-
-
-
 Y_DN_offset_time = 20
-
-
-
-
 
 Y_PX_offset_list = {
 
@@ -2110,13 +1837,7 @@ Y_PX_offset_list = {
 
 
 }
-
-
-
 Y_PX_offset_time = 32
-
-
-
 
 
 Y_LS_offset_list = {
@@ -2172,15 +1893,7 @@ Y_LS_offset_list = {
 
 
 }
-
-
-
 Y_LS_offset_time = 24
-
-
-
-
-
 
 
 Y_P20_offset_list = {
@@ -2214,11 +1927,20 @@ Y_P20_offset_list = {
 	{19,1,6,4},					{20,1,6,4},					{21,0,6,4}
 
 }
-
-
-
 Y_P20_offset_time = 36
 
+Y_XBS_offset_list = {
+	{1 ,0,4,5},					{2 ,0,5,5},					{3 ,0,3,5},
+
+
+
+	{4 ,-1,3,5},				{5 ,0,5,5},					{6 ,0,5,5},
+
+
+
+	{7 ,-2,5,5},				{8 ,0,5,5},					{9 ,0,5,5}
+}
+Y_XBS_offset_time = 80
 
 
 Y_Lstar_offset_list = {
@@ -2262,9 +1984,6 @@ Y_Lstar_offset_list = {
 
 
 }
-
-
-
 Y_Lstar_offset_time = 25
 
 
@@ -2820,7 +2539,7 @@ function OnEvent(event, arg)
 	end
 
 
-
+	-- 开镜开枪
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == a1) then
 
 		dofile("C:/Users/Public/Downloads/123.lua")
@@ -2939,16 +2658,17 @@ function OnEvent(event, arg)
 
 					guntogo(qx1_1)
 
+				elseif( qx1_1 == "XBS") then
 
 
 
+					qx1_1 = GunCombination1_2[12]
 
 
+
+					guntogo(qx1_1)
 
 				end
-
-
-
 
 
 			end
@@ -2974,7 +2694,7 @@ function OnEvent(event, arg)
 		end
 
 
-
+-- 腰射
 		if (event == "MOUSE_BUTTON_PRESSED" and arg == a1) then
 
 			if (offset_pattern == 2 and IsMouseButtonPressed(3)) then
@@ -3074,6 +2794,15 @@ function OnEvent(event, arg)
 
 
 					guntogo(qx1_1)
+				elseif( qx1_1 == "Y_XBS") then
+
+
+
+					qx1_1 = GunCombination1_1[12]
+
+
+
+					guntogo(qx1_1)
 
 
 
@@ -3102,7 +2831,7 @@ function OnEvent(event, arg)
 			ClearLog()
 
 			if(event == "MOUSE_BUTTON_PRESSED" and IsModifierPressed(keybb) and LSKG == 1)then
-
+				-- 暂停压枪 滋崩
 				qx1_1 = GunCombination1_1[18]
 
 				guntogo(qx1_1)
@@ -3808,63 +3537,26 @@ function click()
 
 
 			if(offset_state == "P20" or offset_state == "Y_P20" or offset_state == "HMLK_DD" or offset_state == "XBS" or offset_state == "Y_XBS" or offset_state == "R301DD" or offset_state == "PXDD" or offset_state == "G7" or (LS_5LianFa == 1 and (offset_state == "LS" or offset_state == "Y_LS"))) then PressAndReleaseMouseButton(1) end
-
-
-
 			offset = offset_list[ij];
-
-
-
 			for var_i=1,offset[4] do
-
-
-
 				Sleep(offset_time)
-
-
-
 				MoveMouseRelative(offset[2], offset[3])
-
-
-
 			end
 
 			if (clickpd==1 and Logitech == "LGS") then SetMKeyState(2) end
-
-
-
-
-
 			OutputLogMessage(ToUTF8(text_di)..ij..ToUTF8(text_qiang).."\n")
-
-
 
 			ij = ij + 1
 
-
-
 			if (ij>21 and (offset_state == "Lstar" or offset_state == "Y_Lstar") and Lstar_KEY[2] == 1)then
-
 				PressAndReleaseKey(Lstar_KEY[1])
-
 				ij =0
-
 			end
-
-
 
 			if offset_state == "LS" or offset_state == "Y_LS" then Sleep(280)end
 
-
-
 		else
-
-
-
 			ij = listLen
-
-
-
 		end
 
 
@@ -3886,362 +3578,131 @@ end
 
 
 function ToGun(qx1)
-
-
-
 	if qx1 == "R301" then
-
-
-
 		R301_offset_trim_list = setTbl(R301_offset_trim_list,R301_offset_list,text_R301)
-
-
-
 		return R301_offset_list,R301_offset_time,"R301",text_R301,R301_offset_trim_list,R301_offset_trim_ratio,R301_offset_trim_amend;
 
-
-
 	elseif qx1 == "ZZ" then
-
-
-
 		ZZ_offset_trim_list = setTbl(ZZ_offset_trim_list,ZZ_offset_list,text_ZZ)
-
-
-
 		return ZZ_offset_list,ZZ_offset_time,"ZZ",text_ZZ,ZZ_offset_trim_list,ZZ_offset_trim_ratio,ZZ_offset_trim_amend;
 
-
-
 	elseif qx1 == "PX" then
-
-
-
 		PX_offset_trim_list = setTbl(PX_offset_trim_list,PX_offset_list,text_PX)
-
-
-
 		return PX_offset_list,PX_offset_time,"PX",text_PX,PX_offset_trim_list,PX_offset_trim_ratio,PX_offset_trim_amend;
 
-
-
 	elseif qx1 == "HWK" then
-
-
-
 		HWK_offset_trim_list = setTbl(HWK_offset_trim_list,HWK_offset_list,text_HWK)
-
-
-
 		return HWK_offset_list,HWK_offset_time,"HWK",text_HWK,HWK_offset_trim_list,HWK_offset_trim_ratio,HWK_offset_trim_amend;
 
-
-
 	elseif qx1 == "R99" then
-
-
-
 		R99_offset_trim_list = setTbl(R99_offset_trim_list,R99_offset_list,text_R99)
-
-
-
 		return R99_offset_list,R99_offset_time,"R99",text_R99,R99_offset_trim_list,R99_offset_trim_ratio,R99_offset_trim_amend;
 
-
-
 	elseif qx1 == "DN" then
-
-
-
 		DN_offset_trim_list = setTbl(DN_offset_trim_list,DN_offset_list,text_DN)
-
-
-
 		return DN_offset_list,DN_offset_time,"DN",text_DN,DN_offset_trim_list,DN_offset_trim_ratio,DN_offset_trim_amend;
 
-
-
 	elseif qx1 == "LS" then
-
-
-
 		LS_offset_trim_list = setTbl(LS_offset_trim_list,LS_offset_list,text_LS)
-
-
-
 		return LS_offset_list,LS_offset_time,"LS",text_LS,LS_offset_trim_list,LS_offset_trim_ratio,LS_offset_trim_amend;
 
-
-
 	elseif qx1 == "ZHZ" then
-
-
-
 		ZHZ_offset_trim_list = setTbl(ZHZ_offset_trim_list,ZHZ_offset_list,text_ZHZ)
-
-
-
 		return ZHZ_offset_list,ZHZ_offset_time,"ZHZ",text_ZHZ,ZHZ_offset_trim_list,ZHZ_offset_trim_ratio,ZHZ_offset_trim_amend;
 
-
-
 	elseif qx1 == "P20" then
-
-
-
 		P20_offset_trim_list = setTbl(P20_offset_trim_list,P20_offset_list,text_P20)
-
-
-
 		return P20_offset_list,P20_offset_time,"P20",text_P20,P20_offset_trim_list,P20_offset_trim_ratio,P20_offset_trim_amend;
 
-
+	elseif qx1 == "XBS" then
+		XBS_offset_trim_list = setTbl(XBS_offset_trim_list,XBS_offset_list,text_XBS)
+		return XBS_offset_list,XBS_offset_time,"Wingman",text_XBS,XBS_offset_trim_list,XBS_offset_trim_ratio,XBS_offset_trim_amend;
 
 	elseif qx1 == "HMLK_DD" then
-
-
-
 		HMLK_DD_offset_trim_list = setTbl(HMLK_DD_offset_trim_list,HMLK_DD_offset_list,text_HMLK_DD)
-
-
-
 		return HMLK_DD_offset_list,HMLK_DD_offset_time,"HMLK_DD",text_HMLK_DD,HMLK_DD_offset_trim_list,HMLK_DD_offset_trim_ratio,HMLK_DD_offset_trim_amend;
 
 	elseif qx1 == "M600" then
-
-
-
 		M600_offset_trim_list = setTbl(M600_offset_trim_list,M600_offset_list,text_M600)
-
-
-
 		return M600_offset_list,M600_offset_time,"M600",text_M600,M600_offset_trim_list,M600_offset_trim_ratio,M600_offset_trim_amend;
 
 	elseif qx1 == "Lstar" then
-
-
-
 		Lstar_offset_trim_list = setTbl(Lstar_offset_trim_list,Lstar_offset_list,text_Lstar)
-
-
-
 		return Lstar_offset_list,Lstar_offset_time,"Lstar",text_Lstar,Lstar_offset_trim_list,Lstar_offset_trim_ratio,Lstar_offset_trim_amend;
 
 	elseif qx1 == "Y_P20" then
-
-
-
 		Y_P20_offset_trim_list = setTbl(Y_P20_offset_trim_list,Y_P20_offset_list,text_P20)
-
-
-
 		return Y_P20_offset_list,Y_P20_offset_time,"Y_P20",text_P20,Y_P20_offset_trim_list,Y_P20_offset_trim_ratio,Y_P20_offset_trim_amend;
 
+	elseif qx1 == "Y_XBS" then
+		Y_XBS_offset_trim_list = setTbl(Y_XBS_offset_trim_list,Y_XBS_offset_list,text_XBS)
+		return Y_XBS_offset_list,Y_XBS_offset_time,"Y_XBS",text_XBS,Y_XBS_offset_trim_list,Y_XBS_offset_trim_ratio,Y_XBS_offset_trim_amend;
+
 	elseif qx1 == "Y_Lstar" then
-
-
-
 		Y_Lstar_offset_trim_list = setTbl(Y_Lstar_offset_trim_list,Y_Lstar_offset_list,text_Lstar)
-
-
-
 		return Y_Lstar_offset_list,Y_Lstar_offset_time,"Y_Lstar",text_Lstar,Y_Lstar_offset_trim_list,Y_Lstar_offset_trim_ratio,Y_Lstar_offset_trim_amend;
 
-
-
 	elseif qx1 == "Y_R99" then
-
-
-
 		Y_R99_offset_trim_list = setTbl(Y_R99_offset_trim_list,Y_R99_offset_list,text_R99)
-
-
-
 		return Y_R99_offset_list,Y_R99_offset_time,"Y_R99",text_R99,Y_R99_offset_trim_list,Y_R99_offset_trim_ratio,Y_R99_offset_trim_amend;
 
-
-
 	elseif qx1 == "Y_R301" then
-
-
-
 		Y_R301_offset_trim_list = setTbl(Y_R301_offset_trim_list,Y_R301_offset_list,text_R301)
-
-
-
 		return Y_R301_offset_list,Y_R301_offset_time,"Y_R301",text_R301,Y_R301_offset_trim_list,Y_R301_offset_trim_ratio,Y_R301_offset_trim_amend;
 
-
-
 	elseif qx1 == "Y_ZHZ" then
-
-
-
 		Y_ZHZ_offset_trim_list = setTbl(Y_ZHZ_offset_trim_list,Y_ZHZ_offset_list,text_ZHZ)
-
-
-
 		return Y_ZHZ_offset_list,Y_ZHZ_offset_time,"Y_ZHZ",text_ZHZ,Y_ZHZ_offset_trim_list,Y_ZHZ_offset_trim_ratio,Y_ZHZ_offset_trim_amend;
 
-
-
 	elseif qx1 == "Y_DN" then
-
-
-
 		Y_DN_offset_trim_list = setTbl(Y_DN_offset_trim_list,Y_DN_offset_list,text_DN)
-
-
-
 		return Y_DN_offset_list,Y_DN_offset_time,"Y_DN",text_DN,Y_DN_offset_trim_list,Y_DN_offset_trim_ratio,Y_DN_offset_trim_amend;
 
-
-
 	elseif qx1 == "Y_PX" then
-
-
-
 		Y_PX_offset_trim_list = setTbl(Y_PX_offset_trim_list,Y_PX_offset_list,text_PX)
-
-
-
 		return Y_PX_offset_list,Y_PX_offset_time,"Y_PX",text_PX,Y_PX_offset_trim_list,Y_PX_offset_trim_ratio,Y_PX_offset_trim_amend;
 
-
-
 	elseif qx1 == "Y_LS" then
-
-
-
 		Y_LS_offset_trim_list = setTbl(Y_LS_offset_trim_list,Y_LS_offset_list,text_LS)
-
-
-
 		return Y_LS_offset_list,Y_LS_offset_time,"Y_LS",text_LS,Y_LS_offset_trim_list,Y_LS_offset_trim_ratio,Y_LS_offset_trim_amend;
 
-
-
-
-
 	elseif qx1 == "RE45" then
-
-
-
 		RE45_offset_trim_list = setTbl(RE45_offset_trim_list,RE45_offset_list,text_RE45)
-
-
-
 		return RE45_offset_list,RE45_offset_time,"RE45",text_RE45,RE45_offset_trim_list,RE45_offset_trim_ratio,RE45_offset_trim_amend;
 
-
-
 	elseif qx1 == "Y_RE45" then
-
-
-
 		Y_RE45_offset_trim_list = setTbl(Y_RE45_offset_trim_list,Y_RE45_offset_list,text_RE45)
-
-
-
 		return Y_RE45_offset_list,Y_RE45_offset_time,"Y_RE45",text_RE45,Y_RE45_offset_trim_list,Y_RE45_offset_trim_ratio,Y_RE45_offset_trim_amend;
 
-
-
 	elseif qx1 == "R301DD" then
-
-
-
 		R301DD_offset_trim_list = setTbl(R301DD_offset_trim_list,R301DD_offset_list,text_R301)
-
-
-
 		return R301DD_offset_list,R301DD_offset_time,"R301DD",text_R301,R301DD_offset_trim_list,R301DD_offset_trim_ratio,R301DD_offset_trim_amend;
 
-	elseif qx1 == "XBS" then
-
-		XBS_offset_trim_list = setTbl(XBS_offset_trim_list,XBS_offset_list,text_XBS)
-
-		return XBS_offset_list,XBS_offset_time,"Wingman",text_XBS,XBS_offset_trim_list,XBS_offset_trim_ratio,XBS_offset_trim_amend;
-
-
-
-
 	elseif qx1 == "PXDD" then
-
-
-
 		PXDD_offset_trim_list = setTbl(PXDD_offset_trim_list,PXDD_offset_list,text_PX)
-
-
-
 		return PXDD_offset_list,PXDD_offset_time,"PXDD",text_PX,PXDD_offset_trim_list,PXDD_offset_trim_ratio,PXDD_offset_trim_amend;
 
 	elseif qx1 == "G7" then
-
-
-
 		G7_offset_trim_list = setTbl(G7_offset_trim_list,G7_offset_list,text_PX)
-
-
-
 		return G7_offset_list,G7_offset_time,"G7",text_G7,G7_offset_trim_list,G7_offset_trim_ratio,G7_offset_trim_amend;
 
-
-
 	elseif qx1 == "CN" then
-
-
-
 		CN_offset_trim_list = setTbl(CN_offset_trim_list,CN_offset_list,text_PX)
-
-
-
 		return CN_offset_list,CN_offset_time,"CN",text_CN,CN_offset_trim_list,CN_offset_trim_ratio,CN_offset_trim_amend;
 
-
-
 	elseif qx1 == "BZ" then
-
-
-
 		BZ_offset_trim_list = setTbl(BZ_offset_trim_list,BZ_offset_list,text_PX)
-
-
-
 		return BZ_offset_list,BZ_offset_time,"BZ",text_BZ,BZ_offset_trim_list,BZ_offset_trim_ratio,BZ_offset_trim_amend;
 
-
-
 	elseif qx1 == "CAR" then
-
-
-
 		CAR_offset_trim_list = setTbl(CAR_offset_trim_list,CAR_offset_list,text_CAR)
-
-
-
 		return CAR_offset_list,CAR_offset_time,"CAR",text_CAR,CAR_offset_trim_list,CAR_offset_trim_ratio,CAR_offset_trim_amend;
 
-
-
 	else
-
-
-
 		a1,a2,a3,a4,a5,a6,a100 = 100
-
-
-
 		OutputLogMessage(ToUTF8(text_qxpz).." ( "..qx1.." ) ".."\n")
-
-
-
 		return {},0,"",{},{},1,0
-
-
-
 	end
-
 
 
 end
