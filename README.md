@@ -5,10 +5,24 @@ The purpose of my development is for educational purposes. If you use this softw
 Apex 无后座力力脚本
 Fully working no recoil with Logitech mouse with Logitech game software & ghub
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-支持枪：
- - [x] alternator SMG 转换者
- - [x] 
-
+支持枪：注(自动开枪请按照设置第二开枪按键)
+ - [x] Alternator SMG 转换者
+ - [x] Car 
+ - [x] Devotion LMG 专注 （有涡轮/无涡轮）
+ - [x] G7 (不推荐安装双发班机)
+ - [x] Havoc 哈沃克 （有涡轮/无涡轮）
+ - [x] HemLock 赫姆洛克突击步枪 （单点自动连发开枪）
+ - [x] L-STAR 能量机枪
+ - [x] m600 喷火轻机枪
+ - [x] p2020 手枪
+ - [x] R301 卡宾枪
+ - [x] Rampage LMG 暴走 （有燃烧弹/无燃烧弹）
+ - [x] powler Burst PD 猎兽冲锋枪 
+ - [x] RE-45 自动手枪
+ - [x] VK 平行步枪
+ - [x] Volt SMG 电能冲锋枪
+ - [x] Wing Man 辅助手枪
+ - [x] R99 冲锋枪
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 How to use it:
 使用说明：within the ide 
