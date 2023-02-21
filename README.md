@@ -14,7 +14,7 @@ Fully working no recoil with Logitech mouse with Logitech game software & ghub
  - [x] HemLock 赫姆洛克突击步枪 （单点自动连发开枪）
  - [x] L-STAR 能量机枪
  - [x] m600 喷火轻机枪
- - [x] p2020 手枪
+ - [x] p2020 手枪 （自动连发开枪）
  - [x] R301 卡宾枪
  - [x] Rampage LMG 暴走 （有燃烧弹/无燃烧弹）
  - [x] powler Burst PD 猎兽冲锋枪 
