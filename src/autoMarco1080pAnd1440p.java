@@ -524,7 +524,7 @@ public class autoMarco1080pAnd1440p {
                 gunMode = 12;
                 switchNow();
             } else if (imageDetection(_1weapon,"revengGoddess",false)>= confidence){
-                this.gun = "先套用猎兽，大概率考虑删除";
+                this.gun = "女神先套用猎兽，大概率考虑删除";
                 gunMode = 7;
                 switchNow();
             }
