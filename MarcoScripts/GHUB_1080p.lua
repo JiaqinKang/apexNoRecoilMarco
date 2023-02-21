@@ -6,11 +6,10 @@ keybb="alt"		--长按此键+左键暂停压枪，可改成alt或ctrl（可修改
 LSKG = 0			--将0改成1才会生效暂停压枪 （不建议修改）
 offset_pattern2= 3 --默认压枪方式（2：按住右键，3：大写锁定并按住右键(带腰射智能压枪)可自行修改如果只需要开镜压枪，将3改成2即可）
 KaiGuan="numlock" --默认是开关是大写键，可改成数字键numlock （不建议修改）
-LS_5LianFa = 1 --【猎兽冲锋枪】0为连发，改成1就是变成五连发（仅LGS驱动生效）
 Lstar_KEY={"k",0}  --【Lstar】过热自动切换武器，仅包括蓝弹夹以上有效，此键应对应游戏设置的【切换武器】键
 	--｛按键，0关1开｝默认关闭
 Change_KEY = 0 --换甲宏，绑定鼠标侧键号开发中
 a4 = 4 --兔子跳修改数字进行使用 按键图在GitHub上
 l080or2k = 1   --改成1或2就不用填下面坐标，只支持1080或2k，（1：1080p，2：2k）
 location = {{0,0},{0,0},{0,0},{0,0}}--自定义分辨率
-dofile("C:/Users/Public/Downloads/ScriptSeason14.lua")
+dofile("C:/Users/Public/Downloads/Script.lua")

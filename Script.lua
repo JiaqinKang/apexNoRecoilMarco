@@ -7,11 +7,13 @@ offset_pattern1= offset_pattern2
 
 a1 = 1
 
-text_bbdate = "2023-02-20"
+text_bbdate = "2023-02-21"
 
 offset_pattern = 2
 
 a4 = 0
+
+LianFa = 1 --开启自动连发
 
 
 
@@ -33,11 +35,6 @@ GunCombination1_1 = {"R99","R301","ZHZ","DN","ZZ","PX","LS","HMLK_DD","P20","M60
 
 GunCombination1_2 ={"Y_R99","Y_R301","Y_ZHZ","Y_DN","Y_ZZ","Y_PX","Y_LS","Y_HMLK","Y_P20","Y_M600","Y_Lstar","Y_XBS","Y_RE45"}
 
-
-
-
-
-hwk_state = 2
 
 squatKey = "l"			--下蹲按键	
 
@@ -2341,7 +2338,7 @@ local text_datetimeh = {50,50,49,50,48,52,48,48}
 
 
 
-if(LS_5LianFa == 1)then
+if(LianFa == 1)then
 
 	LS_offset_list = LS_LF
 
@@ -2509,9 +2506,9 @@ function OnEvent(event, arg)
 
 		wl = wwl
 
-		dofile("C:/Users/Public/Downloads/123.lua")
+		dofile("C:/Users/Public/Downloads/main.lua")
 		dofile("C:/Users/Public/Downloads/thermite.lua")
-		dofile("C:/Users/Public/Downloads/hwk_state.lua")
+		dofile("C:/Users/Public/Downloads/turbo_state.lua")
 
 		offset_list1_1,offset_time1_1,offset_state1_1,text_offset1_1,offset_trim_list1_1,offset_trim_ratio1_1,offset_trim_amend1_1 = ToGun(qx1_1)
 
@@ -2542,9 +2539,9 @@ function OnEvent(event, arg)
 	-- 开镜开枪
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == a1) then
 
-		dofile("C:/Users/Public/Downloads/123.lua")
+		dofile("C:/Users/Public/Downloads/main.lua")
 		dofile("C:/Users/Public/Downloads/thermite.lua")
-		dofile("C:/Users/Public/Downloads/hwk_state.lua")
+		dofile("C:/Users/Public/Downloads/turbo_state.lua")
 
 		guntogo(qx1_1)
 
@@ -2880,7 +2877,11 @@ function OnEvent(event, arg)
 
 
 
-			if hwk_state == 1 and offset_state == "HWK" then	Sleep(499)	end
+			if turbo_state == 0 and offset_state == "HWK" then	Sleep(499)	end
+
+			if turbo_state == 0 and offset_state == "ZZ" then	Sleep(200)	end
+
+			if turbo_state == 0 and offset_state == "Y_ZZ" then	Sleep(450)	end
 
 
 
@@ -2889,6 +2890,10 @@ function OnEvent(event, arg)
 
 
 			click()
+
+
+
+
 
 
 
@@ -3536,7 +3541,7 @@ function click()
 
 
 
-			if(offset_state == "P20" or offset_state == "Y_P20" or offset_state == "HMLK_DD" or offset_state == "XBS" or offset_state == "Y_XBS" or offset_state == "R301DD" or offset_state == "PXDD" or offset_state == "G7" or (LS_5LianFa == 1 and (offset_state == "LS" or offset_state == "Y_LS"))) then PressAndReleaseMouseButton(1) end
+			if(offset_state == "P20" or offset_state == "Y_P20" or offset_state == "HMLK_DD" or offset_state == "XBS" or offset_state == "Y_XBS" or offset_state == "R301DD" or offset_state == "PXDD" or offset_state == "G7" or (LianFa == 1 and (offset_state == "LS" or offset_state == "Y_LS"))) then PressAndReleaseMouseButton(1) end
 			offset = offset_list[ij];
 			for var_i=1,offset[4] do
 				Sleep(offset_time)

@@ -22,14 +22,14 @@ public class autoMarco1080pAnd1440p {
     boolean on_or_off = false;
     boolean isMute = true;
     String gun = "no Weapon";
-    File from = new File("ScriptSeason14开镜_腰射.lua");
-    File to = new File("C:\\Users\\Public\\Downloads\\ScriptSeason14.lua");
+    File from = new File("Script.lua");
+    File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
 
-    File control = new File("C:\\Users\\Public\\Downloads\\123.lua");
+    File control = new File("C:\\Users\\Public\\Downloads\\main.lua");
 
     File thermiteControl = new File("C:\\Users\\Public\\Downloads\\thermite.lua");
 
-    File havocControl = new File("C:\\Users\\Public\\Downloads\\hwk_state.lua");
+    File havocControl = new File("C:\\Users\\Public\\Downloads\\turbo_state.lua");
 
     //check  system resolution
     int SystemWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -40,7 +40,7 @@ public class autoMarco1080pAnd1440p {
     String screenResolution;
 
     double deadConfidence = 0.50; //confidence level
-    double confidence = 0.933; //confidence level
+    double confidence = 0.90; //confidence level
 
     int x;
     int y;
@@ -60,7 +60,7 @@ public class autoMarco1080pAnd1440p {
     public autoMarco1080pAnd1440p() {
 
         //scanner config file for gun mode
-        JFrame frame = new JFrame("Apex腰射全自动宏2k/1080");
+        JFrame frame = new JFrame("Apex腰射全自动宏");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("icon.jpg").getImage());
         frame.setSize(500, 350);
@@ -201,11 +201,11 @@ public class autoMarco1080pAnd1440p {
             copyFileUsingJava7Files(from, to);
             write_to_file(18); // 123.lua
             write_to_file2(0); // thermite.lua
-            write_to_file1(0); // hwk_state.lua
+            write_to_file1(0); // turbo_state.lua
             //disable button
             release.setEnabled(false);
             //show message
-            JOptionPane.showMessageDialog(frame, "脚本文件已释放到本地,Script File Released to Local path");
+            //JOptionPane.showMessageDialog(frame, "脚本文件已释放到本地,Script File Released to Local path");
             release.setText("脚本文件OK");
             release.setBackground(Color.green);
         } catch (IOException e1) {
@@ -245,7 +245,7 @@ public class autoMarco1080pAnd1440p {
                 thermite is automatically detected
                 rabbit jump set crouch key to l // mouse start key needs to be set by yourself, various mouse keys binding are in the folder
                 Numlock switch for on/off macro, support hip fire and aim down sight
-                - p2020 and Wingman pistol need to set the second shooting key to p key;
+                - p2020 and Wingman pistol need to set the second shooting key to p key; 
                 """
         );
 
@@ -276,6 +276,44 @@ public class autoMarco1080pAnd1440p {
         } else if (SystemHeight == 1440) {
             //scan 1440p
             screenResolution = "1440";
+        } else if (SystemHeight == 1600){
+            //scan 1600p
+            screenResolution = "1600";
+        }
+
+
+        // Capture weapon area
+        x = (int) (SystemWidth *0.781);
+        y = (int) (SystemHeight *0.9);
+        height = (int) (SystemHeight *0.1);
+        width = (int) (SystemWidth *0.2);
+        //System.out.println(x + " " + y + " " + width + " " + height);
+
+        if (SystemWidth == 3440 && SystemHeight == 1440) {
+            System.out.println("1440p x 3440p");
+            x1 = (550);
+            y1 = (100);
+            width1 = 200;
+            height1 = 100;
+        }else if (SystemWidth == 2560 && SystemHeight == 1440) {
+            System.out.println("1440p x 2560p");
+            //capture for looting area
+            x1 = (SystemWidth / 16);
+            y1 = (SystemHeight / 10);
+            width1 = (int) (SystemWidth / 8.5) - x1;
+            height1 = (int) ((SystemHeight / 8.5) - y1) * 2;
+        } else if (SystemHeight == 1600 && SystemWidth == 2560) {
+            System.out.println("1600p x 2560p");
+            x1 = (100);
+            y1 = (100);
+            width1 = (int)(SystemWidth/ 7);
+            height1 = (int) (SystemHeight /6);
+        } else {
+            System.out.println("其他分辨率");
+            x1 = (100);
+            y1 = (100);
+            width1 = (int)(SystemWidth/ 7);
+            height1 = (int) (SystemHeight /6);
         }
 
         //auto trigger to ensure the num lock is on for macro to work
@@ -290,6 +328,10 @@ public class autoMarco1080pAnd1440p {
 
             System.out.println("Numlock is now turn on");
         }
+
+        System.out.println(SystemWidth + " " + SystemHeight);
+
+
 
         while (true) {
             if (on_or_off) {
@@ -307,7 +349,7 @@ public class autoMarco1080pAnd1440p {
     private void write_to_file(int i) {
         //write lua file to C:\Users\Public\Downloads
         String path = "C:\\Users\\Public\\Downloads\\";
-        String file_name = "123.lua";
+        String file_name = "main.lua";
         String file_path = path + file_name;
         String file_content = "qx1_1 = GunCombination1_1[" + i + "]";
         File file = new File(file_path);
@@ -341,9 +383,9 @@ public class autoMarco1080pAnd1440p {
     private void write_to_file1(int i ){
         //write lua file to C:\Users\Public\Downloads
         String path = "C:\\Users\\Public\\Downloads\\";
-        String file_name = "hwk_state.lua";
+        String file_name = "turbo_state.lua";
         String file_path = path + file_name;
-        String file_content = "hwk_state = " + i;
+        String file_content = "turbo_state = " + i;
         File file = new File(file_path);
         try {
             FileWriter fw = new FileWriter(file);
@@ -370,26 +412,6 @@ public class autoMarco1080pAnd1440p {
 
         while (true) {
 
-            // Capture weapon area
-            x = (int) (SystemWidth *0.781);
-            y = (int) (SystemHeight *0.9);
-            height = (int) (SystemHeight *0.1);
-            width = (int) (SystemWidth *0.2);
-            //System.out.println(x + " " + y + " " + width + " " + height);
-
-            if (SystemWidth != 3440) {
-                //capture for looting area
-                x1 = (SystemWidth / 16);
-                y1 = (SystemHeight / 10);
-                width1 = (int) (SystemWidth / 8.5) - x1;
-                height1 = (int) ((SystemHeight / 8.5) - y1) * 2;
-                //System.out.println(x1 + " " + y1 + " " + width1 + " " + height1);
-            }else {
-                x1 = (550);
-                y1 = (100);
-                width1 = 200;
-                height1 = 100;
-            }
 
             // create robot to capture screen in specific area with parameters from above
             try {
