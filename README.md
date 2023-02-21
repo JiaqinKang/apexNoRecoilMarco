@@ -24,7 +24,7 @@ Fully working no recoil with Logitech mouse with Logitech game software & ghub
  - [x] p2020 手枪 （自动连发开枪）
  - [x] R301 卡宾枪
  - [x] Rampage LMG 暴走 （有燃烧弹/无燃烧弹）
- - [x] powler Burst PD 猎兽冲锋枪 
+ - [x] powler Burst PD 猎兽冲锋枪 （自动连发开枪）
  - [x] RE-45 自动手枪
  - [x] VK 平行步枪
  - [x] Volt SMG 电能冲锋枪
