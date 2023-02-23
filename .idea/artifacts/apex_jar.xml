@@ -3,7 +3,8 @@
     <output-path>$PROJECT_DIR$/out/artifacts/apex_jar</output-path>
     <root id="archive" name="apex.jar">
       <element id="module-output" name="apex" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../java/opencv/build/java/opencv-460.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/java/opencv/build/java/opencv-460.jar" path-in-jar="/" />
+      <element id="library" level="application" name="java" />
     </root>
   </artifact>
 </component>

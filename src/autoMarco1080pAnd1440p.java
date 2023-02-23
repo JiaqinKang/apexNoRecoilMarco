@@ -7,11 +7,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 
 
@@ -21,7 +25,7 @@ public class autoMarco1080pAnd1440p {
     int tempGunMode = 0;
     boolean on_or_off = false;
     boolean isMute = true;
-    String gun = "no Weapon";
+    String gun = "杜绝收费，从你我做起";
     File from = new File("Script.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
 
@@ -54,13 +58,17 @@ public class autoMarco1080pAnd1440p {
 
     boolean memoryClean = false;
 
+    boolean aimCrossCheck = false;
+    aim aimDialog = null;
+
+
 
 
 
     public autoMarco1080pAnd1440p() {
 
         //scanner config file for gun mode
-        JFrame frame = new JFrame("Apex腰射全自动宏");
+        JFrame frame = new JFrame("Apex全自动宏");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("icon.jpg").getImage());
         frame.setSize(500, 350);
@@ -71,21 +79,22 @@ public class autoMarco1080pAnd1440p {
         panel1.setLayout(new GridLayout(0, 1));
         frame.add(panel1);
         //create button
-        JButton button1 = new JButton("开启");
+        JButton button1 = new JButton("开/关");
         //change button font size
         button1.setFont(new Font("微软雅黑", Font.PLAIN, 30));
-        JButton button2 = new JButton("关闭");
-        button2.setFont(new Font("微软雅黑", Font.PLAIN, 30));
-        JButton mute = new JButton("静音");
+        JButton mute = new JButton("开/关提示音");
         mute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
-        JButton unMute = new JButton("开启提示音");
-        unMute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         JButton button3 = new JButton("Switch Language");
         button3.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         JButton release = new JButton("释放脚本文件到本地");
         release.setFont(new Font("微软雅黑", Font.PLAIN, 30));
         JButton button4 = new JButton("自动清理内存");
         button4.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        JButton aimCross = new JButton("开/关游戏准星");
+        aimCross.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        JButton urlButton = new JButton("GitHub链接");
+        String url = "https://github.com/JiaqinKang/apexNoRecoilMarco";
+        urlButton.setFont(new Font("微软雅黑", Font.PLAIN, 30));
 
         //when the program close, delete the script file
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -110,12 +119,12 @@ public class autoMarco1080pAnd1440p {
 
         panel1.add(gun);
         panel1.add(button1);
-        panel1.add(button2);
         panel1.add(mute);
-        panel1.add(unMute);
-        panel1.add(release);
         panel1.add(button4);
+        panel1.add(urlButton);
+        panel1.add(aimCross);
         panel1.add(button3);
+        panel1.add(release);
 
         // add invisible button to change gun mode
         JButton gunMode = new JButton("");
@@ -127,9 +136,7 @@ public class autoMarco1080pAnd1440p {
         Timer timer = new Timer(100, e -> gunMode.doClick());
 
         button1.setBackground(Color.white);
-        button2.setBackground(Color.red);
         mute.setBackground(Color.red);
-        unMute.setBackground(Color.white);
         release.setBackground(Color.white);
 
         //add button listener to update lable
@@ -138,46 +145,54 @@ public class autoMarco1080pAnd1440p {
             if (language.equals("中文")) {
                 gun.setText(this.gun);
             } else {
-                gun.setText("Current Mode：" + this.gun);
+                gun.setText(this.gun);
             }
             gun.validate();//update label
         });
 
         //if mute button is pressed then mute the sound
         mute.addActionListener(e -> {
-            isMute = true;
-            //change button color
-            mute.setBackground(Color.GREEN);
-            unMute.setBackground(Color.WHITE);
-        });
-        unMute.addActionListener(e -> {
-            isMute = false;
-            //change button color
-            unMute.setBackground(Color.GREEN);
-            mute.setBackground(Color.WHITE);
+            // Toggle the mute state
+            isMute = !isMute;
+            // Update the button text and color based on the mute state
+            if (isMute) {
+                mute.setBackground(Color.RED);
+            } else {
+                mute.setBackground(Color.GREEN);
+            }
         });
 
         button3.addActionListener(e -> {
             if (language.equals("中文")) {
                 language = "English";
-                button1.setText("Start");
-                button2.setText("Stop");
-                mute.setText("Mute Sound");
-                unMute.setText("Activation Sound");
+                button1.setText("On/Off");
+                mute.setText("unmute/mute");
                 button3.setText("切换语言");
                 release.setText("Release Script Ok");
                 button4.setText("Auto Clean Memory");
-                gun.setText("Current Mode: " + this.gun);
+                gun.setText(this.gun);
+                urlButton.setText("GitHub Link");
+                aimCross.setText("Game Aim Cross");
             } else {
                 language = "中文";
-                button1.setText("开启");
-                button2.setText("关闭");
-                mute.setText("静音");
-                unMute.setText("开启提示音");
+                button1.setText("开/关");
+                mute.setText("开/关提示音");
                 button3.setText("Switch Language");
                 release.setText("脚本文件OK");
                 button4.setText("自动清理内存");
-                gun.setText("当前模式：" + this.gun);
+                gun.setText(this.gun);
+                urlButton.setText("GitHub链接");
+                aimCross.setText("开/关游戏准星");
+            }
+        });
+
+        urlButton.addActionListener(e -> {
+            try {
+                // Open the URL in the default browser
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (IOException | URISyntaxException ex) {
+                ex.printStackTrace();
+                // Handle any exceptions that occur while opening the URL
             }
         });
 
@@ -195,6 +210,32 @@ public class autoMarco1080pAnd1440p {
                 JOptionPane.showMessageDialog(frame, "Memory cleaning, if the game is stuck, please turn off the memory automatic cleaning");
             }
         });
+        //create aimCross click
+        aimCross.addActionListener(e -> {
+            if (!aimCrossCheck) {
+                aimDialog = new aim();
+                aimCrossCheck = true;
+                aimCross.setBackground(Color.green);
+                //play a beep sound
+                Toolkit.getDefaultToolkit().beep();
+                //show message
+                if (language.equals("中文")) {
+                    JOptionPane.showMessageDialog(frame, "准星已开启,确保游戏是无边框窗口模式");
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Aim Cross is on, make sure the game is in borderless window mode");
+                }
+            } else {
+                //remove aim dialog
+                aimCrossCheck = false;
+                aimDialog.dispose();
+                aimCross.setBackground(Color.white);
+                Toolkit.getDefaultToolkit().beep();
+            }
+        });
+
+
+
+
 
         //release script file to local
         try {
@@ -215,9 +256,7 @@ public class autoMarco1080pAnd1440p {
             release.setBackground(Color.red);
             //disable all button
             button1.setEnabled(false);
-            button2.setEnabled(false);
             mute.setEnabled(false);
-            unMute.setEnabled(false);
             release.setEnabled(false);
             button3.setEnabled(false);
             button4.setEnabled(false);
@@ -251,16 +290,15 @@ public class autoMarco1080pAnd1440p {
 
 
         button1.addActionListener(e -> {
-            on_or_off = true;
-            button1.setBackground(Color.GREEN);
-            button2.setBackground(Color.WHITE);
-            System.out.println("open");
-        });
-        button2.addActionListener(e -> {
-            on_or_off = false;
-            button2.setBackground(Color.RED);
-            button1.setBackground(Color.WHITE);
-            System.out.println("close");
+            if (on_or_off) {
+                on_or_off = false;
+                button1.setBackground(Color.RED);
+                System.out.println("close");
+            } else {
+                on_or_off = true;
+                button1.setBackground(Color.GREEN);
+                System.out.println("open");
+            }
         });
 
         frame.setVisible(true); //show frame
@@ -561,6 +599,7 @@ public class autoMarco1080pAnd1440p {
                 System.gc();
             }
             if (!on_or_off) { //if the program is closed, break the loop
+                this.gun ="关闭成功";
                 break; //break the loop
             }
         }
@@ -600,6 +639,50 @@ public class autoMarco1080pAnd1440p {
     public void playBeep() {
         if (!isMute) {
             Toolkit.getDefaultToolkit().beep();
+        }
+    }
+
+    public static class aim extends JDialog {
+
+        public aim() {
+            // 设置窗口属性
+            setUndecorated(true);
+            setPreferredSize(new Dimension(40, 40));
+            setAlwaysOnTop(true);
+            setBackground(new Color(0, 0, 0, 0));
+
+            // 显示窗口
+            pack();
+            setLocation(getTopLeftPoint());
+            setVisible(true);
+        }
+
+        // 获取窗口显示位置（屏幕中心）
+        private Point getTopLeftPoint() {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice gd = ge.getDefaultScreenDevice();
+
+            int screenWidth = gd.getDisplayMode().getWidth();
+            int screenHeight = gd.getDisplayMode().getHeight();
+
+            int windowX = (int) (screenWidth / 2 - 20);
+            int windowY = (int) (screenHeight / 2 - 20);
+
+            return new Point(windowX, windowY);
+        }
+
+        public void paint(Graphics g) {
+            super.paint(g);
+
+            // 设置画笔颜色为红色
+            g.setColor(Color.RED);
+
+            // 绘制圆形
+            int size = Math.min(getWidth(), getHeight()) - 10;
+            int x = (getWidth() - size) / 2;
+            int y = (getHeight() - size) / 2;
+            g.drawOval(x, y, size, size);
+
         }
     }
 
