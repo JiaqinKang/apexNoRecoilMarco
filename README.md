@@ -1,4 +1,4 @@
-软件不再更新，用着自责
+ 软件不再更新，用着自责
 
 Disclaimer
 The purpose of my development is for educational purposes. If you use this software to cause any damage, it has nothing to do with me.
