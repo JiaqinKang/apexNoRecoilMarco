@@ -52,19 +52,23 @@ How to use it:
       请确保游戏语言设置为中文，否则脚本将无法工作，除非您更新武器屏幕截图为英文快照
    
     1. make sure you installed jdk-18_windows-x64_bin.msi 
-       确保安装最新的java jdk，安装文件已经打包在
+       确保安装java jdk，安装文件已经打包在下载里
 
-    2. upload correct marco script to your mouse driver (LGS/GHUB) in MarcoScripts Folder
+    2. start program
+       启动软件
+       
+    3. upload correct marco script to your mouse driver (LGS/GHUB) in MarcoScripts Folder
        上传正确的分辨率脚本文件到对应的罗技驱动，lgs/ghub. 文件在MarcoScripts里面
-
-    3. start apex.jar
-       启动apex.jar
+       
+    4. save and run the script in lgs or ghub
+       保持运行脚本
 
 There is a version difference between lgs and ghub： if countering issues,please run the debug启动器 and check the console output for more information screenshot it and send it to me, I will try to help you.
 
 
 lgs和ghub有版本区别问题：如果遇到问题请提交debug启动器的截图，我会尽快修复
 
+# 注意！先开软件再开脚本。确保两个都开着！
     
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 Envrioment 
