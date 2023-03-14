@@ -1,4 +1,4 @@
-# 软件不再更新，累了
+# 软件暂停更新，学业繁重，挨到下个版本没啥大毛病
 
 Disclaimer
 The purpose of my development is for educational purposes. If you use this software to cause any damage, it has nothing to do with me.
