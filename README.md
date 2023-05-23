@@ -1,5 +1,3 @@
-# 软件暂停更新，学业繁重，挨到下个版本没啥大毛病
-
 Disclaimer
 The purpose of my development is for educational purposes. If you use this software to cause any damage, it has nothing to do with me.
 我开发的目的是为了教育目的。如果你使用本软件造成任何损失与作者无关。
