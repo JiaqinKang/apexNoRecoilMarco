@@ -236,12 +236,9 @@ public class autoMarco1080pAnd1440p {
         });
 
 
-
-
-
         //release script file to local
         try {
-            copyFileUsingJava7Files(from, to);
+            copyFile(from, to);
             write_to_file(18); // 123.lua
             write_to_file2(0); // thermite.lua
             write_to_file1(0); // turbo_state.lua
@@ -372,7 +369,6 @@ public class autoMarco1080pAnd1440p {
         System.out.println(SystemWidth + " " + SystemHeight);
 
 
-
         while (true) {
             if (on_or_off) {
                 try {
@@ -437,13 +433,15 @@ public class autoMarco1080pAnd1440p {
         }
     }
 
-    private void copyFileUsingJava7Files(File source, File dest) throws IOException {
-        //if file already exist then delete it first
-        if (dest.exists()) {
-            dest.delete();//delete file
+    private void copyFile(File source, File destination) throws IOException {
+        try (InputStream inputStream = new FileInputStream(source);
+             OutputStream outputStream = new FileOutputStream(destination)) {
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
         }
-        //copy file
-        Files.copy(source.toPath(), dest.toPath());//copy file
     }
 
     private void scan() throws AWTException {
