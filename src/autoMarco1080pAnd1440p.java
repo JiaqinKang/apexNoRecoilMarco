@@ -1,5 +1,6 @@
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
@@ -10,10 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -60,6 +58,10 @@ public class autoMarco1080pAnd1440p {
 
     boolean aimCrossCheck = false;
     aim aimDialog = null;
+
+    Mat _1weapon = null;
+
+    Mat _2dead = null;
 
 
 
@@ -458,16 +460,27 @@ public class autoMarco1080pAnd1440p {
                 BufferedImage image = robot.createScreenCapture(new Rectangle(x, y, width, height)); //capture weapon area
                 BufferedImage dead = robot.createScreenCapture(new Rectangle(x1, y1, width1, height1)); //capture the death box area
 
-                ImageIO.write(image, "jpg", new File("weapon/screenshot.jpg")); //save weapon area screenshot
-                ImageIO.write(dead, "jpg", new File("weapon/deadScreenshot.jpg")); //save dead area screenshot
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                ByteArrayOutputStream byteArrayOutputStream1 = new ByteArrayOutputStream();
+                ImageIO.write(image, "jpg", byteArrayOutputStream);
+                ImageIO.write(dead, "jpg", byteArrayOutputStream1);
+
+                //to byte array
+                byte[] weaponArea = byteArrayOutputStream.toByteArray();
+                byte[] deadArea = byteArrayOutputStream1.toByteArray();
+
+                // convert to opencv mat
+                MatOfByte matOfByte = new MatOfByte(weaponArea);
+                MatOfByte matOfByte1 = new MatOfByte(deadArea);
+                _1weapon = Imgcodecs.imdecode(matOfByte,Imgcodecs.IMREAD_UNCHANGED);
+                _2dead = Imgcodecs.imdecode(matOfByte1,Imgcodecs.IMREAD_UNCHANGED);
+
             } catch (IOException | AWTException e) {
                 //pop up window to tell user to run as admin
                 JOptionPane.showMessageDialog(null, "图片截图失败,请以管理员身份运行程序,并在GitHub上提出bug", "Error", JOptionPane.ERROR_MESSAGE);
                 throw new RuntimeException(e);
             }
 
-            Mat _1weapon = Imgcodecs.imread("weapon/screenshot.jpg");
-            Mat _2dead = Imgcodecs.imread("weapon/deadScreenshot.jpg");
 
 //            check if the player is looting a dead chest
             if (imageDetection(_2dead,"dead",false) >= deadConfidence) {
@@ -582,10 +595,6 @@ public class autoMarco1080pAnd1440p {
             } else if (imageDetection(_1weapon,"wingMan",false) >= confidence){
                 this.gun = "Wingman";
                 gunMode = 12;
-                switchNow();
-            } else if (imageDetection(_1weapon,"revengGoddess",false)>= confidence){
-                this.gun = "女神先套用猎兽，大概率考虑删除";
-                gunMode = 7;
                 switchNow();
             }
 

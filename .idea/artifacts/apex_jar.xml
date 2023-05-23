@@ -4,7 +4,6 @@
     <root id="archive" name="apex.jar">
       <element id="module-output" name="apex" />
       <element id="extracted-dir" path="D:/java/opencv/build/java/opencv-460.jar" path-in-jar="/" />
-      <element id="library" level="application" name="java" />
     </root>
   </artifact>
 </component>
