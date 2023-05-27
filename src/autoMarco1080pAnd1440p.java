@@ -263,27 +263,14 @@ public class autoMarco1080pAnd1440p {
 
         //pop up message when start the program
         JOptionPane.showMessageDialog(frame, """
-                Please make sure your game language is set to Chinese, or the script will not work unless you update the weapon screen shots to english snapshots.
-                请确保游戏语言设置为中文，否则脚本将无法工作，除非您更新武器屏幕截图为英文快照
+                请确保游戏语言设置为中文，否则脚本将无法工作.
                                 
                 操作说明:
                 游戏中鼠标灵敏度为1.6，鼠标加速度关闭，罗技驱动——>指针设置——>报告率改为1000，加速关闭
-                哈沃克涡轮增压器自动检测
-                暴走燃烧弹自动检测
-                兔子跳 设置下蹲键为 l // 鼠标启动按键需要自己设置，各种鼠标按键图在文件夹里
+                兔子跳 设置下蹲键为 l，此功能关闭太鸡肋，要开启的自己修改Script.lua
+                关闭游戏内的鼠标速度！！！！！！！！！！！
                 Numlock小键盘锁开关宏,支持腰射和开镜压枪
-                p2020 全自动开枪需要设置第二开枪键为p键
-                
-             
-             
-                                
-                English:
-                Mouse sensitivity in game is 1.6, mouse acceleration is off, Logitech driver->pointer settings->report rate is 1000, acceleration is off
-                Havoc turbocharger is automatically detected
-                thermite is automatically detected
-                rabbit jump set crouch key to l // mouse start key needs to be set by yourself, various mouse keys binding are in the folder
-                Numlock switch for on/off macro, support hip fire and aim down sight
-                - p2020 and Wingman pistol need to set the second shooting key to p key; 
+                p2020 全自动开枪需要设置第二开枪键为p键，只支持lgs
                 """
         );
 
