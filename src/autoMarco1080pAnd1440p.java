@@ -42,7 +42,7 @@ public class autoMarco1080pAnd1440p {
     String screenResolution;
 
     double deadConfidence = 0.50; //confidence level
-    double confidence = 0.80; //confidence level
+    double confidence = 0.775; //confidence level
 
     int threshold = 200;
 
