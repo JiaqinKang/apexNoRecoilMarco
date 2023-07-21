@@ -42,7 +42,9 @@ public class autoMarco1080pAnd1440p {
     String screenResolution;
 
     double deadConfidence = 0.50; //confidence level
-    double confidence = 0.90; //confidence level
+    double confidence = 0.80; //confidence level
+
+    int threshold = 200;
 
     int x;
     int y;
@@ -303,16 +305,20 @@ public class autoMarco1080pAnd1440p {
         } else if (SystemHeight == 1600){
             //scan 1600p
             screenResolution = "1600";
+        }else if (SystemHeight == 2160){
+            //scan 2160 4k
+            screenResolution = "2160";
         }
 
 
         // Capture weapon area
         x = (int) (SystemWidth *0.781);
-        y = (int) (SystemHeight *0.9);
-        height = (int) (SystemHeight *0.1);
-        width = (int) (SystemWidth *0.2);
-        //System.out.println(x + " " + y + " " + width + " " + height);
+        y = (int) (SystemHeight *0.85);
+        height = (int) (SystemHeight-y);
+        width = (int) (SystemWidth -x);
+        System.out.println(x + " " + y + " " + width + " " + height);
 
+        // Black market or dead detection
         if (SystemWidth == 3440 && SystemHeight == 1440) {
             System.out.println("1440p x 3440p");
             x1 = (550);
@@ -333,7 +339,7 @@ public class autoMarco1080pAnd1440p {
             width1 = (int)(SystemWidth/ 7);
             height1 = (int) (SystemHeight /6);
         } else {
-            System.out.println("其他分辨率");
+            System.out.println("其他分辨率/1080p");
             x1 = (100);
             y1 = (100);
             width1 = (int)(SystemWidth/ 7);
@@ -445,10 +451,33 @@ public class autoMarco1080pAnd1440p {
                 BufferedImage image = robot.createScreenCapture(new Rectangle(x, y, width, height)); //capture weapon area
                 BufferedImage dead = robot.createScreenCapture(new Rectangle(x1, y1, width1, height1)); //capture the death box area
 
+                // Process the image to keep only the parts you want
+                for (int y = 0; y < image.getHeight(); y++) {
+                    for (int x = 0; x < image.getWidth(); x++) {
+                        int pixel = image.getRGB(x, y);
+                        int grayValue = (pixel >> 16) & 0xff; // Extract the red component as the grayscale value
+                        int newPixel = (grayValue > threshold) ? pixel : 0; // Set black for unwanted parts
+                        image.setRGB(x, y, newPixel);
+                    }
+                }
+                // Process the image to keep only the parts you want
+                for (int y = 0; y < dead.getHeight(); y++) {
+                    for (int x = 0; x < dead.getWidth(); x++) {
+                        int pixel = dead.getRGB(x, y);
+                        int grayValue = (pixel >> 16) & 0xff; // Extract the red component as the grayscale value
+                        int newPixel = (grayValue > threshold) ? pixel : 0; // Set black for unwanted parts
+                        dead.setRGB(x, y, newPixel);
+                    }
+                }
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 ByteArrayOutputStream byteArrayOutputStream1 = new ByteArrayOutputStream();
-                ImageIO.write(image, "jpg", byteArrayOutputStream);
-                ImageIO.write(dead, "jpg", byteArrayOutputStream1);
+
+                ImageIO.write(image, "png", byteArrayOutputStream);
+                ImageIO.write(dead, "png", byteArrayOutputStream1);
+
+//                debug checking
+//                ImageIO.write(image, "png", new File("weapon_area.png"));
+//                ImageIO.write(dead, "png", new File("dead_area.png"));
 
                 //to byte array
                 byte[] weaponArea = byteArrayOutputStream.toByteArray();
@@ -470,14 +499,6 @@ public class autoMarco1080pAnd1440p {
 //            check if the player is looting a dead chest
             if (imageDetection(_2dead,"dead",false) >= deadConfidence) {
                 this.gun = "Dead";
-                gunMode = 18;
-                switchNow();
-            } else if (imageDetection(_2dead,"dead1",false) >= deadConfidence) {
-                this.gun = "Dead 1";
-                gunMode = 18;
-                switchNow();
-            } else if (imageDetection(_2dead,"dead2",false) >= deadConfidence) {
-                this.gun = "Dead 2";
                 gunMode = 18;
                 switchNow();
             } else if ( imageDetection(_2dead,"blackMarket",false) >= deadConfidence){
@@ -551,10 +572,6 @@ public class autoMarco1080pAnd1440p {
                 this.gun = "C.A.R SMG";
                 gunMode = 20;
                 switchNow();
-            } else if (imageDetection(_1weapon,"car2",false) >= confidence ) {
-                this.gun = "C.A.R SMG";
-                gunMode = 20;
-                switchNow();
             } else if (imageDetection(_1weapon,"g7",false) >= confidence ) {
                 this.gun = "G7 Scout";
                 gunMode = 17;
@@ -580,6 +597,10 @@ public class autoMarco1080pAnd1440p {
             } else if (imageDetection(_1weapon,"wingMan",false) >= confidence){
                 this.gun = "Wingman";
                 gunMode = 12;
+                switchNow();
+            }  else if (imageDetection(_1weapon,"revengGoddess",false) >= confidence){
+                this.gun = "Reveng Goddess";
+                gunMode = 21;
                 switchNow();
             }
 
@@ -612,7 +633,7 @@ public class autoMarco1080pAnd1440p {
     public double imageDetection(Mat _1weapon_2dead_3setting, String checkItem, boolean debugVerbose) {
         try {
             Mat outputImage = new Mat();
-            Mat checkItemMat = Imgcodecs.imread("weapon/" + screenResolution + "/" + checkItem +".jpg");
+            Mat checkItemMat = Imgcodecs.imread("weapon/" + screenResolution + "/" + checkItem +".png");
             Imgproc.matchTemplate(_1weapon_2dead_3setting, checkItemMat, outputImage, machMethod);//
             Core.MinMaxLocResult confidenceValue = Core.minMaxLoc(outputImage);//find the max value and the location of the max value
             if (debugVerbose) {

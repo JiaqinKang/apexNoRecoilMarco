@@ -7,7 +7,7 @@ offset_pattern1= offset_pattern2
 
 a1 = 1
 
-text_bbdate = "2023-02-21"
+text_bbdate = "2023-07-21"
 
 offset_pattern = 2
 
@@ -31,7 +31,7 @@ end
 
 
 
-GunCombination1_1 = {"R99","R301","ZHZ","DN","ZZ","PX","LS","HMLK_DD","P20","M600","Lstar","XBS","RE45","R301DD","PXDD","HWK","G7","CN","BZ","CAR"}
+GunCombination1_1 = {"R99","R301","ZHZ","DN","ZZ","PX","LS","HMLK_DD","P20","M600","Lstar","XBS","RE45","R301DD","PXDD","HWK","G7","CN","BZ","CAR","goddess"}
 
 GunCombination1_2 ={"Y_R99","Y_R301","Y_ZHZ","Y_DN","Y_ZZ","Y_PX","Y_LS","Y_HMLK","Y_P20","Y_M600","Y_Lstar","Y_XBS","Y_RE45"}
 
@@ -172,6 +172,35 @@ CN_offset_trim_list = {
 }
 CN_offset_trim_ratio = {1,1}
 CN_offset_trim_amend = {0,0}
+
+
+goddess_offset_trim_list = {
+
+	{1 ,0,0},					{2 ,0,0},					{3 ,0,0},
+
+	{4 ,0,0},					{5 ,0,0},					{6 ,0,0},
+
+	{7 ,0,0},					{8 ,0,0},					{9 ,0,0},
+
+	{10,0,0},					{11,0,0},					{12,0,0},
+
+	{13,0,0},					{14,0,0},					{15,0,0},
+
+	{16,0,0},					{17,0,0},					{18,0,0},
+
+	{19,0,0},					{20,0,0},					{21,0,0},
+
+	{22,0,0},					{23,0,0},					{24,0,0},
+
+	{25,0,0},					{26,0,0},					{27,0,0},
+
+	{28,0,0},					{29,0,0},					{30,0,0},
+
+	{31,0,0},					{32,0,0}
+
+}
+goddess_offset_trim_ratio = {1,1}
+goddess_offset_trim_amend = {0,0}
 
 
 G7_offset_trim_list = {
@@ -967,7 +996,7 @@ BZ_offset_list = {
 }
 BZ_offset_time = 38
 
-
+-- 暂停压枪
 CN_offset_list = {
 
 	{1 ,0,0,5},					{2 ,0,0,5},					{3 ,0,0,5},
@@ -1012,6 +1041,34 @@ CN_offset_list = {
 
 }
 CN_offset_time = 25
+
+-- 复仇女神
+goddess_offset_list = {
+
+    {1 ,0,0,5},					{2 ,0,0,5},					{3 ,0,0,5},
+
+    {4 ,0,0,5},					{5 ,0,2,5},					{6 ,0,2,5},
+
+    {7 ,0,2,5},					{8 ,0,2,5},					{9 ,0,2,5},
+
+    {10,0,2,5},					{11,0,2,5},					{12,0,2,5},
+
+    {13,0,0,5},					{14,0,2,5},					{15,0,3,5},
+
+    {16,0,3,5},					{17,0,4,5},					{18,0,0,5},
+
+    {19,0,2,5},					{20,0,2,5},					{21,0,2,5},
+
+    {22,0,2,5},					{23,0,2,5},					{24,0,2,5},
+
+    {25,0,0,5},					{26,0,0,5},					{27,0,0,5},
+
+    {28,0,0,5},					{29,0,0,5},					{30,0,0,5},
+
+    {31,0,0,5},					{32,0,0,5}
+
+}
+goddess_offset_time = 25
 
 
 G7_offset_list = {
@@ -2210,6 +2267,9 @@ text_wxtzsj = {230,156,170,229,134,153,232,176,131,230,149,180,230,149,176,230,1
 
 --XBS小扳手
 text_XBS = {87,105,110,103,109,97,110}
+
+--复仇女神
+txt_goddess ={103,111,100,100,101,115,115}
 
 
 
@@ -3695,6 +3755,10 @@ function ToGun(qx1)
 		CN_offset_trim_list = setTbl(CN_offset_trim_list,CN_offset_list,text_PX)
 		return CN_offset_list,CN_offset_time,"CN",text_CN,CN_offset_trim_list,CN_offset_trim_ratio,CN_offset_trim_amend;
 
+	elseif qx1 =="goddess" then
+	    goddess_offset_trim_list = setTbl(goddess_offset_list,goddess_offset_list,text_px)
+	    return goddess_offset_list,goddess_offset_time,"goddess",text_goddess,goddess_offset_trim_list,goddess_offset_trim_ratio,goddess_offset_trim_amend;
+
 	elseif qx1 == "BZ" then
 		BZ_offset_trim_list = setTbl(BZ_offset_trim_list,BZ_offset_list,text_PX)
 		return BZ_offset_list,BZ_offset_time,"BZ",text_BZ,BZ_offset_trim_list,BZ_offset_trim_ratio,BZ_offset_trim_amend;
@@ -3873,6 +3937,9 @@ function Get_GUNtext(gun)
 
 	elseif gun =="XBS" then
 		return text_XBS;
+
+    elseif gun =="goddess" then
+        return text_goddess;
 	end
 
 
