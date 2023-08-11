@@ -1,29 +1,31 @@
+import org.json.JSONObject;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
+import java.net.URL;
+import java.awt.event.KeyEvent;
 
-
-public class autoMarco1080pAnd1440p {
+public class main {
+    String version = "6.0.0";
     int machMethod = Imgproc.TM_CCOEFF_NORMED;
     int gunMode = 18;//marco pause
     int tempGunMode = 0;
     boolean on_or_off = false;
     boolean isMute = true;
-    String gun = "杜绝收费，从你我做起";
+    String gun = "杜绝收费，从你我做起，GitHub点点星星，谢谢";
     File from = new File("Script.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
 
@@ -33,6 +35,7 @@ public class autoMarco1080pAnd1440p {
 
     File havocControl = new File("C:\\Users\\Public\\Downloads\\turbo_state.lua");
 
+    File LianFaControl = new File("C:\\Users\\Public\\Downloads\\LianFa.lua");
     //check  system resolution
     int SystemWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
     int SystemHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -41,8 +44,8 @@ public class autoMarco1080pAnd1440p {
     String language = "中文";
     String screenResolution;
 
-    double deadConfidence = 0.50; //confidence level
-    double confidence = 0.775; //confidence level
+    double deadConfidence = 0.45; //confidence level
+    double confidence = 0.77; //confidence level
 
     int threshold = 200;
 
@@ -65,40 +68,236 @@ public class autoMarco1080pAnd1440p {
 
     Mat _2dead = null;
 
+    String GITHUB_API_URL = "https://api.github.com/repos/JiaqinKang/apexNoRecoilMarco/releases/latest";
+
+    String latestVersion;
+
+    Boolean LianFa = false;
 
 
 
 
-    public autoMarco1080pAnd1440p() {
+    public main() {
+        GitHubReleaseChecker ();
+        checkForUpdates(latestVersion);
+
 
         //scanner config file for gun mode
-        JFrame frame = new JFrame("Apex全自动宏");
+        JFrame frame = new JFrame("Apex全自动宏 "+version);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("icon.jpg").getImage());
-        frame.setSize(500, 350);
+        frame.setSize(450, 500);
         frame.setResizable(false);
         //frame in the center of screen
         frame.setLocationRelativeTo(null);
         JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayout(0, 1));
         frame.add(panel1);
-        //create button
+        //create button and change button font size
         JButton button1 = new JButton("开/关");
-        //change button font size
-        button1.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        button1.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+
         JButton mute = new JButton("开/关提示音");
-        mute.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        mute.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+
         JButton button3 = new JButton("Switch Language");
-        button3.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        button3.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+
         JButton release = new JButton("释放脚本文件到本地");
-        release.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        release.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+
         JButton button4 = new JButton("自动清理内存");
-        button4.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        button4.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+
         JButton aimCross = new JButton("开/关游戏准星");
-        aimCross.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        aimCross.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+
         JButton urlButton = new JButton("GitHub链接");
         String url = "https://github.com/JiaqinKang/apexNoRecoilMarco";
-        urlButton.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        urlButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+
+        JButton LianFaButton = new JButton("开/关自动连发");
+        LianFaButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+
+
+        ////////////////////////
+        JPanel deadConfidencePanel = new JPanel(new GridLayout(1,3));
+
+        JLabel deadvalueLabel = new JLabel("箱/黑市检测(%)"); // Label to display the current value
+        deadvalueLabel.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+        deadvalueLabel.setHorizontalAlignment(JLabel.CENTER);
+        // Create a JTextField for manual input
+        JTextField deadtextField = new JTextField(String.valueOf((int) (deadConfidence*100)));
+        deadtextField.setHorizontalAlignment(JTextField.CENTER);
+        deadtextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c) && c != '.' && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE) {
+                    e.consume(); // Ignore non-numeric characters
+                }
+            }
+        });
+
+        // Add a FocusListener to handle the input limit
+        deadtextField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                double input = Double.parseDouble(deadtextField.getText());
+                if (input > 100.0) {
+                    deadtextField.setText("100"); // Set to 100 if input is greater than 100
+                }
+                if (input <= 0.0) {
+                    deadtextField.setText("0"); // Set to 100 if input is greater than 100
+                }
+            }
+        });
+
+        // deadConfidence slider
+        JSlider deadslider = new JSlider(JSlider.HORIZONTAL, 0, 10000, (int) (deadConfidence*10000)); // Ranging from 0 to 10000 for 0% to 100%
+        deadslider.setMajorTickSpacing(25);
+
+        deadslider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                double sliderValue = deadslider.getValue();
+                double deadConfidenceValue = sliderValue / 100.0; // Convert to a percentage value between 0 and 100
+                if (deadConfidenceValue > 100.0) {
+                    deadConfidenceValue = 100.0; // Cap it at 100
+                }
+
+                sliderValue = (sliderValue/10000.0);
+
+                String formattedValue = String.format("%.2f", sliderValue); // Format the value with two decimal places
+//                System.out.println("formattedValue = " + formattedValue);
+
+                deadConfidence = sliderValue;
+
+                deadtextField.setText(String.valueOf(sliderValue*100)); // Update the text field with the formatted value
+            }
+        });
+
+        // Create the submit button
+        JButton submitButton = new JButton("确定");
+
+        // Add ActionListener to the submit button
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Get the value from the text field and limit it to 100 if necessary
+                    double input = Double.parseDouble(deadtextField.getText());
+                    if (input > 100.0) {
+                        input = 100.0;
+                    }
+
+                    // Update the slider and text field based on the input
+                    int sliderValue = (int) (input * 100);
+                    deadslider.setValue(sliderValue);
+                    deadtextField.setText(String.valueOf(input));
+
+                    // Update deadConfidence value
+                    deadConfidence = input / 100.0;
+                } catch (NumberFormatException ex) {
+                    // Handle invalid input (e.g., non-numeric text)
+                    // You can show an error message or handle it as appropriate for your application
+                }
+            }
+        });
+
+        deadConfidencePanel.add(deadvalueLabel);
+        deadConfidencePanel.add(deadtextField);
+        deadConfidencePanel.add(submitButton);
+
+        JPanel weaponConfidencePanel = new JPanel(new GridLayout(1,3));
+
+        JLabel weaponvalueLabel = new JLabel("武器检测(%)"); // Label to display the current value
+        weaponvalueLabel.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+        weaponvalueLabel.setHorizontalAlignment(JLabel.CENTER);
+
+// Create a JTextField for manual input
+        JTextField weapontextField = new JTextField(String.valueOf((int) (confidence*100)));
+        weapontextField.setHorizontalAlignment(JTextField.CENTER);
+        weapontextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c) && c != '.' && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE) {
+                    e.consume(); // Ignore non-numeric characters
+                }
+            }
+        });
+
+// Add a FocusListener to handle the input limit
+        weapontextField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                double input = Double.parseDouble(weapontextField.getText());
+                if (input > 100.0) {
+                    weapontextField.setText("100"); // Set to 100 if input is greater than 100
+                }
+                if (input <= 0.0) {
+                    weapontextField.setText("0"); // Set to 100 if input is greater than 100
+                }
+            }
+        });
+
+// weaponConfidence slider
+        JSlider weaponslider = new JSlider(JSlider.HORIZONTAL, 0, 10000, (int) (confidence*10000)); // Ranging from 0 to 10000 for 0% to 100%
+        weaponslider.setMajorTickSpacing(25);
+
+        weaponslider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                double sliderValue = weaponslider.getValue();
+                double weaponConfidenceValue = sliderValue / 100.0; // Convert to a percentage value between 0 and 100
+                if (weaponConfidenceValue > 100.0) {
+                    weaponConfidenceValue = 100.0; // Cap it at 100
+                }
+
+                sliderValue = (sliderValue/10000.0);
+
+                String formattedValue = String.format("%.2f", sliderValue); // Format the value with two decimal places
+
+                confidence = sliderValue;
+
+                weapontextField.setText(String.valueOf(sliderValue*100)); // Update the text field with the formatted value
+            }
+        });
+
+// Create the submit button
+        JButton weaponSubmitButton = new JButton("确定");
+
+// Add ActionListener to the submit button
+        weaponSubmitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Get the value from the text field and limit it to 100 if necessary
+                    double input = Double.parseDouble(weapontextField.getText());
+                    if (input > 100.0) {
+                        input = 100.0;
+                    }
+
+                    // Update the slider and text field based on the input
+                    int sliderValue = (int) (input * 100);
+                    weaponslider.setValue(sliderValue);
+                    weapontextField.setText(String.valueOf(input));
+
+                    // Update weaponConfidence value
+                    confidence = input / 100.0;
+                } catch (NumberFormatException ex) {
+                    // Handle invalid input (e.g., non-numeric text)
+                    // You can show an error message or handle it as appropriate for your application
+                }
+            }
+        });
+
+        weaponConfidencePanel.add(weaponvalueLabel);
+        weaponConfidencePanel.add(weapontextField);
+        weaponConfidencePanel.add(weaponSubmitButton);
+
+
 
         //when the program close, delete the script file
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -108,13 +307,14 @@ public class autoMarco1080pAnd1440p {
                 control.delete();
                 thermiteControl.delete();
                 havocControl.delete();
+                LianFaControl.delete();
             }
         });
 
 
         //current gun
         JLabel gun = new JLabel(this.gun);
-        gun.setFont(new Font("微软雅黑", Font.PLAIN, 30));
+        gun.setFont(new Font("微软雅黑", Font.PLAIN, 20));
         gun.setHorizontalAlignment(JLabel.CENTER);
         //change gun colour
         gun.setForeground(Color.blue);
@@ -129,6 +329,12 @@ public class autoMarco1080pAnd1440p {
         panel1.add(aimCross);
         panel1.add(button3);
         panel1.add(release);
+        panel1.add(LianFaButton);
+        panel1.add(deadConfidencePanel);
+        panel1.add(deadslider);
+        panel1.add(weaponConfidencePanel);
+        panel1.add(weaponslider);
+
 
         // add invisible button to change gun mode
         JButton gunMode = new JButton("");
@@ -200,6 +406,8 @@ public class autoMarco1080pAnd1440p {
             }
         });
 
+
+
         button4.addActionListener(e -> {
             // set memoryClean to true
             memoryClean = true;
@@ -237,6 +445,19 @@ public class autoMarco1080pAnd1440p {
             }
         });
 
+        LianFaButton.addActionListener(e -> {
+            // Toggle the Lianfa state
+            LianFa = !LianFa;
+            // Update the button text and color based on the Lianfa state
+            if (LianFa) {
+                write_to_file3(0);
+                LianFaButton.setBackground(Color.RED);
+            } else {
+                write_to_file3(1);
+                LianFaButton.setBackground(Color.GREEN);
+            }
+        });
+
 
         //release script file to local
         try {
@@ -244,12 +465,15 @@ public class autoMarco1080pAnd1440p {
             write_to_file(18); // 123.lua
             write_to_file2(0); // thermite.lua
             write_to_file1(0); // turbo_state.lua
+//            LianFa = 1
+            write_to_file3(1);
             //disable button
             release.setEnabled(false);
             //show message
             //JOptionPane.showMessageDialog(frame, "脚本文件已释放到本地,Script File Released to Local path");
             release.setText("脚本文件OK");
             release.setBackground(Color.green);
+            LianFaButton.setBackground(Color.GREEN);
         } catch (IOException e1) {
             e1.printStackTrace();
             //show message
@@ -261,7 +485,9 @@ public class autoMarco1080pAnd1440p {
             release.setEnabled(false);
             button3.setEnabled(false);
             button4.setEnabled(false);
+            LianFaButton.setEnabled(false);
         }
+
 
         //pop up message when start the program
         JOptionPane.showMessageDialog(frame, """
@@ -269,7 +495,6 @@ public class autoMarco1080pAnd1440p {
                                 
                 操作说明:
                 游戏中鼠标灵敏度为1.6，鼠标加速度关闭，罗技驱动——>指针设置——>报告率改为1000，加速关闭
-                兔子跳 设置下蹲键为 l，此功能关闭太鸡肋，要开启的自己修改Script.lua
                 关闭游戏内的鼠标速度！！！！！！！！！！！
                 Numlock小键盘锁开关宏,支持腰射和开镜压枪
                 p2020 全自动开枪需要设置第二开枪键为p键，只支持lgs
@@ -336,13 +561,13 @@ public class autoMarco1080pAnd1440p {
             System.out.println("1600p x 2560p");
             x1 = (100);
             y1 = (100);
-            width1 = (int)(SystemWidth/ 7);
+            width1 = (int)(SystemWidth/ 5);
             height1 = (int) (SystemHeight /6);
         } else {
             System.out.println("其他分辨率/1080p");
             x1 = (100);
             y1 = (100);
-            width1 = (int)(SystemWidth/ 7);
+            width1 = (int)(SystemWidth/ 5);
             height1 = (int) (SystemHeight /6);
         }
 
@@ -361,8 +586,21 @@ public class autoMarco1080pAnd1440p {
 
         System.out.println(SystemWidth + " " + SystemHeight);
 
+//      future function with scrolled detection, disabled for now
+//        // Create a consumer to handle the scroll direction detection
+//        Consumer<Boolean> scrollConsumer = isScrollingUp -> {
+//            if (isScrollingUp) {
+//                System.out.println("Scrolled Up");
+//            } else {
+//                System.out.println("Scrolled Down");
+//            }
+//        };
+//        // Attach the mouse scroll listener to the panel
+//        addMouseScrollListener(panel1, scrollConsumer);
+
 
         while (true) {
+
             if (on_or_off) {
                 try {
                     scan();
@@ -373,6 +611,7 @@ public class autoMarco1080pAnd1440p {
         }
 
     }
+
 
 
     private void write_to_file(int i) {
@@ -415,6 +654,23 @@ public class autoMarco1080pAnd1440p {
         String file_name = "turbo_state.lua";
         String file_path = path + file_name;
         String file_content = "turbo_state = " + i;
+        File file = new File(file_path);
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(file_content);
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void write_to_file3(int i ){
+        //write lua file to C:\Users\Public\Downloads
+        String path = "C:\\Users\\Public\\Downloads\\";
+        String file_name = "LianFa.lua";
+        String file_path = path + file_name;
+        String file_content = "LianFa = " + i;
         File file = new File(file_path);
         try {
             FileWriter fw = new FileWriter(file);
@@ -615,8 +871,11 @@ public class autoMarco1080pAnd1440p {
             }
             if (!on_or_off) { //if the program is closed, break the loop
                 this.gun ="关闭成功";
+                gunMode = 18;
+                switchNow();
                 break; //break the loop
             }
+//            System.out.println(deadConfidence);
         }
     }
 
@@ -701,9 +960,109 @@ public class autoMarco1080pAnd1440p {
         }
     }
 
+//    public static void addMouseScrollListener(Component component, Consumer<Boolean> onScrollDirectionDetected) {
+//        MouseWheelListener listener = new MouseWheelListener() {
+//            @Override
+//            public void mouseWheelMoved(MouseWheelEvent e) {
+//                // If e.getWheelRotation() < 0, it means the mouse wheel was rotated up.
+//                onScrollDirectionDetected.accept(e.getWheelRotation() < 0);
+//            }
+//        };
+//
+//        component.addMouseWheelListener(listener);
+//    }
+
+
+
+    public void GitHubReleaseChecker (){
+            try {
+                URL url = new URL(GITHUB_API_URL);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("Accept", "application/vnd.github.v3+json");
+
+                if (connection.getResponseCode() != 200) {
+                    JOptionPane.showMessageDialog(null, "Cannot connect to GitHub. 无法连接GitHub，请检查网络或者使用魔法.",
+                            "Connection Error", JOptionPane.ERROR_MESSAGE);
+                    throw new RuntimeException("Failed : HTTP error code : " + connection.getResponseCode());
+                }
+
+                BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
+
+                String output;
+                StringBuilder response = new StringBuilder();
+                while ((output = br.readLine()) != null) {
+                    response.append(output);
+                }
+
+                connection.disconnect();
+
+                // 解析JSON以获取最新版本的标签名
+                JSONObject jsonObject = new JSONObject(response.toString());
+                latestVersion = jsonObject.getString("tag_name");
+                System.out.println("Latest Version: " + latestVersion);
+
+            } catch (IOException e) {
+                // Handle the connection issue gracefully
+                System.err.println("Error connecting to GitHub: " + e.getMessage());
+                latestVersion = "Unknown"; // Set a default value indicating unknown version
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    }
+
+    public void checkForUpdates(String latestVersion) {
+        if (isNewerVersion(version, latestVersion)) {
+            int dialogResult = JOptionPane.showConfirmDialog(null,
+                    "A new version is available. Would you like to update?" +
+                            "有新版本要更新吗?",
+                    "Update available", JOptionPane.YES_NO_OPTION);
+            if (dialogResult == JOptionPane.YES_OPTION) { // yes exit the program and open Github
+                openWebpage("https://github.com/JiaqinKang/apexNoRecoilMarco/releases");
+                System.exit(1);
+            }
+//            continue use the old version
+        }
+    }
+
+    private boolean isNewerVersion(String currentVersion, String newVersion) {
+
+        if (latestVersion.equals("Unknown")) {
+            System.err.println("Error connecting to GitHub");
+            System.out.println("Cannot compare versions: Unknown version");
+            JOptionPane.showMessageDialog(null, "Cannot connect to GitHub. 无法连接GitHub，请检查网络或者使用魔法.",
+                    "Connection Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        String[] currentNumbers = currentVersion.split("\\.");
+        String[] newNumbers = newVersion.split("\\.");
+
+        for (int i = 0; i < Math.min(currentNumbers.length, newNumbers.length); i++) {
+            int current = Integer.parseInt(currentNumbers[i]);
+            int newNum = Integer.parseInt(newNumbers[i]);
+            if (newNum > current) {
+                return true;
+            } else if (newNum < current) {
+                return false;
+            }
+        }
+        return newNumbers.length > currentNumbers.length;
+    }
+
+    private void openWebpage(String url) {
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            try {
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     //run the program
     public static void main(String[] args) {
-        new autoMarco1080pAnd1440p();
+        new main();
     }
 
 
