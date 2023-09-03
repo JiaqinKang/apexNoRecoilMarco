@@ -23,13 +23,13 @@ Fully working no recoil with Logitech mouse with Logitech game software & ghub
  - [x] Devotion LMG 专注 （有涡轮/无涡轮）
  - [x] G7 (不推荐安装双发班机)
  - [x] Havoc 哈沃克 （有涡轮/无涡轮）
- - [x] HemLock 赫姆洛克突击步枪 （单点自动连发开枪）
+ - [x] HemLock 赫姆洛克突击步枪 （单点/连发）
  - [x] L-STAR 能量机枪
  - [x] m600 喷火轻机枪
  - [x] p2020 手枪 （自动连发开枪）
  - [x] R301 卡宾枪
  - [x] Rampage LMG 暴走 （有燃烧弹/无燃烧弹）
- - [x] powler Burst PD 猎兽冲锋枪 （自动连发开枪）
+ - [x] powler Burst PD 猎兽冲锋枪 （连发/全自动）
  - [x] RE-45 自动手枪
  - [x] VK 平行步枪
  - [x] Volt SMG 电能冲锋枪
