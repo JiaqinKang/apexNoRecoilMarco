@@ -15,7 +15,8 @@ Fully working no recoil with Logitech mouse with Logitech game software & ghub
  - [x] 4096x2160
  - [ ] 其他未知，我时间有限，能动手的请自己来
  
-![屏幕截图 2023-08-12 081018](https://github.com/JiaqinKang/apexNoRecoilMarco/assets/37282586/0aff66a0-fb83-4a8f-afba-ca1f41221233)
+![捕获](https://github.com/JiaqinKang/apexNoRecoilMarco/assets/37282586/e84d990f-60d9-4d9e-bc0e-369b6bbb47d6)
+
 -----------------------------------------------------------------------------------------------------------------------------------------------
 支持枪：注(自动开枪请按照设置第二开枪P按键)
  - [x] Alternator SMG 转换者
