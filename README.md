@@ -5,6 +5,7 @@ The purpose of my development is for educational purposes. If you use this softw
 Apex 无后座力力脚本
 Fully working no recoil with Logitech mouse with Logitech game software & ghub
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
+![捕获](https://github.com/JiaqinKang/apexNoRecoilMarco/assets/37282586/e84d990f-60d9-4d9e-bc0e-369b6bbb47d6)
 支持分辨率：要求桌面分辨率和游戏内一样且100%缩放率
  - [x] 1920X1080 最稳
  - [x] 2560x1080
@@ -14,9 +15,6 @@ Fully working no recoil with Logitech mouse with Logitech game software & ghub
  - [x] 3840x2160
  - [x] 4096x2160
  - [ ] 其他未知，我时间有限，能动手的请自己来
- 
-![捕获](https://github.com/JiaqinKang/apexNoRecoilMarco/assets/37282586/e84d990f-60d9-4d9e-bc0e-369b6bbb47d6)
-
 -----------------------------------------------------------------------------------------------------------------------------------------------
 支持枪：注(自动开枪请按照设置第二开枪P按键)
  - [x] Alternator SMG 转换者
