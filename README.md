@@ -106,6 +106,7 @@ Envrioment
 
 
 GHUB失灵
+
     安装旧版本ghub（项目里有提供一个版本），以管理员身份启动ghub，实在不行请尝试重新安装GHUB
     
 
