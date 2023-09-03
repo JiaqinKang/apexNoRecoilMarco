@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="opencv-460">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../opencv/build/java/opencv-460.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../java/opencv/build/java/opencv-460.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../opencv/build/java/opencv-460.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../../opencv/build/java/opencv-460.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../java/opencv/build/java/opencv-460.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../java/opencv/build/java/opencv-460.jar!/" />
     </SOURCES>
   </library>
 </component>

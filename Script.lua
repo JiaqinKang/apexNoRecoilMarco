@@ -5,14 +5,20 @@ info = "永久免费，打赏一杯咖啡https://github.com/JiaqinKang/apexNoRec
 
 offset_pattern1= offset_pattern2
 
+-- 1 为鼠标左键
 a1 = 1
 
+shootkey ="p"
+
+isLeftButtonPressed = false
 text_bbdate = "2023-08-12"
 
 offset_pattern = 2
 
 -- 兔子跳 鼠标按键设置
 a4 = 0
+
+goddesTime =GetRunningTime()
 
 
 if (l080or2k == 1) then
@@ -27,12 +33,12 @@ end
 
 
 
-GunCombination1_1 = {"R99","R301","ZHZ","DN","ZZ","PX","LS","HMLK_DD","P20","M600","Lstar","XBS","RE45","R301DD","PXDD","HWK","G7","CN","BZ","CAR","goddess"}
+GunCombination1_1 = {"R99","R301","ZHZ","DN","ZZ","PX","LS","HMLK_DD","P20","M600","Lstar","XBS","RE45","R301DD","PXDD","HWK","G7","CN","BZ","CAR","goddess","HMLK","LS_auto"}
 
 GunCombination1_2 ={"Y_R99","Y_R301","Y_ZHZ","Y_DN","Y_ZZ","Y_PX","Y_LS","Y_HMLK","Y_P20","Y_M600","Y_Lstar","Y_XBS","Y_RE45"}
 
 
-squatKey = "l"			--下蹲按键	
+squatKey = "l"			--下蹲按键
 
 
 
@@ -199,6 +205,52 @@ goddess_offset_trim_ratio = {1,1}
 goddess_offset_trim_amend = {0,0}
 
 
+HMLK_offset_trim_list = {
+
+	{1 ,0,0},					{2 ,0,0},					{3 ,0,0},
+
+	{4 ,0,0},					{5 ,0,0},					{6 ,0,0},
+
+	{7 ,0,0},					{8 ,0,0},					{9 ,0,0},
+
+	{10,0,0},
+
+}
+HMLK_offset_trim_ratio = {1,1}
+HMLK_offset_trim_amend = {0,0}
+
+LS_auto_offset_trim_list = {
+
+	{1 ,0,0},					{2 ,0,0},					{3 ,0,0},
+
+	{4 ,0,0},					{5 ,0,0},					{6 ,0,0},
+
+	{7 ,0,0},					{8 ,0,0},					{9 ,0,0},
+
+	{10,0,0},					{11,0,0},					{12,0,0},
+
+	{13,0,0},					{14,0,0},					{15,0,0},
+
+	{16,0,0},					{17,0,0},					{18,0,0},
+
+	{19,0,0},					{20,0,0},					{21,0,0},
+
+	{22,0,0},					{23,0,0},					{24,0,0},
+
+	{25,0,0},					{26,0,0},					{27,0,0},
+
+	{28,0,0},					{29,0,0},					{30,0,0},
+
+	{31,0,0},					{32,0,0},					{33,0,0},
+
+	{34,0,0},					{35,0,0}
+
+}
+LS_auto_offset_trim_ratio = {1,1}
+LS_auto_offset_trim_amend = {0,0}
+
+
+
 G7_offset_trim_list = {
 
 	{1 ,0,0},					{2 ,0,0},					{3 ,0,0},
@@ -230,7 +282,17 @@ PXDD_offset_trim_list = {
 
 	{10,0,0},					{11,0,0},					{12,0,0},
 
-	{13,0,0},					{14,0,0},					{15,0,0}
+	{13,0,0},					{14,0,0},                   {15,0,0},
+
+    {16,0,0},					{17,0,0},					{18,0,0},
+
+    {19,0,0},					{20,0,0},					{21,0,0},
+
+    {22,0,0},					{23,0,0},					{24,0,0},
+
+    {25,0,0},					{26,0,0},					{27,0,0},
+
+    {28,0,0},                   {29,0,0},                   {30,0,0}
 
 }
 PXDD_offset_trim_ratio = {1,1}
@@ -247,7 +309,17 @@ R301DD_offset_trim_list = {
 
 	{10,0,0},					{11,0,0},					{12,0,0},
 
-	{13,0,0},					{14,0,0}
+	{13,0,0},					{14,0,0},                   {15,0,0},
+
+    {16,0,0},					{17,0,0},					{18,0,0},
+
+    {19,0,0},					{20,0,0},					{21,0,0},
+
+    {22,0,0},					{23,0,0},					{24,0,0},
+
+    {25,0,0},					{26,0,0},					{27,0,0},
+
+    {28,0,0}
 
 }
 R301DD_offset_trim_ratio = {1,1}
@@ -1041,31 +1113,76 @@ CN_offset_time = 25
 -- 复仇女神
 goddess_offset_list = {
 
-    {1 ,0,0,5},					{2 ,0,0,5},					{3 ,0,0,5},
+    {1 ,-1,2,5},					{2 ,-1,2,5},					{3 ,0,0,5},             {4 ,0,0,5},
 
-    {4 ,0,0,5},					{5 ,0,2,5},					{6 ,0,2,5},
+	{5 ,2,2,5},					{6 ,1,2,5},                  {7 ,0,0,5},			{8 ,0,0,5},
 
-    {7 ,0,2,5},					{8 ,0,2,5},					{9 ,0,2,5},
+	{9 ,1,2,5},                 {10,0,2,5},					{11,0,0,5},				{12,0,0,5},
 
-    {10,0,2,5},					{11,0,2,5},					{12,0,2,5},
+    {13,-2,2,5},				{14,0,2,5},				     {15,0,0,5},            {16,0,0,5},
 
-    {13,0,0,5},					{14,0,2,5},					{15,0,3,5},
+	{17,0,2,5},					{18,0,2,5},                 {19,0,0,5},				{20,0,0,5},
 
-    {16,0,3,5},					{17,0,4,5},					{18,0,0,5},
+	{21,2,2,5},                {22,0,1,5},					{23,0,0,5},				{24,-2,1,5},
 
-    {19,0,2,5},					{20,0,2,5},					{21,0,2,5},
+    {25,0,1,5},					{26,0,0,5},					{27,0,0,5},              {28,0,2,5},
 
-    {22,0,2,5},					{23,0,2,5},					{24,0,2,5},
-
-    {25,0,0,5},					{26,0,0,5},					{27,0,0,5},
-
-    {28,0,0,5},					{29,0,0,5},					{30,0,0,5},
-
-    {31,0,0,5},					{32,0,0,5}
+	{29,0,2,5},					{30,0,0,5},                 {31,0,0,5},				{32,0,0,5}
 
 }
-goddess_offset_time = 25
+goddess_offset_time = 21
+--goddess_offset_time = 17
 
+
+-- 和睦洛克
+HMLK_offset_list = {
+
+
+	{1 ,1,6,8},				{2 ,2,6,8},					{3 ,2,4,10},
+
+	{4 ,2,5,8},				{5 ,-2,4,8},				{6 ,2,3,8},
+
+	{7 ,1,3,8},   			{8 ,-1,3,8},				{9 ,1,3,8},
+
+	{10 ,0,3,8},
+
+}
+HMLK_offset_time = 50
+
+
+LS_auto_offset_list= {
+
+
+
+	{1 ,0,2,9},				{2 ,1,2,9},				{3 ,1,2,9},
+
+	{4 ,0,2,9},					{5 ,1,2,9},					{6 ,1,2,9},
+
+	{7 ,1,2,9},					{8 ,0,1,9},					{9 ,0,2,9},
+
+	{10,0,1,9},					{11,0,1,9},				{12,-2,1,9},
+
+	{13,-1,0,9},				{14,-1,0,9},				{15,-1,0,9},
+
+
+	{16,-1,1,9},				{17,0,2,9},					{18,0,3,9},
+
+	{19,0,2,9},					{20,0,1,9},					{21,0,1,9},
+
+	{22,0,0,9},					{23,0,1,9},					{24,0,1,9},
+
+	{25,-1,1,9},				{26,-1,1,9},				{27,-1,0,9},
+
+	{28,-1,1,9},				{29,0,1,9},					{30,-1,0,9},
+
+
+	{31,0,1,9},					{32,-1,0,9},					{33,0,1,9},
+
+	{34,0,0,9},					{35,0,1,9},
+
+
+}
+LS_auto_offset_time = 8
 
 G7_offset_list = {
 
@@ -1091,42 +1208,43 @@ G7_offset_time = 48
 
 PXDD_offset_list = {
 
-	{1 ,0,4,5},					{2 ,0,6,5},					{3 ,1,4,5},
+	{1 ,0,0,5},					{2 ,0,0,5},					{3 ,0,0,5},
 
-	{4 ,3,5,5},					{5 ,1,5,5},					{6 ,4,5,5},
+	{4 ,0,0,5},					{5 ,0,0,5},					{6 ,0,0,5},
 
-	{7 ,-2,7,5},					{8 ,-2,3,5},					{9 ,-2,5,5},
+	{7 ,0,0,5},					{8 ,0,0,5},					{9 ,0,0,5},
 
-	{10,-1,4,5},					{11,0,7,5},					{12,0,4,5},
+	{10,0,0,5},					{11,0,0,5},					{12,0,0,5},
 
-	{13,5,3,5},					{14,3,3,5},					{15,2,4,5}
+	{13,0,0,5},					{14,0,0,5},					{15,0,0,5},
 
+	{16,0,0,5},					{17,0,0,5},					{18,0,0,5},
+
+	{19,0,0,5},					{20,0,0,5},					{21,0,0,5},
+
+	{22,0,0,5},					{23,0,0,5},					{24,0,0,5},
+
+	{25,0,0,5},					{26,0,0,5},					{27,0,0,5},
+
+	{28,0,0,5},					{29,0,0,5},					{30,0,0,5},
 
 
 }
-PXDD_offset_time = 66
+PXDD_offset_time = 70
 
 
 R301DD_offset_list = {
 
-	{1 ,0,4,5},					{2 ,0,5,5},					{3 ,0,3,5},
-
-
-
-	{4 ,-1,3,5},					{5 ,0,5,5},					{6 ,0,5,5},
-
-
-
-	{7 ,-2,5,5},					{8 ,-1,5,5},					{9 ,0,5,5},
-
-
-
-	{10,2,3,5},					{11,2,3,5},					{12,1,3,5},
-
-
-
-	{13,0,5,5},					{14,0,3,5}
-
+        {1, 0, 5, 5},     {2, 0, 5, 5},     {3, 0, 5, 5},
+        {4, 0, 0, 5},     {5, 0, 0,5},     {6, 0, 0, 5},
+        {7, 0, 0, 5},     {8, 0, 0, 5},     {9, 0, 0, 5},
+        {10, 0, 0, 5},   {11, 0, 0, 5},    {12, 0, 0, 5},
+        {13, 0, 0, 5},   {14, 0, 0, 5},    {15, 0, 0, 5},
+        {16, 0, 0, 5},   {17, 0, 0, 5},    {18, 0, 0, 5},
+        {19, 0, 0, 5},   {20, 0, 0, 5},    {21, 0, 0, 5},
+        {22, 0, 0, 5},   {23, 0, 0, 5},    {24, 0, 0, 5},
+        {25, 0, 0, 5},   {26, 0, 0, 5},    {27, 0, 0, 5},
+        {28, 0, 0, 5}
 
 
 }
@@ -1267,67 +1385,66 @@ R301_offset_list = {
 
 
 
-	{1,-3,6,3},		{2,-1,6,3},		{3,-2,6,3},
+	{1,-2,3,6},		{2,-1,3,6},		{3,-1,3,6},
 
 
 
-	{4,0,5,3},		{5,0,5,3},		{6,0,2,3},
+	{4,0,3,6},		{5,0,2,6},		{6,0,1,6},
 
 
 
-	{7,-1,2,3},		{8,-2,1 ,3},		{9,-3,1,3},
+	{7,-1,1,6},		{8,-1,1 ,6},		{9,-1,1,6},
 
 
 
-	{10,-3,0,3},		{11,-1,2,3},		{12,4,2,3},
+	{10,-2,0,6},		{11,-1,1,6},		{12,2,1,6},
 
 
 
-	{13,3,0,3},		{14,3,1,3},		{15,4,1,3},
+	{13,1,0,6},		{14,2,1,6},		{15,2,1,6},
 
 
 
-	{16,4,1,3},		{17,3,0,3},		{18,-3,1,3},
+	{16,2,1,6},		{17,1,0,6},		{18,-1,1,6},
 
 
 
-	{19,-3,4,3},		{20,-2,0,3},		{21,-2,0,3},
+	{19,-1,2,6},		{20,-1,0,6},		{21,-1,0,6},
 
 
 
-	{22,-3,0,3},		{23,-3,0,3},		{24,-2,-2,3},
+	{22,-1,0,6},		{23,-1,0,6},		{24,-1,-1,6},
 
 
 
-	{25,-1,2,3},		{26,-2,5,3},		{27,-1,4,3},
+	{25,-1,1,6},		{26,-1,2,6},		{27,-1,2,6},
 
 
 
-	{28,0,2,3}
+	{28,0,1,6}
 
 
 
 }
-R301_offset_time = 25
+R301_offset_time = 12
 
 
 R99_offset_list = {
 
 
-
 	{1,-2,8,2},					{2,0,9,2},					{3,0,8,2},
 
-	{4,-2,9,2},					{5,-3,9,2},					{6,-3,9,2},
+	{4,-2,9,2},					{5,-3,10,2},					{6,-3,9,2},
 
-	{7,-3,9,2},					{8,-3,9,2},					{9,0,9,2},
+	{7,-3,9,2},					{8,-3,10,2},					{9,0,9,2},
 
 	{10,3,8,2},					{11,3,8,2},					{12,3,7,2},
 
-	{13,3,6,2},					{14,0,5,2},					{15,-3,4,2},
+	{13,3,6,2},					{14,0,6,2},					{15,-3,4,2},
 
-	{16,-3,3,2},					{17,0,3,2},					{18,3,1,2},
+	{16,-3,4,2},					{17,0,3,2},					{18,3,2,2},
 
-	{19,3,1,2},					{20,4,2,2},					{21,3,0,2},
+	{19,3,2,2},					{20,4,2,2},					{21,3,1,2},
 
 	{22,3,1,2},					{23,3,2,2},					{24,-3,0,2},
 
@@ -1371,48 +1488,48 @@ PX_offset_list = {
 
 
 
-	{1 ,3,11,3},				{2 ,1,5,3},				{3 ,6,8,3},
+	{1 ,2,5,6},				{2 ,1,2,6},				{3 ,3,4,6},
 
 
 
-	{4 ,6,5,3},				{5 ,4,6,3},				{6 ,-3,6,3},
+	{4 ,2,2,6},				{5 ,2,3,6},				{6 ,-1,3,6},
 
 
 
-	{7 ,-3,1,3},				{8 ,-3,-4,3},			{9 ,-3,0,3},
+	{7 ,-1,0,6},				{8 ,-1,-2,6},			{9 ,-1,0,6},
 
 
 
-	{10,-3,2,3},				{11,-1,4,3},				{12,3,2,3},
+	{10,-2,1,6},				{11,-1,2,6},				{12,2,1,6},
 
 
 
-	{13,5,2,3},				{14,4,0,3},				{15,4,0,3},
+	{13,2,1,6},				{14,2,0,6},				{15,2,0,6},
 
 
 
-	{16,3,1,3},				{17,-1,4,3},				{18,4,5,3},
+	{16,1,1,6},				{17,0,2,6},				{18,2,3,6},
 
 
 
-	{19,3,3,3},				{20,3,0,3},				{21,3,3,3},
+	{19,2,2,6},				{20,1,0,6},				{21,1,1,6},
 
 
 
-	{22,-4,4,3},				{23,-5,1,3},				{24,-5,2,3},
+	{22,-2,2,6},				{23,-2,1,6},				{24,-3,1,6},
 
 
 
-	{25,-4,0,3},				{26,-3,2,3},				{27,-5,-2,3},
+	{25,-2,0,6},				{26,-2,1,6},				{27,-3,-1,6},
 
 
 
-	{28,-3,2,3},				{29,-4,3,3},				{30,0,0,3}
+	{28,-1,1,6},				{29,-2,2,6},				{30,0,0,6}
 
 
 
 }
-PX_offset_time = 32
+PX_offset_time = 16
 
 
 LS_offset_list = {
@@ -1475,34 +1592,34 @@ HWK_offset_list = {
 
 
 
-	{1 ,-5,12,3},				{2 ,-4,11,3},				{3 ,-2,9,3},
+	{1 ,-2,4,9},				{2 ,-1,4,9},				{3 ,-1,3,9},
 
-	{4 ,1,8,3},					{5 ,0,5,3},					{6 ,2,5,3},
+	{4 ,0,3,9},					{5 ,0,2,9},					{6 ,1,2,9},
 
-	{7 ,2,5,3},					{8 ,2,5,3},					{9 ,2,5,3},
+	{7 ,1,2,9},					{8 ,1,1,9},					{9 ,1,2,9},
 
-	{10,-1,4,3},					{11,-3,4,3},					{12,-5,3,3},
+	{10,0,1,9},					{11,-1,1,9},				{12,-2,1,9},
 
-	{13,-5,-3,3},				{14,-3,-1,3},				{15,-3,4,3},
+	{13,-2,0,9},				{14,-1,0,9},				{15,-1,0,9},
 
-	{16,-1,4,3},					{17,5,2,3},					{18,5,2,3},
+	{16,0,1,9},					{17,2,1,9},					{18,2,2,9},
 
-	{19,3,2,3},					{20,3,3,3},					{21,2,4,3},
+	{19,1,1,9},					{20,1,1,9},					{21,1,1,9},
 
-	{22,2,5,3},					{23,1,5,3},					{24,2,5,3},
+	{22,1,2,9},					{23,0,2,9},					{24,1,2,9},
 
-	{25,2,4,3},					{26,3,4,3},					{27,3,4,3},
+	{25,1,1,9},					{26,1,1,9},					{27,1,1,9},
 
-	{28,3,5,3},					{29,2,4,3},					{30,1,5,3},
+	{28,1,2,9},					{29,1,1,9},					{30,0,2,9},
 
-	{31,2,4,3},					{32,1,4,3},					{33,1,5,3},
+	{31,1,2,9},					{32,0,2,9},					{33,0,2,9},
 
-	{34,0,6,3},					{35,0,6,3},					{36,0,3,3}
+	{34,0,2,9},					{35,0,2,9},					{36,0,1,9}
 
 
 
 }
-HWK_offset_time = 30
+HWK_offset_time = 10
 
 
 ZZ_offset_list = {
@@ -2219,6 +2336,11 @@ text_XBS = {87,105,110,103,109,97,110}
 --复仇女神
 text_goddess ={103,111,100,100,101,115,115}
 
+--和睦洛克
+text_HMLK = {72,77,76,75}
+
+--猎兽全自动
+text_LS_auto = {231,140,142,229,133,189,229,134,178,233,148,139,230,158,170}
 
 
 
@@ -2331,22 +2453,20 @@ text_baocun = {228,191,157,229,173,152}
 text_wqpz = {230,173,166,229,153,168,233,133,141,231,189,174,227,128,130}
 
 
--- 如果连发 =1 开启连发猎兽
-if(LianFa == 1)then
 
-	LS_offset_list = LS_LF
 
-	LS_offset_time = LS_LF_time
+LS_offset_list = LS_LF
 
-	LS_offset_trim_list = LS_LF_offset_trim_list
+LS_offset_time = LS_LF_time
 
-	Y_LS_offset_list = Y_LS_LF
+LS_offset_trim_list = LS_LF_offset_trim_list
 
-	Y_LS_offset_time = LS_LF_time
+Y_LS_offset_list = Y_LS_LF
 
-	Y_LS_offset_trim_list = LS_LF_offset_trim_list
+Y_LS_offset_time = LS_LF_time
 
-end
+Y_LS_offset_trim_list = LS_LF_offset_trim_list
+
 
 
 
@@ -2365,6 +2485,9 @@ local offset_list1_1,offset_time1_1,offset_state1_1,text_offset1_1,offset_trim_l
 
 
 function OnEvent(event, arg)
+    if isLeftButtonPressed then
+	    return
+    end
 
 
 
@@ -2381,6 +2504,9 @@ function OnEvent(event, arg)
 
 
 	if (event == "PROFILE_ACTIVATED") then
+	    if isLeftButtonPressed then
+    	    return
+        end
 
 
 
@@ -2500,6 +2626,7 @@ function OnEvent(event, arg)
 
 		wl = wwl
 -- 	    读取以及检测枪械状态
+
 		dofile("C:/Users/Public/Downloads/main.lua")
 		dofile("C:/Users/Public/Downloads/LianFa.lua")
 		dofile("C:/Users/Public/Downloads/thermite.lua")
@@ -2533,6 +2660,10 @@ function OnEvent(event, arg)
 
 	-- 开镜开枪
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == a1) then
+	    if isLeftButtonPressed then
+	        OutputLogMessage("scope already on,exit\n")
+    	    return
+        end
 -- 	    读取以及检测枪械状态
 		dofile("C:/Users/Public/Downloads/main.lua")
 		dofile("C:/Users/Public/Downloads/LianFa.lua")
@@ -2661,7 +2792,23 @@ function OnEvent(event, arg)
 
 					guntogo(qx1_1)
 
-				end
+				elseif( qx1_1 == "HMLK") then
+
+
+
+                	qx1_1 = GunCombination1_1[22]
+
+
+
+                    guntogo(qx1_1)
+
+
+
+
+
+
+
+                end
 
 
 			end
@@ -2689,8 +2836,15 @@ function OnEvent(event, arg)
 
 -- 腰射
 		if (event == "MOUSE_BUTTON_PRESSED" and arg == a1) then
+		    if isLeftButtonPressed then
+		        OutputLogMessage("no scope already on,exit\n")
+        	    return
+            end
 
 			if (offset_pattern == 2 and IsMouseButtonPressed(3)) then
+			    if isLeftButtonPressed then
+            	    return
+                end
 
 				kg = 2
 
@@ -2797,6 +2951,15 @@ function OnEvent(event, arg)
 
 					guntogo(qx1_1)
 
+				elseif( qx1_1 == "HMLK") then
+
+                    qx1_1 = GunCombination1_1[22]
+
+                    guntogo(qx1_1)
+
+
+
+
 
 
 				end
@@ -2824,6 +2987,9 @@ function OnEvent(event, arg)
 			ClearLog()
 
 			if(event == "MOUSE_BUTTON_PRESSED" and IsModifierPressed(keybb) and LSKG == 1)then
+			    if isLeftButtonPressed then
+            	    return
+                end
 				-- 暂停压枪 滋崩
 				qx1_1 = GunCombination1_1[18]
 
@@ -2885,7 +3051,7 @@ function OnEvent(event, arg)
 
 
 
-			click()
+            if not isLeftButtonPressed then click() end
 
 
 
@@ -2906,7 +3072,9 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_RELEASED" and arg == a1) then
-
+	    if isLeftButtonPressed then
+    	    return
+        end
 
 
 		clickpd = 0
@@ -2941,6 +3109,9 @@ function OnEvent(event, arg)
 -- 一键换甲，目测1080p
 
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == Change_KEY) then
+	    if isLeftButtonPressed then
+    	    return
+        end
 
 
 
@@ -2983,6 +3154,9 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == a4) then
+	    if isLeftButtonPressed then
+    	    return
+        end
 
 
 
@@ -3019,6 +3193,9 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_RELEASED" and arg == a4) then
+	    if isLeftButtonPressed then
+    	    return
+        end
 
 
 
@@ -3031,6 +3208,9 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == a100) then
+	    if isLeftButtonPressed then
+    	    return
+        end
 
 
 
@@ -3051,6 +3231,9 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_RELEASED" and arg == a100) then
+	    if isLeftButtonPressed then
+    	    return
+        end
 
 
 
@@ -3063,6 +3246,9 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == a101) then
+	    if isLeftButtonPressed then
+    	    return
+        end
 
 
 
@@ -3083,6 +3269,9 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_RELEASED" and arg == a101) then
+	    if isLeftButtonPressed then
+    	    return
+        end
 
 
 
@@ -3095,6 +3284,9 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == a103) then
+	    if isLeftButtonPressed then
+    	    return
+        end
 
 
 
@@ -3123,6 +3315,10 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == a105) then
+        if isLeftButtonPressed then
+            return
+        end
+
 
 
 
@@ -3198,7 +3394,7 @@ function OnEvent(event, arg)
 
 
 
-		click()
+		if not isLeftButtonPressed then click() end
 
 
 
@@ -3518,9 +3714,11 @@ end
 
 
 
-function click()
-
-
+function click()--连点器
+    if isLeftButtonPressed then
+	    return
+    end
+    isLeftButtonPressed = true  -- Set the flag to indicate that click() is in progress
 
 	local ismouse = true
 
@@ -3528,48 +3726,60 @@ function click()
 
 	local aa1 = Toarg(a1)
 
+	if (qx1_1 == "goddess"  ) then
 
 
-	repeat
-
-		dofile("C:/Users/Public/Downloads/LianFa.lua")
-
-		if(ij<=listLen) then
-
-			dofile("C:/Users/Public/Downloads/LianFa.lua")
-
-			if((LianFa == 1 and offset_state == "P20" )or (LianFa == 1 and offset_state == "Y_P20" )or (LianFa == 1 and offset_state == "HMLK_DD" )or (LianFa == 1 and offset_state == "XBS" )or (LianFa == 1 and offset_state == "Y_XBS" )or (LianFa == 1 and offset_state == "R301DD" )or (LianFa == 1 and offset_state == "PXDD" )or (LianFa == 1 and offset_state == "G7" )or (LianFa == 1 and (offset_state == "LS" or offset_state == "Y_LS"))) then PressAndReleaseMouseButton(1) end
-			offset = offset_list[ij];
-			for var_i=1,offset[4] do
-				Sleep(offset_time)
-				MoveMouseRelative(offset[2], offset[3])
-			end
-
-			if (clickpd==1 and Logitech == "LGS") then SetMKeyState(2) end
-			OutputLogMessage(ToUTF8(text_di)..ij..ToUTF8(text_qiang).."\n")
-
-			ij = ij + 1
-
-			if (ij>21 and (offset_state == "Lstar" or offset_state == "Y_Lstar") and Lstar_KEY[2] == 1)then
-				PressAndReleaseKey(Lstar_KEY[1])
-				ij =0
-			end
-
-			if offset_state == "LS" or offset_state == "Y_LS" then Sleep(280)end
+        if (GetRunningTime()- goddesTime > 7900 ) then
+            goddess_offset_time=21
+        end
+        date=GetRunningTime()
+    end--复仇女神双射速的情况
 
 
+    repeat
 
-		else
-			ij = listLen
-		end
+        if(ij<=listLen) then
+
+            if(offset_state == "P20" or offset_state == "Y_P20" or offset_state == "HMLK_DD" or offset_state == "XBS" or offset_state == "Y_XBS" or offset_state == "R301DD" or offset_state == "PXDD" or offset_state == "G7" or offset_state == "HMLK" or offset_state == "LS" or offset_state == "Y_LS") then
+                PressAndReleaseMouseButton(1)
+            end
+
+            offset = offset_list[ij];
+
+            for var_i=1,offset[4] do
+                Sleep(offset_time)
+                MoveMouseRelative(offset[2], offset[3])
+                if not isLeftButtonPressed then return end
+            end
 
 
+            if (clickpd==1 and Logitech == "LGS") then SetMKeyState(2) end
+            OutputLogMessage(ToUTF8(text_di)..ij..ToUTF8(text_qiang).."\n")
 
-		if(aa1 <= 5) and Logitech == "GHUB" then ismouse = IsMouseButtonPressed(aa1) end
+            ij = ij + 1
+
+            if (ij>21 and (offset_state == "Lstar" or offset_state == "Y_Lstar") and Lstar_KEY[2] == 1)then
+                PressAndReleaseKey(Lstar_KEY[1])
+                ij =0
+            end
+
+            if offset_state == "LS" or offset_state == "Y_LS" then Sleep(280) end
+
+        else
+            ij = listLen
+        end
 
 
+        if(aa1 <= 5) and Logitech == "GHUB" then
+            ismouse = IsMouseButtonPressed(aa1)
+        end
 
-	until not ismouse or Logitech ~= "GHUB"
+        if (qx1_1 == "goddess" and goddess_offset_time==21 and GetRunningTime()-date> 2500) then
+            goddess_offset_time=17
+        end
+
+        isLeftButtonPressed = false  -- Clear the flag after click() is completed
+    until not ismouse or Logitech ~= "GHUB"
 
 
 
@@ -3687,25 +3897,31 @@ function ToGun(qx1)
 		return PXDD_offset_list,PXDD_offset_time,"PXDD",text_PX,PXDD_offset_trim_list,PXDD_offset_trim_ratio,PXDD_offset_trim_amend;
 
 	elseif qx1 == "G7" then
-		G7_offset_trim_list = setTbl(G7_offset_trim_list,G7_offset_list,text_PX)
+		G7_offset_trim_list = setTbl(G7_offset_trim_list,G7_offset_list,text_G7)
 		return G7_offset_list,G7_offset_time,"G7",text_G7,G7_offset_trim_list,G7_offset_trim_ratio,G7_offset_trim_amend;
 
 	elseif qx1 == "CN" then
-		CN_offset_trim_list = setTbl(CN_offset_trim_list,CN_offset_list,text_PX)
+		CN_offset_trim_list = setTbl(CN_offset_trim_list,CN_offset_list,text_CN)
 		return CN_offset_list,CN_offset_time,"CN",text_CN,CN_offset_trim_list,CN_offset_trim_ratio,CN_offset_trim_amend;
 
 	elseif qx1 =="goddess" then
-	    goddess_offset_trim_list = setTbl(goddess_offset_list,goddess_offset_list,text_px)
+	    goddess_offset_trim_list = setTbl(goddess_offset_list,goddess_offset_list,text_goddess)
 	    return goddess_offset_list,goddess_offset_time,"goddess",text_goddess,goddess_offset_trim_list,goddess_offset_trim_ratio,goddess_offset_trim_amend;
+    elseif qx1 == "HMLK" then
+        HMLK_offset_trim_list = setTbl(HMLK_offset_trim_list,HMLK_offset_list,text_HMLK)
+        return HMLK_offset_list,HMLK_offset_time,"HMLK",text_HMLK,HMLK_offset_trim_list,HMLK_offset_trim_ratio,HMLK_offset_trim_amend;
 
 	elseif qx1 == "BZ" then
-		BZ_offset_trim_list = setTbl(BZ_offset_trim_list,BZ_offset_list,text_PX)
+		BZ_offset_trim_list = setTbl(BZ_offset_trim_list,BZ_offset_list,text_BZ)
 		return BZ_offset_list,BZ_offset_time,"BZ",text_BZ,BZ_offset_trim_list,BZ_offset_trim_ratio,BZ_offset_trim_amend;
 
 	elseif qx1 == "CAR" then
 		CAR_offset_trim_list = setTbl(CAR_offset_trim_list,CAR_offset_list,text_CAR)
 		return CAR_offset_list,CAR_offset_time,"CAR",text_CAR,CAR_offset_trim_list,CAR_offset_trim_ratio,CAR_offset_trim_amend;
 
+    elseif qx1 == "LS_auto" then
+        LS_auto_offset_trim_list = setTbl(LS_auto_offset_trim_list,LS_auto_offset_list,text_LS_auto)
+        return LS_auto_offset_list,LS_auto_offset_time,"LS_auto",text_LS_auto,LS_auto_offset_trim_list,LS_auto_offset_trim_ratio,LS_auto_offset_trim_amend;
 	else
 		a1,a2,a3,a4,a5,a6,a100 = 100
 		OutputLogMessage(ToUTF8(text_qxpz).." ( "..qx1.." ) ".."\n")
@@ -3875,12 +4091,17 @@ function Get_GUNtext(gun)
 
 
 	elseif gun =="XBS" then
+
 		return text_XBS;
 
     elseif gun =="goddess" then
-        return text_goddess;
-	end
 
+        return text_goddess;
+
+	elseif gun =="HMLK" then
+
+        return text_HMLK;
+    end
 
 
 end

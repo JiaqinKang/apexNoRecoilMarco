@@ -1,3 +1,3 @@
 @echo off
-java -jar "apex6.0.0.jar"
+java -jar "apex6.5.0.jar"
 exit

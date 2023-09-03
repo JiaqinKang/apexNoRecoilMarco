@@ -19,7 +19,7 @@ import java.net.URL;
 import java.awt.event.KeyEvent;
 
 public class main {
-    String version = "6.0.0";
+    String version = "6.5.0";
     int machMethod = Imgproc.TM_CCOEFF_NORMED;
     int gunMode = 18;//marco pause
     int tempGunMode = 0;
@@ -72,8 +72,8 @@ public class main {
 
     String latestVersion;
 
-    Boolean LianFa = false;
-
+    Boolean LianFa = true;
+    boolean[] booleanArray = new boolean[23];
 
 
 
@@ -86,13 +86,19 @@ public class main {
         JFrame frame = new JFrame("Apex全自动宏 "+version);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("icon.jpg").getImage());
-        frame.setSize(450, 500);
+        frame.setSize(1200, 500);
         frame.setResizable(false);
         //frame in the center of screen
         frame.setLocationRelativeTo(null);
         JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayout(0, 1));
-        frame.add(panel1);
+
+
+        JPanel wrapper = new JPanel(new GridLayout(1, 2)); // Creating a wrapper panel with 1x2 grid layout
+        wrapper.add(panel1); // This is just a placeholder. Replace this with any other component you want to add in the second column.
+
+        frame.add(wrapper);
+        frame.setVisible(true);
         //create button and change button font size
         JButton button1 = new JButton("开/关");
         button1.setFont(new Font("微软雅黑", Font.PLAIN, 20));
@@ -120,7 +126,118 @@ public class main {
         LianFaButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 
 
-        ////////////////////////
+        //////////////////////////////////////////////////////////////////
+        JPanel gunPanel = new JPanel();
+        gunPanel.setLayout(new GridLayout(0, 3)); // Adjust the grid layout columns as needed
+
+
+
+        String[] gunNames = {
+                "R301 single单点卡宾枪",
+                "R301 卡宾枪",
+                "VK平行步枪",
+
+                "VK single单点平行步枪",
+                "Alternator SMG转换者",
+                "Car",
+
+                "P2020",
+                "Devotion LMG专注",
+                "Havoc哈沃克",
+
+                "G7(不安装双发班机)",
+                "RE-45自动手枪",
+                "L-STAR 能量机枪",
+
+                "Wing Man辅助手枪",
+                "m600 喷火轻机枪",
+                "Rampage LMG暴走",
+
+                "powler Burst PD猎兽冲锋枪",
+                "Volt SMG电能冲锋枪",
+                "R99冲锋枪",
+
+                "HemLock Single单点赫姆洛克",
+                "RevengGoddess复仇女神",
+                "Prowler Burst PDW_auto猎兽全自动",
+
+                "HemLock赫姆洛克 连发",
+        };
+
+        booleanArray[0] = true; // r301_single
+        booleanArray[1] = true; // r301
+        booleanArray[2] = true; // vk
+
+        booleanArray[3] = true; // vk_single
+        booleanArray[4] = true; // alternator
+        booleanArray[5] = true; // car
+
+        booleanArray[6] = true; // p2020
+        booleanArray[7] = true; // devotion
+        booleanArray[8] = true; // havoc
+
+        booleanArray[9] = true; // g7
+        booleanArray[10] = true; // re45
+        booleanArray[11] = true; // lstar
+
+        booleanArray[12] = true; // wingman
+        booleanArray[13] = true; // m600
+        booleanArray[14] = true; // rampage
+
+        booleanArray[15] = true; // prowler
+        booleanArray[16] = true; // volt
+        booleanArray[17] = true; // r99
+
+        booleanArray[18] = true; // hemlock_single
+        booleanArray[19] = true; // revengeGoddess
+        booleanArray[20] = true; // prowlerBurstPDW_auto
+
+        booleanArray[21] = true; // prowlerBurstPDW_burst
+
+        booleanArray[22] = true; // hemlock——burst
+
+
+//        create button for each gun
+        JButton[] gunButtons = new JButton[gunNames.length];
+
+//        use for each to create gunbuttons
+        for (int i = 0; i < gunNames.length; i++) {
+            int temp = i;
+            gunButtons[i] = new JButton(gunNames[i]);
+            gunButtons[i].setFont(new Font("微软雅黑", Font.PLAIN, 14));
+            gunButtons[i].setOpaque(true);
+            gunButtons[i].setBorder(BorderFactory.createLineBorder(Color.black));
+            gunButtons[i].setBackground(Color.GREEN);
+
+
+            final int index = i; // Need a final variable for lambda expression
+            gunButtons[i].addActionListener(e -> {
+                if (!booleanArray[temp]){
+                    booleanArray[temp] = true;
+                    gunButtons[temp].setBackground(Color.GREEN);
+                } else {
+                    booleanArray[temp] = false;
+                    gunButtons[index].setBackground(Color.red);
+
+                }
+            });
+            // Add the button to the panel
+            gunPanel.add(gunButtons[i]);
+        }
+
+
+
+
+
+
+
+//        System.out.println(gunButtons[1]);
+
+
+
+        wrapper.add(gunPanel); // Add the gunPanel to the wrapper panel
+
+        /////////////////////////////////////////////////////////////////
         JPanel deadConfidencePanel = new JPanel(new GridLayout(1,3));
 
         JLabel deadvalueLabel = new JLabel("箱/黑市检测(%)"); // Label to display the current value
@@ -446,16 +563,19 @@ public class main {
         });
 
         LianFaButton.addActionListener(e -> {
-            // Toggle the Lianfa state
-            LianFa = !LianFa;
-            // Update the button text and color based on the Lianfa state
-            if (LianFa) {
-                write_to_file3(0);
-                LianFaButton.setBackground(Color.RED);
-            } else {
-                write_to_file3(1);
-                LianFaButton.setBackground(Color.GREEN);
-            }
+//           disable the button
+            write_to_file3(1);
+            LianFaButton.setEnabled(false);
+//            // Toggle the Lianfa state
+//            LianFa = !LianFa;
+//            // Update the button text and color based on the Lianfa state
+//            if (LianFa) {
+//                write_to_file3(0);
+//                LianFaButton.setBackground(Color.RED);
+//            } else {
+//                write_to_file3(1);
+//                LianFaButton.setBackground(Color.GREEN);
+//            }
         });
 
 
@@ -474,6 +594,7 @@ public class main {
             release.setText("脚本文件OK");
             release.setBackground(Color.green);
             LianFaButton.setBackground(Color.GREEN);
+            LianFaButton.setEnabled(false);
         } catch (IOException e1) {
             e1.printStackTrace();
             //show message
@@ -506,10 +627,17 @@ public class main {
             if (on_or_off) {
                 on_or_off = false;
                 button1.setBackground(Color.RED);
+                for (int i = 0; i < gunButtons.length; i++) {
+                    gunButtons[i].setEnabled(true);
+                }
                 System.out.println("close");
             } else {
                 on_or_off = true;
                 button1.setBackground(Color.GREEN);
+//              disable all gun buttons
+                for (int i = 0; i < gunButtons.length; i++) {
+                    gunButtons[i].setEnabled(false);
+                }
                 System.out.println("open");
             }
         });
@@ -541,7 +669,7 @@ public class main {
         y = (int) (SystemHeight *0.85);
         height = (int) (SystemHeight-y);
         width = (int) (SystemWidth -x);
-        System.out.println(x + " " + y + " " + width + " " + height);
+//        System.out.println(x + " " + y + " " + width + " " + height);
 
         // Black market or dead detection
         if (SystemWidth == 3440 && SystemHeight == 1440) {
@@ -584,7 +712,7 @@ public class main {
             System.out.println("Numlock is now turn on");
         }
 
-        System.out.println(SystemWidth + " " + SystemHeight);
+//        System.out.println(SystemWidth + " " + SystemHeight);
 
 //      future function with scrolled detection, disabled for now
 //        // Create a consumer to handle the scroll direction detection
@@ -694,6 +822,36 @@ public class main {
     }
 
     private void scan() throws AWTException {
+        boolean r301_single = booleanArray[0];
+        boolean r301 = booleanArray[1];
+        boolean vk = booleanArray[2];
+
+        boolean vk_single = booleanArray[3];
+        boolean alternator = booleanArray[4];
+        boolean car = booleanArray[5];
+
+        boolean p2020 = booleanArray[6];
+        boolean devotion = booleanArray[7];
+        boolean havoc = booleanArray[8];
+
+        boolean g7 = booleanArray[9];
+        boolean re45 = booleanArray[10];
+        boolean lstar = booleanArray[11];
+
+        boolean wingman = booleanArray[12];
+        boolean m600 = booleanArray[13];
+        boolean rampage = booleanArray[14];
+
+        boolean prowler = booleanArray[15];
+        boolean volt = booleanArray[16];
+        boolean r99 = booleanArray[17];
+
+        boolean hemlock_single = booleanArray[18];
+        boolean revengeGoddess = booleanArray[19];
+        boolean prowlerBurstPDW_auto = booleanArray[20];
+
+        boolean prowlerBurstPDW_burst = booleanArray[21];
+        boolean hemlock = booleanArray[22];
 
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
@@ -761,35 +919,48 @@ public class main {
                 this.gun = "Black Market";
                 gunMode = 18;
                 switchNow();
-            } else if (imageDetection(_1weapon,"r99",false) >= confidence) {
+            } else if (imageDetection(_1weapon,"r99",false) >= confidence && r99) {
                 this.gun = "R-99 SMG";
                 gunMode = 1;
                 switchNow();
             } else if (imageDetection(_1weapon,"r301",false) >= confidence) {
-                this.gun = "R-301 Carbine";
-                gunMode = 2; // 14 点射
-                switchNow();
-            } else if (imageDetection(_1weapon,"alternatorSMG",false) >= confidence ) {
+//                hemlock single same picture as r301
+                if (imageDetection(_1weapon,"hemLockSingle",false) >= confidence && r301_single) {
+                    this.gun = "R-301 Carbine Single";
+                    gunMode = 14;
+                    switchNow();
+                }else if (r301){
+                    this.gun = "R-301 Carbine auto";
+                    gunMode = 2;
+                    switchNow();
+                }
+            } else if (imageDetection(_1weapon,"alternatorSMG",false) >= confidence && alternator) {
                 this.gun = "Alternator SMG";
                 gunMode = 3;
                 switchNow();
-            } else if (imageDetection(_1weapon,"voltSMG",false) >= confidence ) {
+            } else if (imageDetection(_1weapon,"voltSMG",false) >= confidence && volt ) {
                 this.gun = "Volt SMG";
                 gunMode = 4;
                 switchNow();
-            } else if (imageDetection(_1weapon,"m600Spitfire",false) >= confidence) {
+            } else if (imageDetection(_1weapon,"m600Spitfire",false) >= confidence && m600) {
                 this.gun = "M600 Spitfire";
                 gunMode = 10;
                 switchNow();
             } else if (imageDetection(_1weapon, "vk",false) >= confidence ) {
-                this.gun = "VK-47 Flatline";
-                gunMode = 6;
-                switchNow();
-            } else if (imageDetection(_1weapon,"re-45",false) >= confidence ) {
+                if (imageDetection(_1weapon,"hemLockSingle",false) >= confidence && vk_single) {
+                    this.gun = "VK-47 Flatline Single";
+                    gunMode = 15;
+                    switchNow();
+                }else if(vk){
+                    this.gun = "VK-47 Flatline auto";
+                    gunMode = 6;
+                    switchNow();
+                }
+            } else if (imageDetection(_1weapon,"re-45",false) >= confidence && re45) {
                 this.gun = "RE_45 Auto";
                 gunMode = 13;
                 switchNow();
-            } else if (imageDetection(_1weapon,"rampageLMG",false) >= confidence ) {
+            } else if (imageDetection(_1weapon,"rampageLMG",false) >= confidence && rampage) {
                 gunMode = 19;
                 switchNow();
                 if (imageDetection(_1weapon,"thermite",false) >= confidence ) {
@@ -800,11 +971,11 @@ public class main {
                     this.gun = "Rampage LMG";
                     write_to_file2(0);
                 }
-            } else if (imageDetection(_1weapon,"p2020",false) >= confidence ) {
+            } else if (imageDetection(_1weapon,"p2020",false) >= confidence && p2020) {
                 this.gun = "P2020";
                 gunMode = 9;
                 switchNow();
-            } else if (imageDetection(_1weapon,"havoc",false) >= confidence ) {
+            } else if (imageDetection(_1weapon,"havoc",false) >= confidence && havoc) {
                 gunMode = 16;
                 switchNow();
                 if (imageDetection(_1weapon,"turbo",false) >= confidence ) {
@@ -814,47 +985,59 @@ public class main {
                     this.gun = "Havoc Rifle";
                     write_to_file1(0);
                 }
-            } else if (imageDetection(_1weapon,"devotionLMG",false) >= confidence ) {
+            } else if (imageDetection(_1weapon,"devotionLMG",false) >= confidence && devotion ) {
                 gunMode = 5;
                 switchNow();
-                if (imageDetection(_1weapon,"turbo",false) >= confidence ) {
+                if (imageDetection(_1weapon,"turbo",false) >= confidence && devotion) {
                     this.gun = "Devotion LMG + turbocharger";
                     write_to_file1(1);
                 }else {
                     this.gun = "Devotion LMG";
                     write_to_file1(0);
                 }
-            } else if (imageDetection(_1weapon,"car",false) >= confidence ) {
+            } else if (imageDetection(_1weapon,"car",false) >= confidence && car) {
                 this.gun = "C.A.R SMG";
                 gunMode = 20;
                 switchNow();
-            } else if (imageDetection(_1weapon,"g7",false) >= confidence ) {
-                this.gun = "G7 Scout";
-                gunMode = 17;
-                switchNow();
-            } else if (imageDetection(_1weapon,"hemLock",false)>= confidence) {
+            } else if (imageDetection(_1weapon,"g7",false) >= confidence && g7) {
                 if (imageDetection(_1weapon,"hemLockSingle",false) >= confidence ) {
-                    this.gun = "Hemlock + Single";
-                    gunMode = 8;
+                    this.gun = "G7 Scout single";
+                    gunMode = 17;
                     switchNow();
                 }else {
-                    this.gun = "Hemlock + Burst";
+                    this.gun = "G7 Scout";
                     gunMode = 18;
                     switchNow();
                 }
-            } else if (imageDetection(_1weapon,"prowlerBurstPDW",false) >= confidence ) {
-                this.gun = "Prowler Burst PDW";
-                gunMode = 7;
-                switchNow();
-            } else if (imageDetection(_1weapon,"L-Star",false) >= confidence ) {
+            } else if (imageDetection(_1weapon,"hemLock",false)>= confidence && hemlock) {
+                if (imageDetection(_1weapon,"hemLockSingle",false) >= confidence && hemlock_single) {
+                    this.gun = "Hemlock + Single";
+                    gunMode = 8;
+                    switchNow();
+                }else  {
+                    this.gun = "Hemlock + Burst";
+                    gunMode = 22;
+                    switchNow();
+                }
+            } else if (imageDetection(_1weapon,"prowlerBurstPDW",false) >= confidence && prowler) {
+                if (imageDetection(_1weapon,"prowlerBurstPDW_burst",false) >= confidence && prowlerBurstPDW_burst) {
+                    this.gun = "Prowler Burst PDW Burst";
+                    gunMode = 7;
+                    switchNow();
+                }else {
+                    this.gun = "Prowler Burst PDW Auto";
+                    gunMode = 23;
+                    switchNow();
+                }
+            } else if (imageDetection(_1weapon,"L-Star",false) >= confidence && lstar) {
                 this.gun = "L_Star EMG";
                 gunMode = 11;
                 switchNow();
-            } else if (imageDetection(_1weapon,"wingMan",false) >= confidence){
+            } else if (imageDetection(_1weapon,"wingMan",false) >= confidence&& wingman){
                 this.gun = "Wingman";
                 gunMode = 12;
                 switchNow();
-            }  else if (imageDetection(_1weapon,"revengGoddess",false) >= confidence){
+            }  else if (imageDetection(_1weapon,"revengGoddess",false) >= confidence && revengeGoddess){
                 this.gun = "Reveng Goddess";
                 gunMode = 21;
                 switchNow();
@@ -975,40 +1158,40 @@ public class main {
 
 
     public void GitHubReleaseChecker (){
-            try {
-                URL url = new URL(GITHUB_API_URL);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.setRequestProperty("Accept", "application/vnd.github.v3+json");
+        try {
+            URL url = new URL(GITHUB_API_URL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/vnd.github.v3+json");
 
-                if (connection.getResponseCode() != 200) {
-                    JOptionPane.showMessageDialog(null, "Cannot connect to GitHub. 无法连接GitHub，请检查网络或者使用魔法.",
-                            "Connection Error", JOptionPane.ERROR_MESSAGE);
-                    throw new RuntimeException("Failed : HTTP error code : " + connection.getResponseCode());
-                }
-
-                BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-
-                String output;
-                StringBuilder response = new StringBuilder();
-                while ((output = br.readLine()) != null) {
-                    response.append(output);
-                }
-
-                connection.disconnect();
-
-                // 解析JSON以获取最新版本的标签名
-                JSONObject jsonObject = new JSONObject(response.toString());
-                latestVersion = jsonObject.getString("tag_name");
-                System.out.println("Latest Version: " + latestVersion);
-
-            } catch (IOException e) {
-                // Handle the connection issue gracefully
-                System.err.println("Error connecting to GitHub: " + e.getMessage());
-                latestVersion = "Unknown"; // Set a default value indicating unknown version
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (connection.getResponseCode() != 200) {
+                JOptionPane.showMessageDialog(null, "Cannot connect to GitHub. 无法连接GitHub，请检查网络或者使用魔法.",
+                        "Connection Error", JOptionPane.ERROR_MESSAGE);
+                throw new RuntimeException("Failed : HTTP error code : " + connection.getResponseCode());
             }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
+
+            String output;
+            StringBuilder response = new StringBuilder();
+            while ((output = br.readLine()) != null) {
+                response.append(output);
+            }
+
+            connection.disconnect();
+
+            // 解析JSON以获取最新版本的标签名
+            JSONObject jsonObject = new JSONObject(response.toString());
+            latestVersion = jsonObject.getString("tag_name");
+            System.out.println("Latest Version: " + latestVersion);
+
+        } catch (IOException e) {
+            // Handle the connection issue gracefully
+            System.err.println("Error connecting to GitHub: " + e.getMessage());
+            latestVersion = "Unknown"; // Set a default value indicating unknown version
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void checkForUpdates(String latestVersion) {

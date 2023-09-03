@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="apexNoRecoilMarco:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/apexNoRecoilMarco_jar</output-path>
+    <root id="archive" name="apexNoRecoilMarco.jar">
+      <element id="module-output" name="apexNoRecoilMarco" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../../java/jna/jna-platform-jpms-5.13.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../../java/opencv/build/java/opencv-460.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../../java/json/json-20230618.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
