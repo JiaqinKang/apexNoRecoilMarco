@@ -19,7 +19,7 @@ import java.net.URL;
 import java.awt.event.KeyEvent;
 
 public class main {
-    String version = "6.5.0";
+    String version = "6.5.1";
     int machMethod = Imgproc.TM_CCOEFF_NORMED;
     int gunMode = 18;//marco pause
     int tempGunMode = 0;
