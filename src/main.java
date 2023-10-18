@@ -17,9 +17,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class main {
-    String version = "6.5.1";
+    String version = "6.5.5";
     int machMethod = Imgproc.TM_CCOEFF_NORMED;
     int gunMode = 18;//marco pause
     int tempGunMode = 0;
@@ -35,7 +36,6 @@ public class main {
 
     File havocControl = new File("C:\\Users\\Public\\Downloads\\turbo_state.lua");
 
-    File LianFaControl = new File("C:\\Users\\Public\\Downloads\\LianFa.lua");
     //check  system resolution
     int SystemWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
     int SystemHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -72,8 +72,10 @@ public class main {
 
     String latestVersion;
 
-    Boolean LianFa = true;
     boolean[] booleanArray = new boolean[23];
+
+    boolean lgs =false;
+    boolean ghub =false;
 
 
 
@@ -122,7 +124,7 @@ public class main {
         String url = "https://github.com/JiaqinKang/apexNoRecoilMarco";
         urlButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 
-        JButton LianFaButton = new JButton("开/关自动连发");
+        JButton LianFaButton = new JButton("自动连发");
         LianFaButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 
 
@@ -153,7 +155,7 @@ public class main {
                 "m600 喷火轻机枪",
                 "Rampage LMG暴走",
 
-                "powler Burst PD猎兽冲锋枪",
+                "Prowler Burst PDW Burst PD猎兽冲锋枪",
                 "Volt SMG电能冲锋枪",
                 "R99冲锋枪",
 
@@ -184,7 +186,7 @@ public class main {
         booleanArray[13] = true; // m600
         booleanArray[14] = true; // rampage
 
-        booleanArray[15] = true; // prowler
+        booleanArray[15] = true; // prowlerBurstPDW_burst
         booleanArray[16] = true; // volt
         booleanArray[17] = true; // r99
 
@@ -192,9 +194,7 @@ public class main {
         booleanArray[19] = true; // revengeGoddess
         booleanArray[20] = true; // prowlerBurstPDW_auto
 
-        booleanArray[21] = true; // prowlerBurstPDW_burst
-
-        booleanArray[22] = true; // hemlock——burst
+        booleanArray[21] = true; // hemlock——burst
 
 
 //        create button for each gun
@@ -424,7 +424,6 @@ public class main {
                 control.delete();
                 thermiteControl.delete();
                 havocControl.delete();
-                LianFaControl.delete();
             }
         });
 
@@ -563,8 +562,6 @@ public class main {
         });
 
         LianFaButton.addActionListener(e -> {
-//           disable the button
-            write_to_file3(1);
             LianFaButton.setEnabled(false);
 //            // Toggle the Lianfa state
 //            LianFa = !LianFa;
@@ -585,16 +582,12 @@ public class main {
             write_to_file(18); // 123.lua
             write_to_file2(0); // thermite.lua
             write_to_file1(0); // turbo_state.lua
-//            LianFa = 1
-            write_to_file3(1);
             //disable button
             release.setEnabled(false);
             //show message
             //JOptionPane.showMessageDialog(frame, "脚本文件已释放到本地,Script File Released to Local path");
             release.setText("脚本文件OK");
             release.setBackground(Color.green);
-            LianFaButton.setBackground(Color.GREEN);
-            LianFaButton.setEnabled(false);
         } catch (IOException e1) {
             e1.printStackTrace();
             //show message
@@ -606,21 +599,53 @@ public class main {
             release.setEnabled(false);
             button3.setEnabled(false);
             button4.setEnabled(false);
-            LianFaButton.setEnabled(false);
         }
 
 
         //pop up message when start the program
-        JOptionPane.showMessageDialog(frame, """
-                请确保游戏语言设置为中文，否则脚本将无法工作.
-                                
+        String message = """
+                请确保游戏语言设置为中文，否则黑市、死亡将无法暂停压枪.
+                               
                 操作说明:
                 游戏中鼠标灵敏度为1.6，鼠标加速度关闭，罗技驱动——>指针设置——>报告率改为1000，加速关闭
+                可以调整罗技灵驱动里的鼠标移动灵敏度来解决游戏里1.6太慢的问题，这样不会影响到压枪
                 关闭游戏内的鼠标速度！！！！！！！！！！！
                 Numlock小键盘锁开关宏,支持腰射和开镜压枪
-                p2020 全自动开枪需要设置第二开枪键为p键，只支持lgs
-                """
+                连发单点枪只支持lgs，选择ghub会自动无视不支持的枪,如果你不想要连发的枪也可以选择ghub一键关闭所有连发单点枪
+                """;
+        Object[] options = {"LGS", "GHub"};
+
+        int n = JOptionPane.showOptionDialog(
+                frame,
+                message,
+                "Game Settings",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]  // default option
         );
+
+        if (n == JOptionPane.YES_OPTION) {
+            System.out.println("LGS selected");
+            lgs = true;
+            ghub = false;
+        } else if (n == JOptionPane.NO_OPTION) {
+            System.out.println("GHub selected");
+            ghub = true;
+            lgs = false;
+
+            for (int i = 0 ; i < booleanArray.length; i++){
+                if (i%3 == 0){
+                    booleanArray[i] = false;
+                    gunButtons[i].setBackground(Color.red);
+                    gunButtons[i].setEnabled(false);
+                }
+            }
+
+
+
+        }
 
 
         button1.addActionListener(e -> {
@@ -628,6 +653,12 @@ public class main {
                 on_or_off = false;
                 button1.setBackground(Color.RED);
                 for (int i = 0; i < gunButtons.length; i++) {
+//                    if ghub is true then skip 0,3,6,9,12,15,18,21
+                if (ghub){
+                        if (i%3 == 0){
+                            continue;
+                        }
+                    }
                     gunButtons[i].setEnabled(true);
                 }
                 System.out.println("close");
@@ -793,23 +824,6 @@ public class main {
         }
     }
 
-    private void write_to_file3(int i ){
-        //write lua file to C:\Users\Public\Downloads
-        String path = "C:\\Users\\Public\\Downloads\\";
-        String file_name = "LianFa.lua";
-        String file_path = path + file_name;
-        String file_content = "LianFa = " + i;
-        File file = new File(file_path);
-        try {
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(file_content);
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void copyFile(File source, File destination) throws IOException {
         try (InputStream inputStream = new FileInputStream(source);
              OutputStream outputStream = new FileOutputStream(destination)) {
@@ -850,8 +864,7 @@ public class main {
         boolean revengeGoddess = booleanArray[19];
         boolean prowlerBurstPDW_auto = booleanArray[20];
 
-        boolean prowlerBurstPDW_burst = booleanArray[21];
-        boolean hemlock = booleanArray[22];
+        boolean hemlock = booleanArray[21];
 
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
@@ -929,9 +942,13 @@ public class main {
                     this.gun = "R-301 Carbine Single";
                     gunMode = 14;
                     switchNow();
-                }else if (r301){
+                }else if (r301 && imageDetection(_1weapon,"hemLockSingle",false) < confidence){
                     this.gun = "R-301 Carbine auto";
                     gunMode = 2;
+                    switchNow();
+                }else{
+                    this.gun = "R-301 Carbine off";
+                    gunMode = 18;
                     switchNow();
                 }
             } else if (imageDetection(_1weapon,"alternatorSMG",false) >= confidence && alternator) {
@@ -946,14 +963,18 @@ public class main {
                 this.gun = "M600 Spitfire";
                 gunMode = 10;
                 switchNow();
-            } else if (imageDetection(_1weapon, "vk",false) >= confidence ) {
+            } else if (imageDetection(_1weapon, "vk",false) >= confidence && vk) {
                 if (imageDetection(_1weapon,"hemLockSingle",false) >= confidence && vk_single) {
                     this.gun = "VK-47 Flatline Single";
                     gunMode = 15;
                     switchNow();
-                }else if(vk){
+                }else if(vk && imageDetection(_1weapon,"hemLockSingle",false) < confidence){
                     this.gun = "VK-47 Flatline auto";
                     gunMode = 6;
+                    switchNow();
+                }else{
+                    this.gun = "VK-47 Flatline off";
+                    gunMode = 18;
                     switchNow();
                 }
             } else if (imageDetection(_1weapon,"re-45",false) >= confidence && re45) {
@@ -1009,24 +1030,32 @@ public class main {
                     gunMode = 18;
                     switchNow();
                 }
-            } else if (imageDetection(_1weapon,"hemLock",false)>= confidence && hemlock) {
+            } else if (imageDetection(_1weapon,"hemLock",false)>= confidence) {
                 if (imageDetection(_1weapon,"hemLockSingle",false) >= confidence && hemlock_single) {
                     this.gun = "Hemlock + Single";
                     gunMode = 8;
                     switchNow();
-                }else  {
+                }else if (imageDetection(_1weapon,"hemLockSingle",false) < confidence && hemlock){
                     this.gun = "Hemlock + Burst";
                     gunMode = 22;
                     switchNow();
+                }else{
+                    this.gun = "Hemlock off";
+                    gunMode = 18;
+                    switchNow();
                 }
-            } else if (imageDetection(_1weapon,"prowlerBurstPDW",false) >= confidence && prowler) {
-                if (imageDetection(_1weapon,"prowlerBurstPDW_burst",false) >= confidence && prowlerBurstPDW_burst) {
+            } else if (imageDetection(_1weapon,"prowlerBurstPDW",false) >= confidence) {
+                if (imageDetection(_1weapon,"prowlerBurstPDW_burst",false) >= confidence && prowler) {
                     this.gun = "Prowler Burst PDW Burst";
                     gunMode = 7;
                     switchNow();
-                }else {
+                }else if (prowlerBurstPDW_auto && imageDetection(_1weapon,"prowlerBurstPDW_burst",false) < confidence) {
                     this.gun = "Prowler Burst PDW Auto";
                     gunMode = 23;
+                    switchNow();
+                }else{
+                    this.gun = "Prowler Burst PDW off";
+                    gunMode = 18;
                     switchNow();
                 }
             } else if (imageDetection(_1weapon,"L-Star",false) >= confidence && lstar) {

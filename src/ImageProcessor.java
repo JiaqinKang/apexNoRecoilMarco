@@ -51,7 +51,7 @@ public class ImageProcessor {
     }
 
     public static void main(String[] args) {
-        String folderPath = "weapon/2160"; // Replace with the path to your folder containing images
+        String folderPath = "weapon/1080";//replace with the path to your folder containing images
         int thresholdValue = 200; // You can adjust this value to control which parts to keep
 
         processImagesInFolder(folderPath, thresholdValue);

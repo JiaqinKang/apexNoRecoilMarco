@@ -29,7 +29,7 @@ elseif(l080or2k == 2)then
 	location = {{325/2560,883/1440},{325/2560,982/1440},{325/2560,1082/1440},{325/2560,1182/1440}}
 
 end
-
+LianFa = 1 --开启自动连发
 
 
 GunCombination1_1 = {"R99","R301","ZHZ","DN","ZZ","PX","LS","HMLK_DD","P20","M600","Lstar","XBS","RE45","R301DD","PXDD","HWK","G7","CN","BZ","CAR","goddess","HMLK","LS_auto"}
@@ -39,7 +39,21 @@ GunCombination1_2 ={"Y_R99","Y_R301","Y_ZHZ","Y_DN","Y_ZZ","Y_PX","Y_LS","Y_HMLK
 
 squatKey = "l"			--下蹲按键
 
+if(LianFa == 1)then
 
+	LS_offset_list = LS_LF
+
+	LS_offset_time = LS_LF_time
+
+	LS_offset_trim_list = LS_LF_offset_trim_list
+
+	Y_LS_offset_list = Y_LS_LF
+
+	Y_LS_offset_time = LS_LF_time
+
+	Y_LS_offset_trim_list = LS_LF_offset_trim_list
+
+end
 
 
 
@@ -2473,23 +2487,6 @@ local text_datetimeh = {50,50,49,50,48,52,48,48}
 
 
 
-if(LianFa == 1)then
-
-	LS_offset_list = LS_LF
-
-	LS_offset_time = LS_LF_time
-
-	LS_offset_trim_list = LS_LF_offset_trim_list
-
-	Y_LS_offset_list = Y_LS_LF
-
-	Y_LS_offset_time = LS_LF_time
-
-	Y_LS_offset_trim_list = LS_LF_offset_trim_list
-
-end
-
-
 
 if(BZ_LRJ == 1)then
 
@@ -2642,7 +2639,6 @@ function OnEvent(event, arg)
 -- 	    读取以及检测枪械状态
 
 		dofile("C:/Users/Public/Downloads/main.lua")
-		dofile("C:/Users/Public/Downloads/LianFa.lua")
 		dofile("C:/Users/Public/Downloads/thermite.lua")
 		dofile("C:/Users/Public/Downloads/turbo_state.lua")
 
@@ -2680,7 +2676,6 @@ function OnEvent(event, arg)
         end
 -- 	    读取以及检测枪械状态
 		dofile("C:/Users/Public/Downloads/main.lua")
-		dofile("C:/Users/Public/Downloads/LianFa.lua")
 		dofile("C:/Users/Public/Downloads/thermite.lua")
 		dofile("C:/Users/Public/Downloads/turbo_state.lua")
 
@@ -2810,7 +2805,7 @@ function OnEvent(event, arg)
 
 
 
-                	qx1_1 = GunCombination1_2[22]
+                	qx1_1 = GunCombination1_1[22]
 
 
 
@@ -2950,38 +2945,21 @@ function OnEvent(event, arg)
 
 					guntogo(qx1_1)
 				elseif( qx1_1 == "Y_XBS") then
-
-
-
-					qx1_1 = GunCombination1_1[12]
-
-
-
+					qx1_1 = GunCombination1_2[12]
 					guntogo(qx1_1)
-
-
-
+				end
 			end
-
-
-
 		end
 
 
 
 		if(kg == 2 or kg == 4) then
-
-
-
 			ClearLog()
-
 			if(event == "MOUSE_BUTTON_PRESSED" and IsModifierPressed(keybb) and LSKG == 1)then
-
 				-- 暂停压枪 滋崩
 				qx1_1 = GunCombination1_1[18]
 
 				guntogo(qx1_1)
-
 			end
 
 
@@ -3709,8 +3687,8 @@ function click()--连点器
     repeat
 
         if(ij<=listLen) then
-
-			if(offset_state == "P20" or offset_state == "Y_P20" or offset_state == "HMLK_DD" or offset_state == "XBS" or offset_state == "Y_XBS" or offset_state == "R301DD" or offset_state == "PXDD" or offset_state == "G7" or (LianFa == 1 and (offset_state == "LS" or offset_state == "Y_LS"))) then PressAndReleaseMouseButton(1) end
+            -- lgs 连发自动开枪，对ghub无效，解决办法就是程序无视这些枪的检测如果使用的是ghub
+            if(offset_state == "P20" or offset_state == "Y_P20" or offset_state == "HMLK_DD" or offset_state == "XBS" or offset_state == "Y_XBS" or offset_state == "R301DD" or offset_state == "PXDD" or offset_state == "G7" or offset_state == "HMLK" or (LianFa == 1 and (offset_state == "LS" or offset_state == "Y_LS"))) then PressAndReleaseMouseButton(1) end
 
             offset = offset_list[ij];
 
@@ -4470,5 +4448,4 @@ function Toarg(ag)
 
 
 
-end
 end
