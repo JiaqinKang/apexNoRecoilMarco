@@ -10,7 +10,6 @@ a1 = 1
 
 shootkey ="p"
 
-isLeftButtonPressed = false
 text_bbdate = "2023-08-12"
 
 offset_pattern = 2
@@ -2161,7 +2160,8 @@ Y_Lstar_offset_time = 25
 ----------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 
-
+-- 介绍
+text_jieshao = {230,172,162,232,191,142,228,189,191,231,148,168,233,147,173,230,152,159,229,142,139,230,158,170,229,174,143}
 
 -- 当前版本：
 text_dqbb = {229,189,147,229,137,141,231,137,136,230,156,172,239,188,154}
@@ -2187,8 +2187,20 @@ text_ghub = {71,72,85,66,230,150,176,231,137,136,230,156,172,233,169,177,229,138
 -- 未知版本
 text_wzbb = {230,156,170,231,159,165,231,137,136,230,156,172}
 
+-- 唯一购买群号：459503011(其他群均为盗版)
+text_qh = {229,148,175,228,184,128,232,180,173,228,185,176,231,190,164,229,143,183,239,188,154,52,53,57,53,48,51,48,49,49,40,229,133,182,228,187,150,231,190,164,229,157,135,228,184,186,231,155,151,231,137,136,41}
+
+-- 此版本售价：40元
+text_sj = {230,173,164,231,137,136,230,156,172,229,148,174,228,187,183,239,188,154,52,48,229,133,131}
+
 -- 当前按键：
 text_dqaj = {229,189,147,229,137,141,230,140,137,233,148,174,239,188,154}
+
+-- 当前版本不可用，最新版已更新，请到群里下载最新版！
+text_tytime = {229,189,147,229,137,141,231,137,136,230,156,172,228,184,141,229,143,175,231,148,168,239,188,140,230,156,128,230,150,176,231,137,136,229,183,178,230,155,180,230,150,176,239,188,140,232,175,183,229,136,176,231,190,164,233,135,140,228,184,139,232,189,189,230,156,128,230,150,176,231,137,136,239,188,129}
+
+-- 请勿重写GetDate方法，此操作将会导致无法使用此脚本。
+text_qwcxtime = {232,175,183,229,139,191,233,135,141,229,134,153,71,101,116,68,97,116,101,230,150,185,230,179,149,239,188,140,230,173,164,230,147,141,228,189,156,229,176,134,228,188,154,229,175,188,232,135,180,230,151,160,230,179,149,228,189,191,231,148,168,230,173,164,232,132,154,230,156,172,227,128,130}
 
 -- 枪械组合一配置错误
 text_qxpz = {230,158,170,230,162,176,231,187,132,229,144,136,228,184,128,233,133,141,231,189,174,233,148,153,232,175,175}
@@ -2452,21 +2464,30 @@ text_baocun = {228,191,157,229,173,152}
 -- 武器配置。
 text_wqpz = {230,173,166,229,153,168,233,133,141,231,189,174,227,128,130}
 
+local text_datetimeq = {50,50,48,54,51,48,48,48}
 
 
 
-LS_offset_list = LS_LF
+local text_datetimeh = {50,50,49,50,48,52,48,48}
 
-LS_offset_time = LS_LF_time
 
-LS_offset_trim_list = LS_LF_offset_trim_list
 
-Y_LS_offset_list = Y_LS_LF
 
-Y_LS_offset_time = LS_LF_time
+if(LianFa == 1)then
 
-Y_LS_offset_trim_list = LS_LF_offset_trim_list
+	LS_offset_list = LS_LF
 
+	LS_offset_time = LS_LF_time
+
+	LS_offset_trim_list = LS_LF_offset_trim_list
+
+	Y_LS_offset_list = Y_LS_LF
+
+	Y_LS_offset_time = LS_LF_time
+
+	Y_LS_offset_trim_list = LS_LF_offset_trim_list
+
+end
 
 
 
@@ -2485,10 +2506,6 @@ local offset_list1_1,offset_time1_1,offset_state1_1,text_offset1_1,offset_trim_l
 
 
 function OnEvent(event, arg)
-    if isLeftButtonPressed then
-	    return
-    end
-
 
 
 	function Sleep(t)
@@ -2504,9 +2521,6 @@ function OnEvent(event, arg)
 
 
 	if (event == "PROFILE_ACTIVATED") then
-	    if isLeftButtonPressed then
-    	    return
-        end
 
 
 
@@ -2796,7 +2810,7 @@ function OnEvent(event, arg)
 
 
 
-                	qx1_1 = GunCombination1_1[22]
+                	qx1_1 = GunCombination1_2[22]
 
 
 
@@ -2836,15 +2850,9 @@ function OnEvent(event, arg)
 
 -- 腰射
 		if (event == "MOUSE_BUTTON_PRESSED" and arg == a1) then
-		    if isLeftButtonPressed then
-		        OutputLogMessage("no scope already on,exit\n")
-        	    return
-            end
 
 			if (offset_pattern == 2 and IsMouseButtonPressed(3)) then
-			    if isLeftButtonPressed then
-            	    return
-                end
+
 
 				kg = 2
 
@@ -2951,25 +2959,6 @@ function OnEvent(event, arg)
 
 					guntogo(qx1_1)
 
-				elseif( qx1_1 == "HMLK") then
-
-                    qx1_1 = GunCombination1_1[22]
-
-                    guntogo(qx1_1)
-
-
-
-
-
-
-				end
-
-
-
-
-
-
-
 
 
 			end
@@ -2987,9 +2976,7 @@ function OnEvent(event, arg)
 			ClearLog()
 
 			if(event == "MOUSE_BUTTON_PRESSED" and IsModifierPressed(keybb) and LSKG == 1)then
-			    if isLeftButtonPressed then
-            	    return
-                end
+
 				-- 暂停压枪 滋崩
 				qx1_1 = GunCombination1_1[18]
 
@@ -3051,7 +3038,7 @@ function OnEvent(event, arg)
 
 
 
-            if not isLeftButtonPressed then click() end
+            click()
 
 
 
@@ -3072,9 +3059,6 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_RELEASED" and arg == a1) then
-	    if isLeftButtonPressed then
-    	    return
-        end
 
 
 		clickpd = 0
@@ -3109,9 +3093,6 @@ function OnEvent(event, arg)
 -- 一键换甲，目测1080p
 
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == Change_KEY) then
-	    if isLeftButtonPressed then
-    	    return
-        end
 
 
 
@@ -3154,9 +3135,6 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_PRESSED" and arg == a4) then
-	    if isLeftButtonPressed then
-    	    return
-        end
 
 
 
@@ -3193,9 +3171,6 @@ function OnEvent(event, arg)
 
 
 	if (event == "MOUSE_BUTTON_RELEASED" and arg == a4) then
-	    if isLeftButtonPressed then
-    	    return
-        end
 
 
 
@@ -3394,7 +3369,7 @@ function OnEvent(event, arg)
 
 
 
-		if not isLeftButtonPressed then click() end
+		click()
 
 
 
@@ -3715,10 +3690,7 @@ end
 
 
 function click()--连点器
-    if isLeftButtonPressed then
-	    return
-    end
-    isLeftButtonPressed = true  -- Set the flag to indicate that click() is in progress
+
 
 	local ismouse = true
 
@@ -3727,8 +3699,6 @@ function click()--连点器
 	local aa1 = Toarg(a1)
 
 	if (qx1_1 == "goddess"  ) then
-
-
         if (GetRunningTime()- goddesTime > 7900 ) then
             goddess_offset_time=21
         end
@@ -3740,16 +3710,13 @@ function click()--连点器
 
         if(ij<=listLen) then
 
-            if(offset_state == "P20" or offset_state == "Y_P20" or offset_state == "HMLK_DD" or offset_state == "XBS" or offset_state == "Y_XBS" or offset_state == "R301DD" or offset_state == "PXDD" or offset_state == "G7" or offset_state == "HMLK" or offset_state == "LS" or offset_state == "Y_LS") then
-                PressAndReleaseMouseButton(1)
-            end
+			if(offset_state == "P20" or offset_state == "Y_P20" or offset_state == "HMLK_DD" or offset_state == "XBS" or offset_state == "Y_XBS" or offset_state == "R301DD" or offset_state == "PXDD" or offset_state == "G7" or (LianFa == 1 and (offset_state == "LS" or offset_state == "Y_LS"))) then PressAndReleaseMouseButton(1) end
 
             offset = offset_list[ij];
 
             for var_i=1,offset[4] do
                 Sleep(offset_time)
                 MoveMouseRelative(offset[2], offset[3])
-                if not isLeftButtonPressed then return end
             end
 
 
@@ -3770,15 +3737,12 @@ function click()--连点器
         end
 
 
-        if(aa1 <= 5) and Logitech == "GHUB" then
-            ismouse = IsMouseButtonPressed(aa1)
-        end
+        if(aa1 <= 5) and Logitech == "GHUB" then ismouse = IsMouseButtonPressed(aa1) end
 
         if (qx1_1 == "goddess" and goddess_offset_time==21 and GetRunningTime()-date> 2500) then
             goddess_offset_time=17
         end
 
-        isLeftButtonPressed = false  -- Clear the flag after click() is completed
     until not ismouse or Logitech ~= "GHUB"
 
 
@@ -4092,13 +4056,19 @@ function Get_GUNtext(gun)
 
 	elseif gun =="XBS" then
 
+
+
 		return text_XBS;
 
     elseif gun =="goddess" then
 
+
+
         return text_goddess;
 
 	elseif gun =="HMLK" then
+
+
 
         return text_HMLK;
     end
@@ -4500,4 +4470,5 @@ function Toarg(ag)
 
 
 
+end
 end
