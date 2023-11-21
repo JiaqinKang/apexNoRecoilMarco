@@ -132,6 +132,7 @@ GHUB失灵
     在任务栏小图标那里退出鼠标驱动，然后管理员权限启动鼠标驱动就可以了
     
 为什么突然会截图失败？
+类似 Error cv:Exception: Opencv(4.6.0) C:\build\master_winpack-buildings-win64-vc14-static\Opencv\imgproc\src\templmatch.cpp:1164: error:(-215:Assertion failed)(depth==CV_8U||depth==CV_32F)&&_img.dims()<=2 infunction 'cv::match Template'
 
     1.傻逼360，未经过用户同意把你的文件占用扫描了，大概率还会上传到360的服务器造成截图失败资源被占用。强烈推荐删除卸载傻逼360，使用火绒。
     2.你分辨率缩放不是100%导致截图的大小比分辨率大然后程序崩溃
