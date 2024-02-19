@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="apexNoRecoilMarco:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/apexNoRecoilMarco_jar</output-path>
+    <root id="archive" name="apexNoRecoilMarco.jar">
+      <element id="module-output" name="apexNoRecoilMarco" />
+      <element id="extracted-dir" path="$USER_HOME$/iCloudDrive/java/opencv/build/java/opencv-460.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/iCloudDrive/java/jna/jna-platform-jpms-5.13.0.jar" path-in-jar="/" />
+      <element id="library" level="project" name="java1" />
+      <element id="extracted-dir" path="$USER_HOME$/iCloudDrive/java/mysql/mysql-connector-java-8.0.30.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/iCloudDrive/java/json/json-20230618.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
