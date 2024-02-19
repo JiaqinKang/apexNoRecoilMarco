@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="java">
+    <CLASSES>
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/build/java" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/build/java" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/iCloudDrive/java/opencv/build/java" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/iCloudDrive/java/opencv/build/java" recursive="false" type="SOURCES" />
+  </library>
+</component>

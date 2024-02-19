@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="mysql">
+    <CLASSES>
+      <root url="file://$USER_HOME$/iCloudDrive/java/mysql" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/iCloudDrive/java/mysql" recursive="false" />
+  </library>
+</component>

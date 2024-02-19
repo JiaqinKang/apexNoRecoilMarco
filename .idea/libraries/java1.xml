@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="java1">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/modules/java/generator/android-21/java" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/platforms/android/service/engine/src" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/android/color-blob-detection/src" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/android/tutorial-4-opencl/src" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/eclipse/HelloCV/src" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/Histograms_Matching/back_projection" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/Histograms_Matching/histogram_comparison" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/ImgProc/tutorial_template_matching" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/TrackingMotion/corner_subpixels" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/TrackingMotion/generic_corner_detector" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/TrackingMotion/good_features_to_track" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/core/mat_mask_operations" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/core/mat_operations" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/features2D/feature_description" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/highgui/trackbar" />
+      <root url="file://$USER_HOME$/iCloudDrive/java/opencv/sources/samples/java/tutorial_code/ml/introduction_to_svm" />
+    </SOURCES>
+  </library>
+</component>

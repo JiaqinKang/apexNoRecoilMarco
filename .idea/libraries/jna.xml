@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jna">
+    <CLASSES>
+      <root url="file://$USER_HOME$/iCloudDrive/java/jna" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/iCloudDrive/java/jna" recursive="false" />
+  </library>
+</component>

@@ -7,8 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="opencv-460" level="project" />
-    <orderEntry type="library" name="json-20230618" level="project" />
-    <orderEntry type="library" name="jna-platform-jpms-5.13.0" level="project" />
+    <orderEntry type="library" name="java" level="project" />
+    <orderEntry type="library" name="jna" level="project" />
+    <orderEntry type="library" name="json" level="project" />
+    <orderEntry type="library" name="mysql" level="project" />
+    <orderEntry type="library" name="java1" level="project" />
   </component>
 </module>

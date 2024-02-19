@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="json">
+    <CLASSES>
+      <root url="file://$USER_HOME$/iCloudDrive/java/json" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/iCloudDrive/java/json" recursive="false" />
+  </library>
+</component>

@@ -20,13 +20,13 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class main {
-    String version = "6.5.5";
+    String version = "6.6.0";
     int machMethod = Imgproc.TM_CCOEFF_NORMED;
     int gunMode = 18;//marco pause
     int tempGunMode = 0;
     boolean on_or_off = false;
     boolean isMute = true;
-    String gun = "杜绝收费，从你我做起，GitHub点点星星，谢谢";
+    String gun = "杜绝收费，从你我做起,GitHub点点星星，谢谢";
     File from = new File("Script.lua");
     File to = new File("C:\\Users\\Public\\Downloads\\Script.lua");
 
@@ -77,6 +77,39 @@ public class main {
     boolean lgs =false;
     boolean ghub =false;
 
+    String[] gunNames = {
+            "<html><center>R301 single<br>301卡宾枪单点<br></center></html>",
+            "R301 卡宾枪",
+            "VK 平行步枪",
+
+            "<html><center>VK single<br>平行步枪单点</center></html>",
+            "<html><center>Alternator SMG<br>转换者</center></html>",
+            "Car",
+
+            "P2020",
+            "<html><center>Devotion LMG<br>专注</center></html>",
+            "Havoc 哈沃克",
+
+            "<html><center>G7<br>(不安装双发班机)</center></html>",
+            "<html><center>RE-45<br>自动手枪</center></html>",
+            "<html><center>L-STAR<br>能量机枪</center></html>",
+
+            "<html><center>Wing Man<br>辅助手枪</center></html>",
+            "<html><center>m600<br>喷火轻机枪</center></html>",
+            "<html><center>Rampage<br>LMG暴走</center></html>",
+
+            "<html><center>Prowler Burst <br>PDW Burst PD<br>猎兽冲锋枪连发</center></html>",
+            "<html><center>Volt SMG<br>电能冲锋枪</center></html>",
+            "R99 冲锋枪",
+
+            "<html><center>HemLock Single<br>赫姆洛克 单点</center></html>",
+            "<html><center>RevengGoddess<br>复仇女神</center></html>",
+            "<html><center>Prowler Burst <br> PDW_auto<br>猎兽全自动</center></html>",
+
+            "<html><center>HemLock<br>赫姆洛克 连发</center></html>",
+    };
+
+
 
 
     public main() {
@@ -88,7 +121,7 @@ public class main {
         JFrame frame = new JFrame("Apex全自动宏 "+version);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setIconImage(new ImageIcon("icon.jpg").getImage());
-        frame.setSize(1200, 500);
+        frame.setSize(1000, 600);
         frame.setResizable(false);
         //frame in the center of screen
         frame.setLocationRelativeTo(null);
@@ -124,47 +157,11 @@ public class main {
         String url = "https://github.com/JiaqinKang/apexNoRecoilMarco";
         urlButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 
-        JButton LianFaButton = new JButton("自动连发");
-        LianFaButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 
 
         //////////////////////////////////////////////////////////////////
         JPanel gunPanel = new JPanel();
         gunPanel.setLayout(new GridLayout(0, 3)); // Adjust the grid layout columns as needed
-
-
-
-        String[] gunNames = {
-                "R301 single单点卡宾枪",
-                "R301 卡宾枪",
-                "VK平行步枪",
-
-                "VK single单点平行步枪",
-                "Alternator SMG转换者",
-                "Car",
-
-                "P2020",
-                "Devotion LMG专注",
-                "Havoc哈沃克",
-
-                "G7(不安装双发班机)",
-                "RE-45自动手枪",
-                "L-STAR 能量机枪",
-
-                "Wing Man辅助手枪",
-                "m600 喷火轻机枪",
-                "Rampage LMG暴走",
-
-                "Prowler Burst PDW Burst PD猎兽冲锋枪",
-                "Volt SMG电能冲锋枪",
-                "R99冲锋枪",
-
-                "HemLock Single单点赫姆洛克",
-                "RevengGoddess复仇女神",
-                "Prowler Burst PDW_auto猎兽全自动",
-
-                "HemLock赫姆洛克 连发",
-        };
 
         booleanArray[0] = true; // r301_single
         booleanArray[1] = true; // r301
@@ -206,30 +203,31 @@ public class main {
             gunButtons[i] = new JButton(gunNames[i]);
             gunButtons[i].setFont(new Font("微软雅黑", Font.PLAIN, 14));
             gunButtons[i].setOpaque(true);
+            gunButtons[i].setHorizontalAlignment(SwingConstants.CENTER);
             gunButtons[i].setBorder(BorderFactory.createLineBorder(Color.black));
             gunButtons[i].setBackground(Color.GREEN);
 
-
             final int index = i; // Need a final variable for lambda expression
-            gunButtons[i].addActionListener(e -> {
-                if (!booleanArray[temp]){
-                    booleanArray[temp] = true;
-                    gunButtons[temp].setBackground(Color.GREEN);
-                } else {
-                    booleanArray[temp] = false;
-                    gunButtons[index].setBackground(Color.red);
+            // disable pwd auto
+            if (i==20){
+                gunButtons[i].setBackground(Color.gray);
+                gunButtons[i].setEnabled(false);
+            }
+            else{
+                gunButtons[i].addActionListener(e -> {
+                    if (!booleanArray[temp]){
+                        booleanArray[temp] = true;
+                        gunButtons[temp].setBackground(Color.GREEN);
+                    } else {
+                        booleanArray[temp] = false;
+                        gunButtons[index].setBackground(Color.red);
+                    }
+                });
 
-                }
-            });
+            }
             // Add the button to the panel
             gunPanel.add(gunButtons[i]);
         }
-
-
-
-
-
-
 
 //        System.out.println(gunButtons[1]);
 
@@ -294,7 +292,7 @@ public class main {
             }
         });
 
-        // Create the submit button
+        // Create the submitButton
         JButton submitButton = new JButton("确定");
 
         // Add ActionListener to the submit button
@@ -445,7 +443,6 @@ public class main {
         panel1.add(aimCross);
         panel1.add(button3);
         panel1.add(release);
-        panel1.add(LianFaButton);
         panel1.add(deadConfidencePanel);
         panel1.add(deadslider);
         panel1.add(weaponConfidencePanel);
@@ -492,13 +489,18 @@ public class main {
             if (language.equals("中文")) {
                 language = "English";
                 button1.setText("On/Off");
-                mute.setText("unmute/mute");
+                mute.setText("Unmute/Mute");
                 button3.setText("切换语言");
                 release.setText("Release Script Ok");
                 button4.setText("Auto Clean Memory");
                 gun.setText(this.gun);
                 urlButton.setText("GitHub Link");
                 aimCross.setText("Game Aim Cross");
+                deadvalueLabel.setText("Chest/Dead(%)");
+                weaponvalueLabel.setText("Weapon(%)");
+                submitButton.setText("Confirm");
+                weaponSubmitButton.setText("Confirm");
+
             } else {
                 language = "中文";
                 button1.setText("开/关");
@@ -509,6 +511,10 @@ public class main {
                 gun.setText(this.gun);
                 urlButton.setText("GitHub链接");
                 aimCross.setText("开/关游戏准星");
+                deadvalueLabel.setText("箱/黑市检测(%)");
+                weaponvalueLabel.setText("武器检测(%)");
+                submitButton.setText("确定");
+                weaponSubmitButton.setText("确定");
             }
         });
 
@@ -561,20 +567,6 @@ public class main {
             }
         });
 
-        LianFaButton.addActionListener(e -> {
-            LianFaButton.setEnabled(false);
-//            // Toggle the Lianfa state
-//            LianFa = !LianFa;
-//            // Update the button text and color based on the Lianfa state
-//            if (LianFa) {
-//                write_to_file3(0);
-//                LianFaButton.setBackground(Color.RED);
-//            } else {
-//                write_to_file3(1);
-//                LianFaButton.setBackground(Color.GREEN);
-//            }
-        });
-
 
         //release script file to local
         try {
@@ -605,13 +597,27 @@ public class main {
         //pop up message when start the program
         String message = """
                 请确保游戏语言设置为中文，否则黑市、死亡将无法暂停压枪.
-                               
+                       
                 操作说明:
                 游戏中鼠标灵敏度为1.6，鼠标加速度关闭，罗技驱动——>指针设置——>报告率改为1000，加速关闭
                 可以调整罗技灵驱动里的鼠标移动灵敏度来解决游戏里1.6太慢的问题，这样不会影响到压枪
                 关闭游戏内的鼠标速度！！！！！！！！！！！
                 Numlock小键盘锁开关宏,支持腰射和开镜压枪
                 连发单点枪只支持lgs，选择ghub会自动无视不支持的枪,如果你不想要连发的枪也可以选择ghub一键关闭所有连发单点枪
+                
+                Please make sure that the game language is set to Chinese, otherwise the black market and death will not be able to pause recoil control.
+                              
+                Instructions:
+                In the game, set the mouse sensitivity to 1.6 with mouse acceleration turned off.
+                In the Logitech driver:
+                    1. go to Pointer Settings, 
+                    2. change the report rate to 1000, and turn off acceleration.
+                You can adjust the mouse movement sensitivity in the Logitech driver to address the issue of being too slow at 1.6 in the game, without affecting recoil control.
+                Turn off the in-game mouse speed !!!!!!!!!
+                Use the Numlock keypad lock switch macro to support hip fire and aiming down sights recoil control.
+                For burst firing single-shot guns, only Logitech Gaming Software (lgs) is supported. 
+                Selecting Logitech G HUB (ghub) will automatically ignore guns that are not supported. 
+                If you don't want to use burst firing guns, you can choose ghub to easily turn off all burst firing single-shot guns.
                 """;
         Object[] options = {"LGS", "GHub"};
 
@@ -666,8 +672,8 @@ public class main {
                 on_or_off = true;
                 button1.setBackground(Color.GREEN);
 //              disable all gun buttons
-                for (int i = 0; i < gunButtons.length; i++) {
-                    gunButtons[i].setEnabled(false);
+                for (JButton gunButton : gunButtons) {
+                    gunButton.setEnabled(false);
                 }
                 System.out.println("open");
             }
@@ -1073,7 +1079,7 @@ public class main {
             }
 
             else {
-                this.gun = "未检测到支持武器";
+                this.gun = "未检测到支持武器,No supported gun Detected";
                 gunMode = 18;
                 switchNow();
             }
@@ -1082,7 +1088,7 @@ public class main {
                 System.gc();
             }
             if (!on_or_off) { //if the program is closed, break the loop
-                this.gun ="关闭成功";
+                this.gun ="关闭成功，Turned off";
                 gunMode = 18;
                 switchNow();
                 break; //break the loop
@@ -1229,7 +1235,7 @@ public class main {
                     "A new version is available. Would you like to update?" +
                             "有新版本要更新吗?",
                     "Update available", JOptionPane.YES_NO_OPTION);
-            if (dialogResult == JOptionPane.YES_OPTION) { // yes exit the program and open Github
+            if (dialogResult == JOptionPane.YES_OPTION) { // yes exit the program and open GitHub
                 openWebpage("https://github.com/JiaqinKang/apexNoRecoilMarco/releases");
                 System.exit(1);
             }
