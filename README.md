@@ -2,8 +2,8 @@ Disclaimer
 The purpose of my development is for educational purposes. If you use this software to cause any damage, it has nothing to do with me.
 我开发的目的是为了教育目的。如果你使用本软件造成任何损失与作者无关。
 
-## 截至31/01/2024，脚本依旧可以使用
-As of Jan 31, 2024, the script is still usable.
+## 截至21/02/2024，脚本依旧可以使用
+As of Feb 21, 2024, the script is still usable.
 
 ## Stargazers over time
 
