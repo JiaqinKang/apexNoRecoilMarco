@@ -49,10 +49,10 @@ Desktop resolution is required to be the same as in-game and 100% zoom rate
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 游戏准星效果：Game crosshair effect:
  
-    ![效果](https://user-images.githubusercontent.com/37282586/220811002-5efca547-fc51-4bb1-97f0-2cd139d9dda3.jpg)
+   ![效果](https://user-images.githubusercontent.com/37282586/220811002-5efca547-fc51-4bb1-97f0-2cd139d9dda3.jpg)
 
   
-    ![效果2](https://user-images.githubusercontent.com/37282586/220811078-bf444868-4529-4a45-b48c-277767b9072a.jpg)
+   ![效果2](https://user-images.githubusercontent.com/37282586/220811078-bf444868-4529-4a45-b48c-277767b9072a.jpg)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
