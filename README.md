@@ -92,6 +92,10 @@ Envrioment
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 **打赏杯咖啡或者给我点点星**
 
+**Tip a cup of coffee or give me some stars**
+
+https://paypal.me/JiaqinKang?country.x=GB&locale.x=en_GB
+
 
 ![图片_20240309223340](https://github.com/JiaqinKang/apexNoRecoilMarco/assets/37282586/58e519a8-b900-44ab-9f6f-d928e1c2544e)
 
