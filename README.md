@@ -109,13 +109,13 @@ https://github.com/KonghuanSmart
 
 ## Paypal:
 
-    https://paypal.me/JiaqinKang?country.x=GB&locale.x=en_GB
+https://paypal.me/JiaqinKang?country.x=GB&locale.x=en_GB
 
 
 
 ## WeChat:
 
-    ![图片_20240309223340](https://github.com/JiaqinKang/apexNoRecoilMarco/assets/37282586/58e519a8-b900-44ab-9f6f-d928e1c2544e)
+![图片_20240309223340](https://github.com/JiaqinKang/apexNoRecoilMarco/assets/37282586/58e519a8-b900-44ab-9f6f-d928e1c2544e)
 
 
  ---------------------------------------------------------------------------------------------------------------------------------------------------------
