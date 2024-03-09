@@ -47,7 +47,7 @@ Desktop resolution is required to be the same as in-game and 100% zoom rate
  - [x] R99 冲锋枪
  - [x] RevengGoddess 复仇女神（建议瞄胸）(It is recommended to aim at the chest)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-游戏准星效果：Game crosshair effect:
+## 游戏准星效果：Game crosshair effect:
  
     ![效果](https://user-images.githubusercontent.com/37282586/220811002-5efca547-fc51-4bb1-97f0-2cd139d9dda3.jpg)
 
@@ -78,8 +78,6 @@ How to use it:
     4. save and run the script in lgs or ghub
        保持运行脚本
 
-There is a version difference between lgs and ghub： if countering issues,please run the debug启动器 and check the console output for more information screenshot it and send it to me, I will try to help you.
-
 
 lgs和ghub有版本区别问题：如果遇到问题请提交debug启动器的截图，我会尽快修复
 
@@ -87,29 +85,34 @@ There is a version difference problem between lgs and ghub: if you encounter pro
 
 # 注意！先开软件再开脚本。确保两个都开着！
 # Notice! Open the software first and then the script. Make sure both are on!
+
+## 视频教程检查
+## Video Tutorial check 
+
+     https://github.com/JiaqinKang/apexNoRecoilMarco/blob/master/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E5%92%8C%E9%97%AE%E9%A2%98/tutorial(1).mkv
     
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-Envrioment 
-  IDE: intellij
-  libary: opencv-460
-  java : 1.8
+## Envrioment 
+
+    IDE: intellij
+    libary: opencv-460
+    java : 1.8
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-  Huge thanks for 空话lua的解码
-  https://github.com/KonghuanSmart
+## Huge thanks for 空话lua的解码
+https://github.com/KonghuanSmart
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-**打赏杯咖啡或者给我点点星**
-
-**Tip a cup of coffee or give me some stars**
-
+## **打赏杯咖啡或者给我点点星**
+### **Tip a cup of coffee or give me some stars**
 
 
-Paypal:
+
+## Paypal:
 
     https://paypal.me/JiaqinKang?country.x=GB&locale.x=en_GB
 
 
 
-Wechat:
+## WeChat:
 
     ![图片_20240309223340](https://github.com/JiaqinKang/apexNoRecoilMarco/assets/37282586/58e519a8-b900-44ab-9f6f-d928e1c2544e)
 
