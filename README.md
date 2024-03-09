@@ -15,8 +15,9 @@ Fully working no recoil with Logitech mouse with Logitech game software & ghub
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 ![捕获](https://github.com/JiaqinKang/apexNoRecoilMarco/assets/37282586/e84d990f-60d9-4d9e-bc0e-369b6bbb47d6)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-支持分辨率：要求桌面分辨率和游戏内一样且100%缩放率
-Supported resolution: Desktop resolution is required to be the same as in-game and 100% zoom rate
+## 支持分辨率：Supported resolution:
+要求桌面分辨率和游戏内一样且100%缩放率 
+Desktop resolution is required to be the same as in-game and 100% zoom rate
  - [x] 1920X1080 最稳 best
  - [x] 2560x1080
  - [x] 2560X1440 最稳 best
@@ -26,30 +27,32 @@ Supported resolution: Desktop resolution is required to be the same as in-game a
  - [x] 4096x2160
  - [ ] 其他未知，我时间有限，能动手的请自己来 Others are unknown. My time is limited. If you can do it, please do it yourself.
 -----------------------------------------------------------------------------------------------------------------------------------------------
-支持：
+支持武器：Supporting guns:
  - [x] Alternator SMG 转换者
  - [x] Car 
- - [x] Devotion LMG 专注 （有涡轮/无涡轮）
+ - [x] Devotion LMG 专注 （有涡轮/无涡轮）(with turbine/without turbine)
  - [x] G7 (不推荐安装双发班机)
- - [x] Havoc 哈沃克 （有涡轮/无涡轮）
- - [x] HemLock 赫姆洛克突击步枪 （单点/连发）
+ - [x] Havoc 哈沃克 （有涡轮/无涡轮）(with turbine/without turbine)
+ - [x] HemLock 赫姆洛克突击步枪 （单点/连发）(Single point/burst)
  - [x] L-STAR 能量机枪
  - [x] m600 喷火轻机枪
- - [x] p2020 手枪 （自动连发开枪）
+ - [x] p2020 手枪 （自动连发开枪）(automatic burst fire)
  - [x] R301 卡宾枪
- - [x] Rampage LMG 暴走 （有燃烧弹/无燃烧弹）
- - [x] powler Burst PD 猎兽冲锋枪 （连发/全自动）
+ - [x] Rampage LMG 暴走 （有燃烧弹/无燃烧弹）(with incendiary bombs/without incendiary bombs)
+ - [x] powler Burst PD 猎兽冲锋枪 （连发/全自动）(Burst/full automatic)
  - [x] RE-45 自动手枪
  - [x] VK 平行步枪
  - [x] Volt SMG 电能冲锋枪
  - [x] Wing Man 辅助手枪
  - [x] R99 冲锋枪
- - [x] RevengGoddess 复仇女神（建议瞄胸）
+ - [x] RevengGoddess 复仇女神（建议瞄胸）(It is recommended to aim at the chest)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-游戏准星效果：
+游戏准星效果：Game crosshair effect:
  
-  ![效果](https://user-images.githubusercontent.com/37282586/220811002-5efca547-fc51-4bb1-97f0-2cd139d9dda3.jpg)
-  ![效果2](https://user-images.githubusercontent.com/37282586/220811078-bf444868-4529-4a45-b48c-277767b9072a.jpg)
+    ![效果](https://user-images.githubusercontent.com/37282586/220811002-5efca547-fc51-4bb1-97f0-2cd139d9dda3.jpg)
+
+  
+    ![效果2](https://user-images.githubusercontent.com/37282586/220811078-bf444868-4529-4a45-b48c-277767b9072a.jpg)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
