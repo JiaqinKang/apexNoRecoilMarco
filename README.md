@@ -27,7 +27,7 @@ Desktop resolution is required to be the same as in-game and 100% zoom rate
  - [x] 4096x2160
  - [ ] 其他未知，我时间有限，能动手的请自己来 Others are unknown. My time is limited. If you can do it, please do it yourself.
 -----------------------------------------------------------------------------------------------------------------------------------------------
-支持武器：Supporting guns:
+## 支持武器：Supporting guns:
  - [x] Alternator SMG 转换者
  - [x] Car 
  - [x] Devotion LMG 专注 （有涡轮/无涡轮）(with turbine/without turbine)
