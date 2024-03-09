@@ -5,11 +5,6 @@ The purpose of my development is for educational purposes. If you use this softw
 ## 截至04/03/2024，脚本依旧可以使用
 As of March 04, 2024, the script is still usable.
 
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/JiaqinKang/apexNoRecoilMarco.svg)](https://starchart.cc/JiaqinKang/apexNoRecoilMarco)
-
-
 Apex 无后座力力脚本
 Fully working no recoil with Logitech mouse with Logitech game software & ghub
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -175,3 +170,8 @@ GHUB失灵 GHUB failure
 如果想改成默认启动就是管理员权限，右键鼠标驱动图标，打开文件位置，再右键，属性，点顶部的【兼容性】，勾上【以管理员权限运行此程序】
 
     If you want to change it to the default startup, you need administrator rights. Right-click the driver icon, open the file location, right-click again, select Properties, click [Compatibility] at the top, and check [Run this program with administrator rights]
+
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/JiaqinKang/apexNoRecoilMarco.svg)](https://starchart.cc/JiaqinKang/apexNoRecoilMarco)
