@@ -55,10 +55,11 @@ Desktop resolution is required to be the same as in-game and 100% zoom rate
    ![效果2](https://user-images.githubusercontent.com/37282586/220811078-bf444868-4529-4a45-b48c-277767b9072a.jpg)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
+## 教程 Tutorial
+Text Tutorial:
+文字教程使用说明：
 
-How to use it:
-使用说明：within the ide 
-    important : Make sure logitech game software or Ghub is installed
+     important : Make sure logitech game software or Ghub is installed
     重要：需要安装罗技鼠标驱动lgs或者ghub
     (lgs supports more guns than ghub although it still detects the weapon some weapons won't have recoil script tid to it in ghub)
     (lgs 支持的枪支比 ghub 多，尽管它仍然可以检测到武器，有些武器在 ghub 中不会有对应的无后座脚本)
