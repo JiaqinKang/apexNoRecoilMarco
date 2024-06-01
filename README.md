@@ -2,8 +2,8 @@
 The purpose of my development is for educational purposes. If you use this software to cause any damage, it has nothing to do with me.
 我开发的目的是为了教育目的。如果你使用本软件造成任何损失与作者无关。
 
-## 截至14/05/2024，脚本依旧可以使用
-As of May 14, 2024, the script is still usable.
+## 截至01/06/2024，脚本依旧可以使用
+As of Jun 1, 2024, the script is still usable.
 
 Apex 无后座力力脚本
 Fully working no recoil with Logitech mouse with Logitech game software & ghub
