@@ -910,7 +910,7 @@ public class main {
 
 //                debug checking
 //                ImageIO.write(image, "png", new File("weapon_area.png"));
-                ImageIO.write(dead, "png", new File("dead_area.png"));
+//                ImageIO.write(dead, "png", new File("dead_area.png"));
 
                 //to byte array
                 byte[] weaponArea = byteArrayOutputStream.toByteArray();
