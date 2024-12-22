@@ -20,7 +20,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class main {
-    String version = "6.6.0";
+    String version = "6.6.6";
     int machMethod = Imgproc.TM_CCOEFF_NORMED;
     int gunMode = 18;//marco pause
     int tempGunMode = 0;
@@ -713,27 +713,27 @@ public class main {
             System.out.println("1440p x 3440p");
             x1 = (550);
             y1 = (100);
-            width1 = 200;
-            height1 = 100;
+            width1 = 200*3;
+            height1 = 100*3;
         }else if (SystemWidth == 2560 && SystemHeight == 1440) {
             System.out.println("1440p x 2560p");
             //capture for looting area
             x1 = (SystemWidth / 16);
             y1 = (SystemHeight / 10);
-            width1 = (int) (SystemWidth / 8.5) - x1;
-            height1 = (int) ((SystemHeight / 8.5) - y1) * 2;
+            width1 = (int) (SystemWidth / 8.5 *3) - x1;
+            height1 = (int) ((SystemHeight / 8.5 *3) - y1) * 2;
         } else if (SystemHeight == 1600 && SystemWidth == 2560) {
             System.out.println("1600p x 2560p");
             x1 = (100);
             y1 = (100);
-            width1 = (int)(SystemWidth/ 5);
-            height1 = (int) (SystemHeight /6);
+            width1 = (int)(SystemWidth/ 5 *3);
+            height1 = (int) (SystemHeight /6*3);
         } else {
             System.out.println("其他分辨率/1080p");
             x1 = (100);
             y1 = (100);
-            width1 = (int)(SystemWidth/ 5);
-            height1 = (int) (SystemHeight /6);
+            width1 = (int)(SystemWidth/ 5*3);
+            height1 = (int) (SystemHeight /6*3);
         }
 
         //auto trigger to ensure the num lock is on for macro to work
@@ -910,7 +910,7 @@ public class main {
 
 //                debug checking
 //                ImageIO.write(image, "png", new File("weapon_area.png"));
-//                ImageIO.write(dead, "png", new File("dead_area.png"));
+                ImageIO.write(dead, "png", new File("dead_area.png"));
 
                 //to byte array
                 byte[] weaponArea = byteArrayOutputStream.toByteArray();
@@ -930,12 +930,23 @@ public class main {
 
 
 //            check if the player is looting a dead chest
-            if (imageDetection(_2dead,"dead",false) >= deadConfidence) {
-                this.gun = "Dead";
+
+
+
+            if ( imageDetection(_2dead,"blackMarket_english",false) >= deadConfidence){
+                this.gun = "Pause fire";
+                gunMode = 18;
+                switchNow();
+            } else if (imageDetection(_2dead,"dead_english",false) >= deadConfidence) {
+                this.gun = "Pause fire";
+                gunMode = 18;
+                switchNow();
+            }else if (imageDetection(_2dead,"dead",false) >= deadConfidence) {
+                this.gun = "Pause fire";
                 gunMode = 18;
                 switchNow();
             } else if ( imageDetection(_2dead,"blackMarket",false) >= deadConfidence){
-                this.gun = "Black Market";
+                this.gun = "Pause fire";
                 gunMode = 18;
                 switchNow();
             } else if (imageDetection(_1weapon,"r99",false) >= confidence && r99) {
