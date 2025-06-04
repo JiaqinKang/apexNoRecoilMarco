@@ -3,7 +3,7 @@ The purpose of my development is for educational purposes. If you use this softw
 我开发的目的是为了教育目的。如果你使用本软件造成任何损失与作者无关。
 
 ## 04/06/2025，项目废弃，底层被apex禁用，看issue讨论下一步
-## 04/06/2025, the project is abandoned, the bottom layer is cancelled by the top layer, see the problem and discuss the next step
+## 04/06/2025, the project is abandoned, apex has blocked lua script functions, see the  issues for discuss of the next step
 
 Apex 无后座力力脚本
 Fully working no recoil with Logitech mouse with Logitech game software & ghub
